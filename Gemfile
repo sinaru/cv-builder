@@ -16,3 +16,4 @@ gem "rubocop-rake", "~> 0.6.0"
 gem "rubocop-minitest", "~> 0.33.0"
 
 gem "prawn"
+gem "pdfkit"
