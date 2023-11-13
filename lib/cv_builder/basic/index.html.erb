@@ -52,6 +52,9 @@
   <div>
     <% dig :skills do |skill| %>
       <p><%= dig skill, :area %></p>
+      <% dig(skill, :items).each do |item| %>
+      * <%= item %>
+      <% end %>
     <% end %>
   </div>
 </body>

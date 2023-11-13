@@ -12,7 +12,9 @@ module CvDataSection
 
     def dig(*path)
       path_s = path.map(&:to_s)
-      @hash.dig(*path_s)
+      data = @hash.dig(*path_s)
+      return [] if data.nil? && path.first == :items
+      data
     end
   end
 end

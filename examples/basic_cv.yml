@@ -24,3 +24,6 @@ skills:
      - Vue.js 2
      - React
   - area: Database
+    items:
+      - PostgreSQL
+      - MongoDB
