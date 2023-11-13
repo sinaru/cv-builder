@@ -49,10 +49,10 @@
 </div>
 <hr>
 
-<!--  <div>-->
-    <%# dig :skills do |skill| %>
-<!--      <p><%#= dig skill, :area %></p>-->
-    <%# end %>
-<!--  </div>-->
+  <div>
+    <% dig :skills do |skill| %>
+      <p><%= dig skill, :area %></p>
+    <% end %>
+  </div>
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 require_relative "cv_builder/version"
 require_relative "cv_builder/cv_data"
+require_relative "cv_builder/cv_data_sections/skill"
 require_relative "cv_builder/yaml_file_parser"
 require_relative "cv_builder/cv_generator"
 
