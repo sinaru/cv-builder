@@ -7,5 +7,19 @@ profile:
   the best to the organization. A team player with collaboration experience 
   in Scrum and Kanban teams."
 contact:
+  github: sinaru
   mobile: +353 838315349
-experience:
+  website: sinaru.com
+  email: sinarug@gmail.com
+  linkedin: sinaru
+  location:
+    country: IRE
+    city: Dublin
+skills:
+  - area: Development
+    items:
+     - Ruby
+     - Ruby on Rails
+     - ES6 JavaScript
+     - Vue.js 2
+     - React
