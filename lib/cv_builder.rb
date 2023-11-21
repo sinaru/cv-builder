@@ -14,9 +14,10 @@ module CvBuilder
       parser = YamlFileParser.new(example_yaml)
       parser.validate!
 
-      output_location = File.join(File.dirname(__FILE__), "/../tmp/basic_cv.pdf")
       data = parser.parse!
-      CvGenerator.new(data, output_location).generate
+
+      output_location = File.join(File.dirname(__FILE__), "/../tmp/basic_cv.pdf")
+      CvGenerator.new(data).generate(output_location)
     end
   end
 end

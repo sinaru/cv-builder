@@ -5,16 +5,15 @@ require "pdfkit"
 module CvBuilder
   class CvGenerator
 
-    def initialize(cv_data, output_location)
+    def initialize(cv_data)
       @cv_data = cv_data
-      @output_location = output_location
       @template = 'basic'
     end
 
-    def generate
+    def generate(output_location)
       pdf = PDFKit.new(cv_html, page_size: 'A4')
       pdf.stylesheets = template_stylesheets
-      pdf.to_file(@output_location)
+      pdf.to_file(output_location)
     end
 
     private
