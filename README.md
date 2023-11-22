@@ -26,7 +26,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+First we need to have a yaml file with the CV data. The yaml file support following sections.
+
+```yaml
+version: 1
+prorfile:
+  name: <string>
+  title: <string>
+  about: <string>
+contact:
+  github: <username>
+  mobile: <mobile number digits>
+  email: <email address>
+  linkedin: <linkedin username>
+  location:
+    country: <country name or code>
+    city: <city name>
+skills:
+  - 
+```
 
 ## Development
 
