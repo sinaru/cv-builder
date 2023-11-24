@@ -1,8 +1,8 @@
 # frozen_string_literal: true
-require 'yaml'
+require "yaml"
 
 module CvBuilder
-  class YamlFileParser
+  class MetaFileParser
     attr_reader :location
 
     def initialize(location)
@@ -15,11 +15,12 @@ module CvBuilder
     end
 
     def parse!
+      validate!
       CvData.new(yaml)
     end
 
     def yaml
-      @yaml ||= YAML.load(File.read(location))
+      @yaml ||= YAML.load_file(location)
     end
   end
 end
