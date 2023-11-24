@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "yaml"
 
 module CvBuilder
@@ -7,7 +8,6 @@ module CvBuilder
 
     def initialize(location)
       @location = location
-
     end
 
     def validate!

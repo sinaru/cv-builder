@@ -1,10 +1,10 @@
 # frozen_string_literal: true
+
 require "erb"
 require "pdfkit"
 
 module CvBuilder
   class CvGenerator
-
     def initialize(cv_data)
       @cv_data = cv_data
       @template = "basic"
@@ -35,4 +35,3 @@ module CvBuilder
     end
   end
 end
-

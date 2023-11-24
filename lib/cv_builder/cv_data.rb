@@ -28,4 +28,3 @@ module CvBuilder
     end
   end
 end
-
