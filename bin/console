@@ -12,4 +12,6 @@ require "cv_builder"
 # Pry.start
 
 require "irb"
-IRB.start(__FILE__)
+
+builder = CvBuilder::Builder.new
+builder.run

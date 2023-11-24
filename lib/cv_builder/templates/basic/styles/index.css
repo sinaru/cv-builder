@@ -1,0 +1,62 @@
+@font-face {
+    font-family: "Cambria";
+url("./Cambria-Font.ttf");
+}
+
+/* FIXME: font not loading */
+body {
+    font-family: "Cambria", serif;
+    color: #545454;
+}
+
+a {
+    color: #545454;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+.flex {
+    display: flex;
+
+}
+
+.profile {
+    padding-bottom: 10px;
+}
+
+.profile .name {
+    font-size: 2em;
+}
+
+.profile .title {
+    font-size: 1.3em;
+}
+
+.contact {
+    flex: 1 0 auto;
+    justify-content: space-between;
+    padding: 5px 0 0 1em;
+}
+
+.contact .icon {
+    fill: #b8b8b8;
+}
+
+.about {
+    flex: 0 0 100%;
+    font-size: small;
+}

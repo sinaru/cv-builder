@@ -2,6 +2,8 @@
 
 *Build a beautiful CV from a text file.*
 
+Uses `wkhtmltopdf` to generate the PDF.
+
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/cv_builder`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem
@@ -24,7 +26,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+First we need to have a yaml file with the CV data. The yaml file support following sections.
+
+```yaml
+version: 1
+prorfile:
+  name: <string>
+  title: <string>
+  about: <string>
+contact:
+  github: <username>
+  mobile: <mobile number digits>
+  email: <email address>
+  linkedin: <linkedin username>
+  location:
+    country: <country name or code>
+    city: <city name>
+skills:
+  - 
+```
 
 ## Development
 
