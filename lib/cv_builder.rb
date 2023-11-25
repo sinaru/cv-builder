@@ -13,8 +13,7 @@ module CvBuilder
   class Builder
     def run
       options = CvBuilder::ArgParser.parse!
-      raise Error.new "CV info file does not exist" unless !options[:cv_info].nil? && File.exist?(options[:cv_info])
-      raise Error.new "Provide a valid path to generate the CV pdf file" if options[:output_path].nil?
+      raise Error.new "CV info file does not exist" unless File.exist?(options[:cv_info])
 
       parser = MetaFileParser.new(options[:cv_info])
       cv_data = parser.parse!
