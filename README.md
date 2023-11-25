@@ -30,7 +30,7 @@ First we need to have a yaml file with the CV data. The yaml file support follow
 
 ```yaml
 version: 1
-prorfile:
+profile:
   name: <string>
   title: <string>
   about: <string>
