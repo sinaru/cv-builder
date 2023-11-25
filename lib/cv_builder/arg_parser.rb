@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-require 'optparse'
+
+require "optparse"
 
 module CvBuilder
   module ArgParser
