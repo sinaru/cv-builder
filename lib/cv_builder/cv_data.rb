@@ -10,8 +10,19 @@ module CvBuilder
       binding
     end
 
+    def has?(*path)
+      klasses = [CvDataSection::Skill, CvDataSection::Experience]
+      if klasses.any? { |klass| path.first.instance_of? klass }
+        return path.first.has?(*path[1..])
+      end
+
+      path_s = path.map(&:to_s)
+      !@hash.dig(*path_s).nil?
+    end
+
     def dig(*path)
-      if path.first.instance_of?(CvDataSection::Skill)
+      klasses = [CvDataSection::Skill, CvDataSection::Experience]
+      if klasses.any? { |klass| path.first.instance_of? klass }
         return path.first.dig(*path[1..])
       end
 
@@ -21,6 +32,10 @@ module CvBuilder
       when "skills"
         @hash[path_s.first].each do |skill_hash|
           yield CvDataSection::Skill.new(skill_hash)
+        end
+      when "experiences"
+        @hash[path_s.first].each do |skill_hash|
+          yield CvDataSection::Experience.new(skill_hash)
         end
       else
         @hash.dig(*path_s)

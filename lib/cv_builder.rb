@@ -3,6 +3,7 @@
 require_relative "cv_builder/version"
 require_relative "cv_builder/cv_data"
 require_relative "cv_builder/cv_data_sections/skill"
+require_relative "cv_builder/cv_data_sections/experience"
 require_relative "cv_builder/meta_file_parser"
 require_relative "cv_builder/cv_generator"
 require_relative "cv_builder/arg_parser"

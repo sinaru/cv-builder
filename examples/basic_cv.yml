@@ -21,10 +21,38 @@ skills:
     items:
      - Ruby
      - Ruby on Rails
+     - ReactJS
      - ES6 JavaScript
      - Vue.js 2
-     - React
   - area: Database
     items:
       - PostgreSQL
       - MongoDB
+  - area: Testing
+    items:
+      - MiniTest
+      - RSpec
+      - Jest
+      - Capybara
+  - area: Version Control
+    items:
+      - Git
+      - GitHub
+  - area: Platforms/OS
+    items:
+      - Heroku
+      - AWS
+      - Linux
+experiences:
+  - title: Senior Software Engineer
+    organisation: Kubicle
+    location: Dublin, Ireland
+    from:
+      month: 1
+      year: 2023
+    technologies:
+      - Ruby on Rails
+      - React
+      - Ruby
+      - Heroku
+      - PostgreSQL

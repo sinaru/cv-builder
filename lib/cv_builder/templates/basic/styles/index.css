@@ -31,7 +31,10 @@ a:active {
 
 .flex {
     display: flex;
+}
 
+.flex-grow {
+    flex-grow: 1;
 }
 
 .profile {
@@ -59,4 +62,8 @@ a:active {
 .about {
     flex: 0 0 100%;
     font-size: small;
+}
+
+.experience {
+
 }
