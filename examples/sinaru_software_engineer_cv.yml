@@ -246,3 +246,21 @@ experiences:
       - Implemented new features on a merchant friendly Mobile Marketing application which 
         includes handling daily deals, special discounts and rewarding system for 
         its loyalty customers in Canada and the USA
+
+education:
+  - institute: University of Middlesex
+    location: United Kingdom
+    degree: Bachelor of Science in Information Technology
+    field: Computer Science
+    from:
+      year: 2011
+    to:
+      year: 2012
+    grade: First Class
+  - institute: ICBT Campus
+    location: Kandy, Sri Lanka
+    degree: EDEXCEL HND in Computing
+    from:
+      year: 2009
+    to:
+      year: 2010
