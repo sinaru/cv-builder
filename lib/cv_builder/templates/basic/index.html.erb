@@ -81,8 +81,8 @@
       </div>
       <div>
         <% dig(experience, :achievements).each do |achievement| %>
-          <div>
-            - <%= achievement %>
+          <div class="achievement">
+            • <%= achievement %>
           </div>
         <% end %>
       </div>
@@ -114,6 +114,13 @@
             <%= has?(education, :to) ? "#{dig(education, :to, :month)} #{dig(education, :to, :year)}" : 'Present' %>
           </b>
         </div>
+      </div>
+      <div>
+        <% dig(education, :achievements).each do |education| %>
+          <div class="achievement">
+            • <%= education %>
+          </div>
+        <% end %>
       </div>
     </div>
   <% end %>

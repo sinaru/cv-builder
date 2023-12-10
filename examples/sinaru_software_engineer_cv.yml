@@ -252,15 +252,10 @@ education:
     location: United Kingdom
     degree: Bachelor of Science in Information Technology
     field: Computer Science
-    from:
-      year: 2011
     to:
       year: 2012
     grade: First Class
-  - institute: ICBT Campus
-    location: Kandy, Sri Lanka
-    degree: EDEXCEL HND in Computing
-    from:
-      year: 2009
-    to:
-      year: 2010
+    achievements:
+      - Scholarship for a masters programme for the best ICBT student (2011/ 2012) – 
+        Awarded by Middlesex University London, UK. <i>ICBT was the affiliated college in Sri Lanka for 
+        University of Middlesex</i>.

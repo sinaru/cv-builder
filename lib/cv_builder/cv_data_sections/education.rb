@@ -6,6 +6,7 @@ module CvDataSection
 
     def dig(*path)
       data = super
+      return [] if data.nil? && path.first == :achievements
       return to_month(data) if path[-2..] == [:from, :month]
       data
     end

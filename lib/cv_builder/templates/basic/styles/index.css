@@ -92,8 +92,16 @@ a:active {
     padding-inline: 16px;
 }
 
+.experience .achievement {
+    padding-top: 4px;
+}
+
 .education {
     padding: 8px 0;
+}
+
+.experience .achievement {
+    padding-top: 4px;
 }
 
 .generated-by {
