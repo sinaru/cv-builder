@@ -90,15 +90,15 @@ a:active {
     padding: 8px 0;
 }
 
-.experience .technologies {
+.experience .skills {
     padding-top: 8px;
 }
 
-.experience .technologies .label {
+.experience .skills .label {
     font-weight: bold;
 }
 
-.experience .technologies .item {
+.experience .skills .item {
     display: inline-block;
     border-radius: 24px;
     letter-spacing: 0.05em;

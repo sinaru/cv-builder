@@ -51,11 +51,13 @@ skills:
 experiences:
   - title: Senior Software Engineer
     organisation: Kubicle
-    location: Dublin, Ireland
+    location:
+      city: Dublin
+      country: Ireland
     from:
       month: 1
       year: 2023
-    technologies:
+    skills:
       - Ruby on Rails
       - React
       - Ruby
@@ -79,14 +81,16 @@ experiences:
 
   - title: Senior Software Engineer
     organisation: Edge by Ascential
-    location: Dublin, Ireland
+    location:
+      city: Dublin
+      country: Ireland
     to:
       month: 10
       year: 2022
     from:
       month: 7
       year: 2021
-    technologies:
+    skills:
       - Ruby on Rails
       - React
       - JSON:API Specs
@@ -114,14 +118,16 @@ experiences:
 
   - title: Software Developer
     organisation: Longboat (acquired by Advarra. Inc)
-    location: Dublin, Ireland
+    location:
+      city: Dublin
+      country: Ireland
     from:
       month: 8
       year: 2020
     to:
       month: 7
       year: 2021
-    technologies:
+    skills:
       - Ruby on Rails
       - Vue.JS 2
       - Jest
@@ -142,14 +148,16 @@ experiences:
 
   - title: Software Developer
     organisation: Lonely Planet
-    location: Dublin, Ireland
+    location:
+      city: Dublin
+      country: Ireland
     from:
       month: 3
       year: 2016
     to:
       month: 6
       year: 2020
-    technologies:
+    skills:
       - Ruby on Rails
       - Ruby
       - ES6 JavaScript
@@ -184,15 +192,17 @@ experiences:
 
   - title: Full Stack Web Developer - Freelancing
     organisation: Creotex
-    location: Kandy, Sri Lanka
+    location:
+      city: Kandy
+      country: Sri Lanka
     from:
       month: 1
       year: 2015
     to:
       month: 1
       year: 2016
-    technologies:
-      -  PHP
+    skills:
+      - PHP
       - Laravel
       - MongoDB
       - MySQL
@@ -206,14 +216,16 @@ experiences:
 
   - title: Test Automation Engineer
     organisation: Zone24x7
-    location: Colombo, Sri Lanka
+    location:
+      city: Colombo
+      country: Sri Lanka
     from:
       month: 7
       year: 2013
     to:
       month: 12
       year: 2014
-    technologies:
+    skills:
       - Ruby
       - Cucumber
       - Selenium Webdriver
@@ -231,14 +243,16 @@ experiences:
 
   - title: Associate Software Engineer
     organisation: Allion Technologies
-    location: Colombo, Sri Lanka
+    location:
+      city: Colombo
+      country: Sri Lanka
     from:
       month: 1
       year: 2013
     to:
       month: 4
       year: 2013
-    technologies:
+    skills:
       - PHP
       - Yii
       - MySQL
@@ -249,8 +263,10 @@ experiences:
 
 education:
   - institute: University of Middlesex
-    location: United Kingdom
-    degree: Bachelor of Science in Information Technology
+    location:
+      city: London
+      country: United Kingdom
+    qualification: Bachelor of Science in Information Technology
     field: Computer Science
     to:
       year: 2012
