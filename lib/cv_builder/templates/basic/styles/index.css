@@ -67,6 +67,7 @@ a:active {
 .experience {
     padding: 8px 0;
 }
+
 .experience .technologies {
     padding-top: 8px;
 }
@@ -89,6 +90,10 @@ a:active {
     padding: 0 8px;
     margin: 4px 0;
     padding-inline: 16px;
+}
+
+.education {
+    padding: 8px 0;
 }
 
 .generated-by {

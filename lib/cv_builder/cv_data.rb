@@ -2,6 +2,11 @@
 
 module CvBuilder
   class CvData
+    DATA_SECTION_CLASSES = [
+      CvDataSection::Skill,
+      CvDataSection::Experience,
+      CvDataSection::Education
+    ]
     def initialize(hash)
       @hash = hash
     end
@@ -11,8 +16,7 @@ module CvBuilder
     end
 
     def has?(*path)
-      klasses = [CvDataSection::Skill, CvDataSection::Experience]
-      if klasses.any? { |klass| path.first.instance_of? klass }
+      if DATA_SECTION_CLASSES.any? { |klass| path.first.instance_of? klass }
         return path.first.has?(*path[1..])
       end
 
@@ -21,12 +25,10 @@ module CvBuilder
     end
 
     def dig(*path)
-      klasses = [CvDataSection::Skill, CvDataSection::Experience]
-      if klasses.any? { |klass| path.first.instance_of? klass }
+      if DATA_SECTION_CLASSES.any? { |klass| path.first.instance_of? klass }
         return path.first.dig(*path[1..])
       end
 
-      # TODO: if experiences, return CvData::Experiences
       path_s = path.map(&:to_s)
       case path_s.first
       when "skills"
@@ -36,6 +38,10 @@ module CvBuilder
       when "experiences"
         @hash[path_s.first].each do |skill_hash|
           yield CvDataSection::Experience.new(skill_hash)
+        end
+      when "education"
+        @hash[path_s.first].each do |skill_hash|
+          yield CvDataSection::Education.new(skill_hash)
         end
       else
         @hash.dig(*path_s)
