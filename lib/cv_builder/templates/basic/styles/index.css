@@ -6,11 +6,11 @@ url("./Cambria-Font.ttf");
 /* FIXME: font not loading */
 body {
     font-family: "Cambria", serif;
-    color: #545454;
+    color: #000000;
 }
 
 a {
-    color: #545454;
+    color: #000000;
 }
 
 a:link {
@@ -59,6 +59,28 @@ a:active {
     fill: #b8b8b8;
 }
 
+.contact .icon svg {
+    height: 0.8em;
+}
+
+.time-period {
+    display: flex;
+    align-items: center;
+}
+
+.time-period .icon {
+    fill: #b8b8b8;
+    padding-right: 4px;
+}
+
+.time-period .icon svg {
+    height: 0.8em;
+}
+
+.time-period .time {
+    font-weight: bold;
+}
+
 .about {
     flex: 0 0 100%;
     font-size: small;
@@ -93,7 +115,7 @@ a:active {
 }
 
 .experience .achievement {
-    padding-top: 4px;
+    padding-top: 6px;
 }
 
 .education {
@@ -101,11 +123,12 @@ a:active {
 }
 
 .experience .achievement {
-    padding-top: 4px;
+    padding-top: 6px;
 }
 
 .generated-by {
-    padding-top: 16px;
+    text-align: center;
+    padding-top: 32px;
     font-size: smaller;
     color: #777777;
 }
