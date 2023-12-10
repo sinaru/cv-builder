@@ -90,3 +90,9 @@ a:active {
     margin: 4px 0;
     padding-inline: 16px;
 }
+
+.generated-by {
+    padding-top: 16px;
+    font-size: smaller;
+    color: #777777;
+}
