@@ -52,7 +52,7 @@
 <div>
   <% dig :skills do |skill| %>
     <div>
-      • <b><%= dig skill, :area %> >> </b>
+      <b><%= dig skill, :area %> </b>
       <% dig(skill, :items).each do |item| %>
         • <%= item %>
       <% end %>
