@@ -2,9 +2,11 @@
 
 *Build a beautiful CV PDF from a yaml text file.*
 
-## Installation
+## Installation 
 
-This page `wkhtmltopdf` to generate the PDF. [See here](https://wkhtmltopdf.org/downloads.html) to install it.
+The tool needs to have `wkhtmltopdf` installed on the machine to generate the PDF. [See here](https://wkhtmltopdf.org/downloads.html) on how to to install it.
+
+🏗️ **[Following is WIP]**
 
 Add this line to your application's Gemfile:
 
@@ -13,33 +15,43 @@ gem 'cv_builder'
 ```
 
 And then execute:
-
-    $ bundle install
-
+```bash
+$ bundle install
+```
 Or install it yourself as:
-
-    $ gem install cv_builder
+```bash
+$ gem install cv_builder
+```
 
 ## Usage
 
-First we need to have a yaml file with the CV data. The yaml file supports following sections.
+First we need to have a `yaml` file with the CV data. The yaml file supports following sections.
 
 ```yaml
 version: 1
 profile:
-  name: <string>
-  title: <string>
-  about: <string>
+  name: # Your name
+  title: # Your current job title
+  about: # Some basic details about your experience
+
 contact:
-  github: <username>
-  mobile: <mobile number digits>
-  email: <email address>
-  linkedin: <linkedin username>
+  github: # Github username
+  mobile: # Mobile number
+  email: # email address
+  linkedin: # Linkedin username
   location:
-    country: <country name or code>
-    city: <city name>
+    country: # country name
+    city: # city name
+
 skills:
-  - 
+  - area: # specific skill area you are specialized in
+    items:
+      - # sub item such as a technology you have the skill in under the specialized area
+
+experiences:
+  - title: # job title
+  - organisation: # Name of the place you worked
+  - location:
 ```
 
 ## Development

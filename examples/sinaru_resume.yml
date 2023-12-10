@@ -51,7 +51,9 @@ skills:
 experiences:
   - title: Senior Software Engineer
     organisation: Kubicle
-    location: Dublin, Ireland
+    location:
+      city: Dublin
+      country: Ireland
     from:
       month: 1
       year: 2023
@@ -79,7 +81,9 @@ experiences:
 
   - title: Senior Software Engineer
     organisation: Edge by Ascential
-    location: Dublin, Ireland
+    location:
+      city: Dublin
+      country: Ireland
     to:
       month: 10
       year: 2022
@@ -114,7 +118,9 @@ experiences:
 
   - title: Software Developer
     organisation: Longboat (acquired by Advarra. Inc)
-    location: Dublin, Ireland
+    location:
+      city: Dublin
+      country: Ireland
     from:
       month: 8
       year: 2020
@@ -142,7 +148,9 @@ experiences:
 
   - title: Software Developer
     organisation: Lonely Planet
-    location: Dublin, Ireland
+    location:
+      city: Dublin
+      country: Ireland
     from:
       month: 3
       year: 2016
@@ -184,7 +192,9 @@ experiences:
 
   - title: Full Stack Web Developer - Freelancing
     organisation: Creotex
-    location: Kandy, Sri Lanka
+    location:
+      city: Kandy
+      country: Sri Lanka
     from:
       month: 1
       year: 2015
@@ -206,7 +216,9 @@ experiences:
 
   - title: Test Automation Engineer
     organisation: Zone24x7
-    location: Colombo, Sri Lanka
+    location:
+      city: Colombo
+      country: Sri Lanka
     from:
       month: 7
       year: 2013
@@ -231,7 +243,9 @@ experiences:
 
   - title: Associate Software Engineer
     organisation: Allion Technologies
-    location: Colombo, Sri Lanka
+    location:
+      city: Colombo
+      country: Sri Lanka
     from:
       month: 1
       year: 2013
@@ -249,7 +263,9 @@ experiences:
 
 education:
   - institute: University of Middlesex
-    location: United Kingdom
+    location:
+      city: London
+      country: United Kingdom
     degree: Bachelor of Science in Information Technology
     field: Computer Science
     to:
