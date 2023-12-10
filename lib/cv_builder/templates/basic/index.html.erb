@@ -63,7 +63,7 @@
 <div>
   <h2>Work Experience</h2>
   <% dig :experiences do |experience| %>
-    <div>
+    <div class="experience">
       <div><span style="font-weight: bold; font-size: 1.2em"><%= dig(experience, :title) %></span></div>
       <div class="flex">
         <div class="flex-grow">
@@ -84,6 +84,12 @@
           <div>
             - <%= achievement %>
           </div>
+        <% end %>
+      </div>
+      <div class="technologies">
+        <span class="label">Technologies</span>
+        <% dig(experience, :technologies).each do |tech| %>
+          <span class="item"><%= tech %></span>
         <% end %>
       </div>
     </div>

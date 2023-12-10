@@ -4,7 +4,7 @@ profile:
   name: Sinaru Gunawardena
   title: Senior Software Engineer
   about: >
-    Versatile software developer with more than 6 years experience 
+    Versatile software developer with more than 9 years experience 
     in the field of web application development. Consistent learner, focus 
     on improving skills, collect and share new knowledge while contributing 
     the best to the organization. A team player with collaboration experience 
@@ -62,6 +62,7 @@ experiences:
       - Heroku
       - PostgreSQL
       - CircleCI
+      - Delayed Job
     achievements:
       - >
         Refactored external LMS integration code to improve 
@@ -111,3 +112,137 @@ experiences:
         Senior role in code review, and fostering junior developers to write effective 
         production quality code
 
+  - title: Software Developer
+    organisation: Longboat (acquired by Advarra. Inc)
+    location: Dublin, Ireland
+    from:
+      month: 8
+      year: 2020
+    to:
+      month: 7
+      year: 2021
+    technologies:
+      - Ruby on Rails
+      - Vue.JS 2
+      - Jest
+      - MiniTest
+      - PostgreSQL
+      - Redis
+      - Pundit authorisation
+      - Sidekiq
+      - Tailwind CSS
+      - Lodash
+      - Codeship
+    achievements:
+      - >
+        Took ownership of migrating existing functionality and features of the Clinical Trial 
+        Technology Platform to new platform based Ruby on Rails 6 for API and Vue.js for front-end
+      - Implement new features in an API first approach for the new platform
+      - Updated one of the core application (gateway) of the platform from Rails 4.2 to Rails 6.1 with Ruby 2.7.1
+
+  - title: Software Developer
+    organisation: Lonely Planet
+    location: Dublin, Ireland
+    from:
+      month: 3
+      year: 2016
+    to:
+      month: 6
+      year: 2020
+    technologies:
+      - Ruby on Rails
+      - Ruby
+      - ES6 JavaScript
+      - Backbone.js
+      - PostgreSQL
+      - AWS
+      - Jenkins
+      - ChefDK
+      - SASS/CSS
+      - Cucumber
+      - Rspec
+      - Jasmine
+      - Git/Github
+      - Docker
+      - Vault
+      - Packer
+      - Vagrant
+      - Logstash
+      - PagerDuty
+      - Envato StackMaster
+    achievements:
+      - >
+        Developed and maintained front-end and back-end of the multi-purpose Ruby on Rails 
+        CMS for Lonely Planet’s content ingestion, editing, and publishing of 
+        books in an agile team following best practices
+      - >
+        Maintained AWS infrastructure by utilizing IaC tools such as Chef and troubleshoot 
+        issues following an on-call rotation
+      - >
+        Mentored new team members to get them up-to-speed to work in CMS and multiple number 
+        of projects related to the CMS
+
+  - title: Full Stack Web Developer - Freelancing
+    organisation: Creotex
+    location: Kandy, Sri Lanka
+    from:
+      month: 1
+      year: 2015
+    to:
+      month: 1
+      year: 2016
+    technologies:
+      -  PHP
+      - Laravel
+      - MongoDB
+      - MySQL
+      - Google Maps API
+      - OpenShift
+      - Wordpress
+    achievements:
+      - Developed and maintained web apps based on Laravel PHP framework
+      - Worked with local and international clients to develop WordPress 
+        websites including customized themes and plugin development
+
+  - title: Test Automation Engineer
+    organisation: Zone24x7
+    location: Colombo, Sri Lanka
+    from:
+      month: 7
+      year: 2013
+    to:
+      month: 12
+      year: 2014
+    technologies:
+      - Ruby
+      - Cucumber
+      - Selenium Webdriver
+      - PhantomJS
+    achievements:
+      - Developed automation test scripts based on Cucumber, Ruby, and Selenium Webdriver. 
+        Build, run and analyze daily test results on Jenkins servers and report defects 
+        for two Tier 1 US retailer websites
+      - Developed JavaScript test scripts to run on PhantomJS for automation of a JavaScript 
+        based plugin for an eye tracking project
+      - Worked in an email system project of US Tier 1 retailer to conduct regression testing
+        on new releases
+      - Handled multiple projects while supporting team members and occasional contribution to 
+        mini projects
+
+  - title: Associate Software Engineer
+    organisation: Allion Technologies
+    location: Colombo, Sri Lanka
+    from:
+      month: 1
+      year: 2013
+    to:
+      month: 4
+      year: 2013
+    technologies:
+      - PHP
+      - Yii
+      - MySQL
+    achievements:
+      - Implemented new features on a merchant friendly Mobile Marketing application which 
+        includes handling daily deals, special discounts and rewarding system for 
+        its loyalty customers in Canada and the USA

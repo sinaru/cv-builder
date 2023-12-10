@@ -65,5 +65,28 @@ a:active {
 }
 
 .experience {
+    padding: 8px 0;
+}
+.experience .technologies {
+    padding-top: 8px;
+}
 
+.experience .technologies .label {
+    font-weight: bold;
+}
+
+.experience .technologies .item {
+    display: inline-block;
+    border-radius: 24px;
+    letter-spacing: 0.05em;
+    text-align: center;
+    max-inline-size: 100%;
+    background-color: rgb(138, 138, 138);
+    color: rgb(255, 255, 255);
+    font-size: 0.8571rem;
+    line-height: 24px;
+    vertical-align: baseline;
+    padding: 0 8px;
+    margin: 4px 0;
+    padding-inline: 16px;
 }
