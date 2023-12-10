@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module CvDataSection
   class Base
     def initialize(hash)
