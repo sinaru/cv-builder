@@ -15,6 +15,7 @@ module CvDataSection
       path_s = path.map(&:to_s)
       data = @hash.dig(*path_s)
       return [] if data.nil? && path.first == :technologies
+      return [] if data.nil? && path.first == :achievements
       return to_month(data) if path[-2..] == [:from, :month]
       data
     end

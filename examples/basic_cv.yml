@@ -1,12 +1,15 @@
 version: 1
+
 profile:
   name: Sinaru Gunawardena
   title: Senior Software Engineer
-  about: "Versatile software developer with more than 6 years experience 
-  in the field of web application development. Consistent learner, focus 
-  on improving skills, collect and share new knowledge while contributing 
-  the best to the organization. A team player with collaboration experience 
-  in Scrum and Kanban teams."
+  about: >
+    Versatile software developer with more than 6 years experience 
+    in the field of web application development. Consistent learner, focus 
+    on improving skills, collect and share new knowledge while contributing 
+    the best to the organization. A team player with collaboration experience 
+    in Scrum and Kanban teams.
+
 contact:
   github: sinaru
   mobile: +353 838315349
@@ -16,14 +19,15 @@ contact:
   location:
     country: IRE
     city: Dublin
+
 skills:
   - area: Development
     items:
-     - Ruby
-     - Ruby on Rails
-     - ReactJS
-     - ES6 JavaScript
-     - Vue.js 2
+      - Ruby
+      - Ruby on Rails
+      - ReactJS
+      - ES6 JavaScript
+      - Vue.js 2
   - area: Database
     items:
       - PostgreSQL
@@ -43,6 +47,7 @@ skills:
       - Heroku
       - AWS
       - Linux
+
 experiences:
   - title: Senior Software Engineer
     organisation: Kubicle
@@ -56,3 +61,53 @@ experiences:
       - Ruby
       - Heroku
       - PostgreSQL
+      - CircleCI
+    achievements:
+      - >
+        Refactored external LMS integration code to improve 
+        maintainability by extracting and separating responsibilities 
+        to appropriate modules and introduce new LMS integrations to 
+        increase business feature value
+      - >
+        Improved DB query performance by factor of 100x for critical 
+        application endpoints which includes exam, project submissions. 
+        As a result, reduced timeout errors, and enhanced learner experience 
+        and productivity
+      - Continue to improve architecture scalability and performance
+      - Set development standard practices for the growing team
+
+  - title: Senior Software Engineer
+    organisation: Edge by Ascential
+    location: Dublin, Ireland
+    to:
+      month: 10
+      year: 2022
+    from:
+      month: 7
+      year: 2021
+    technologies:
+      - Ruby on Rails
+      - React
+      - JSON:API Specs
+      - Jest
+      - PostgreSQL
+      - MySql
+      - RSpec
+      - Redis
+      - Snowflake
+      - Looker
+      - BitBucket
+      - Codefresh
+    achievements:
+      - >
+        Worked on the industry-leading ecommerce analytics SaaS platform mainly implementing 
+        and maintaining web API endpoints and also work on front-end as per 
+        the necessity of the team
+      - >
+        Drove the migration of the legacy search report to the newer data API based on 
+        JSON:API spec and React platform where the API endpoints are designed to return
+        specific data for the UI to easily digest and render
+      - >
+        Senior role in code review, and fostering junior developers to write effective 
+        production quality code
+

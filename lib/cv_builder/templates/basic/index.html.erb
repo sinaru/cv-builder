@@ -67,17 +67,25 @@
       <div><span style="font-weight: bold; font-size: 1.2em"><%= dig(experience, :title) %></span></div>
       <div class="flex">
         <div class="flex-grow">
-          <span style="font-weight: bold"><%= dig(experience, :organisation) %></span> /
+          <span style="font-weight: bold">
+            <%= dig(experience, :organisation) %>
+          </span> /
           <span><%= dig(experience, :location) %></span>
         </div>
         <div>
           <b>
             <%= dig(experience, :from, :month) %> <%= dig(experience, :from, :year) %> -
-            <%= has?(experience, :to) ? dig(experience, :from, :month) + ' ' + dig(experience, :from, :year) : 'Present' %>
+            <%= has?(experience, :to) ? "#{dig(experience, :from, :month)} #{dig(experience, :from, :year)}" : 'Present' %>
           </b>
         </div>
       </div>
-
+      <div>
+        <% dig(experience, :achievements).each do |achievement| %>
+          <div>
+            - <%= achievement %>
+          </div>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>
