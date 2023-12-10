@@ -26,12 +26,12 @@ module CvBuilder
     end
 
     def template_html
-      path = File.join(File.dirname(__FILE__), "/templates/#{@template}/index.html.erb")
+      path = File.join(File.dirname(__FILE__), "/../templates/#{@template}/index.html.erb")
       File.read(path)
     end
 
     def template_stylesheets
-      [File.join(File.dirname(__FILE__), "/templates/#{@template}/styles/index.css")]
+      [File.join(File.dirname(__FILE__), "/../templates/#{@template}/styles/index.css")]
     end
   end
 end
