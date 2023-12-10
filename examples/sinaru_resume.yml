@@ -57,7 +57,7 @@ experiences:
     from:
       month: 1
       year: 2023
-    technologies:
+    skills:
       - Ruby on Rails
       - React
       - Ruby
@@ -90,7 +90,7 @@ experiences:
     from:
       month: 7
       year: 2021
-    technologies:
+    skills:
       - Ruby on Rails
       - React
       - JSON:API Specs
@@ -127,7 +127,7 @@ experiences:
     to:
       month: 7
       year: 2021
-    technologies:
+    skills:
       - Ruby on Rails
       - Vue.JS 2
       - Jest
@@ -157,7 +157,7 @@ experiences:
     to:
       month: 6
       year: 2020
-    technologies:
+    skills:
       - Ruby on Rails
       - Ruby
       - ES6 JavaScript
@@ -201,8 +201,8 @@ experiences:
     to:
       month: 1
       year: 2016
-    technologies:
-      -  PHP
+    skills:
+      - PHP
       - Laravel
       - MongoDB
       - MySQL
@@ -225,7 +225,7 @@ experiences:
     to:
       month: 12
       year: 2014
-    technologies:
+    skills:
       - Ruby
       - Cucumber
       - Selenium Webdriver
@@ -252,7 +252,7 @@ experiences:
     to:
       month: 4
       year: 2013
-    technologies:
+    skills:
       - PHP
       - Yii
       - MySQL
@@ -266,7 +266,7 @@ education:
     location:
       city: London
       country: United Kingdom
-    degree: Bachelor of Science in Information Technology
+    qualification: Bachelor of Science in Information Technology
     field: Computer Science
     to:
       year: 2012

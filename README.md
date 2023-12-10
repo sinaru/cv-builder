@@ -50,9 +50,40 @@ skills:
 
 experiences:
   - title: # job title
-  - organisation: # Name of the place you worked
-  - location:
+    organisation: # Name of the place you worked
+    location:
+      city: # city name
+      country: # country name
+    from:
+      month: # month number that you started
+      year: # year number that you started
+  # if following is not given, it is assumed you are still working
+    to:
+      month: # month number that you stopped
+      year: # year number that you stopped
+    skills:
+      - # a short name for a specialized skilled you gained
+    achievements:
+      - # Things you have achieved or did
+
+education:
+  - institute: # name of the place you studied
+    location:
+      city: # city name
+      country: # country name
+    qualification: # name of the degree/diploma qualification
+    field: # name of the field such as Computer Science
+    from:
+      month: # month number that you started
+      year: # year number that you started
+    # if following is not given, it is assumed you are still studying
+    to:
+      month: # month number that you stopped
+      year: # year number that you stopped
+    achievements:
+      - # Things you have achieved or did
 ```
+See [examples](/examples) directory for samples.
 
 ## Development
 
