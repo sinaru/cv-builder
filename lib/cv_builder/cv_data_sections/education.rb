@@ -8,6 +8,7 @@ module CvDataSection
       data = super
       return [] if data.nil? && path.first == :achievements
       return to_month(data) if path[-2..] == [:from, :month]
+      return to_month(data) if path[-2..] == [:to, :month]
       data
     end
   end
