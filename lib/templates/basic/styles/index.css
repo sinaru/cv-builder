@@ -129,6 +129,6 @@ a:active {
 .generated-by {
     text-align: center;
     padding-top: 32px;
-    font-size: smaller;
+    font-size: 0.5em;
     color: #777777;
 }
