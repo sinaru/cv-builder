@@ -6,6 +6,11 @@
 
 The tool needs to have `wkhtmltopdf` installed on the machine to generate the PDF. [See here](https://wkhtmltopdf.org/downloads.html) on how to to install it.
 
+On Ubuntu you can do:
+```
+sudo apt install wkhtmltopdf
+```
+
 🏗️ **[Following is WIP]**
 
 Add this line to your application's Gemfile:
