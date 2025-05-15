@@ -4,14 +4,12 @@
 
 ## Installation 
 
-The tool needs to have `wkhtmltopdf` installed on the machine to generate the PDF. [See here](https://wkhtmltopdf.org/downloads.html) on how to to install it.
+### Dependency Requirement
+- Ensure that [Google Chrome](https://www.google.com/chrome/) is installed.
+- Chrome must be accessible from the terminal as `google-chrome`.
 
-On Ubuntu you can do:
-```
-sudo apt install wkhtmltopdf
-```
-
-Note that `wkhtmltopdf` has been abandoned and is not being updated anymore. Therefore the need to move away from that tool. 
+### PDF Generation Note
+- CvBuilder uses Chrome's [headless mode](https://developer.chrome.com/docs/chromium/headless/) to generate PDF files.
 
 🏗️ **[Following is WIP]**
 
