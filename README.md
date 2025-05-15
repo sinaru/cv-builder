@@ -11,6 +11,8 @@ On Ubuntu you can do:
 sudo apt install wkhtmltopdf
 ```
 
+Note that `wkhtmltopdf` has been abandoned and is not being updated anymore. Therefore the need to move away from that tool. 
+
 🏗️ **[Following is WIP]**
 
 Add this line to your application's Gemfile:
