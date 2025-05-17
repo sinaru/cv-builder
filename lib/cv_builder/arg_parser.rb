@@ -8,8 +8,11 @@ module CvBuilder
       options = {}
 
       OptionParser.new do |parser|
+        parser.on("--html-debug-path HTML_OUTPUT") do |html_output|
+          options[:html_output] = html_output
+        end
+
         parser.on("-c", "--cv-info INFO", "Require the INFO") do |cv_info|
-          p cv_info
           options[:cv_info] = cv_info
         end
 

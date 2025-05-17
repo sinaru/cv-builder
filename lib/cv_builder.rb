@@ -21,7 +21,7 @@ module CvBuilder
 
       parser = MetaFileParser.new(options[:cv_info])
       cv_data = parser.parse!
-      CvGenerator.new(cv_data).generate(options[:output_path])
+      CvGenerator.new(cv_data).generate(options[:output_path], options[:html_output])
     end
   end
 end
