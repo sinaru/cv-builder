@@ -10,8 +10,11 @@ module CvBuilder
       @template = "basic"
     end
 
-    def generate(output_location)
-      generated_html_file { |file_path| html_file_to_pdf_file(file_path, output_location) }
+    def generate(pdf_location, html_location = nil)
+      generated_html_file do |file_path|
+        FileUtils.cp(file_path, html_location) if html_location
+        html_file_to_pdf_file(file_path, pdf_location)
+      end
     end
 
     private
