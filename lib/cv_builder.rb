@@ -4,6 +4,7 @@ require_relative "cv_builder/version"
 require_relative "cv_builder/cv_data_sections/parse_helpers/month_parser"
 require_relative "cv_builder/cv_data_sections/base"
 require_relative "cv_builder/cv_data_sections/skill"
+require_relative "cv_builder/cv_data_sections/interest"
 require_relative "cv_builder/cv_data_sections/experience"
 require_relative "cv_builder/cv_data_sections/education"
 require_relative "cv_builder/cv_data"
@@ -21,7 +22,7 @@ module CvBuilder
 
       parser = MetaFileParser.new(options[:cv_info])
       cv_data = parser.parse!
-      CvGenerator.new(cv_data).generate(options[:output_path], options[:html_output])
+      CvGenerator.new(cv_data, pdf_location: options[:output_path], html_location: options[:html_output], template: options[:template]).generate
     end
   end
 end

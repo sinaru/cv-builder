@@ -14,7 +14,7 @@ profile:
 contact:
   github: johndoe
   mobile: +44 7912345678
-  website: johndoe.dev
+  website: https://johndoe.dev
   email: john.doe@example.com
   linkedin: john-doe
   location:
@@ -50,6 +50,19 @@ skills:
       - AWS
       - Google Cloud
       - Linux
+
+interests:
+  - Yoga
+  - Travelling
+  - Photography
+  - Hiking
+  - Chess
+  - Reading
+  - Cooking
+  - Gardening
+  - Running
+  - Fitness
+  - Volunteering
 
 experiences:
   - title: Senior Software Engineer
@@ -138,7 +151,7 @@ education:
     qualification: Bachelor of Science in Computer Science
     field: Software Engineering
     to:
+      month: 5
       year: 2013
-    grade: First Class
     achievements:
       - Awarded a scholarship for outstanding academic performance.

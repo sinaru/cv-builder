@@ -5,7 +5,8 @@ module CvBuilder
     DATA_SECTION_CLASSES = [
       CvDataSection::Skill,
       CvDataSection::Experience,
-      CvDataSection::Education
+      CvDataSection::Education,
+      CvDataSection::Interest
     ]
     def initialize(hash)
       @hash = hash
@@ -42,6 +43,10 @@ module CvBuilder
       when "education"
         @hash[path_s.first].each do |skill_hash|
           yield CvDataSection::Education.new(skill_hash)
+        end
+      when "interests"
+        @hash[path_s.first].each do |skill_hash|
+          CvDataSection::Interest.new(skill_hash)
         end
       else
         @hash.dig(*path_s)
