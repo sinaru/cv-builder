@@ -1,6 +1,6 @@
 # CvBuilder
 
-*Build a beautiful CV PDF from a yaml text file.*
+*Build a CV PDF from a yaml text file.*
 
 ## Installation 
 
@@ -37,7 +37,7 @@ version: 1
 profile:
   name: # Your name
   title: # Your current job title
-  about: # Some basic details about your experience
+  about: # Some sleek details about your experience
 
 contact:
   github: # Github username
@@ -88,13 +88,22 @@ education:
     achievements:
       - # Things you have achieved or did
 ```
-See [examples](/examples) directory for samples.
+See [examples](/examples) directory for sample generated PDF files based of [templates](/lib/templates).
+
+
+## Generating PDF
 
 Once you have the `yml` file, feed it into the `bin/console` and specify the output location.
 
 ```bash
-bin/console -c examples/john_doe.yml -o tmp/john_doe.pdf
+bin/console -c examples/john_doe.yml -o examples/plain/john_doe.pdf  -t plain
 ```
+
+### Bash options
+
+- `-c` the YAML file
+- `-o` output location for the PDF file including the name
+- `-t` template to use
 
 ## Development
 

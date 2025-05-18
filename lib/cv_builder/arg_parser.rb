@@ -19,6 +19,10 @@ module CvBuilder
         parser.on("-o", "--output-path OUTPUT", "Require the OUTPUT") do |output_path|
           options[:output_path] = output_path
         end
+
+        parser.on("-t", "--template-path TEMPLATE", "Provide the TEMPLATE name") do |template|
+          options[:template] = template
+        end
       end.parse!
 
       raise OptionParser::MissingArgument.new("Provide the location of CV yaml file") if options[:cv_info].nil?

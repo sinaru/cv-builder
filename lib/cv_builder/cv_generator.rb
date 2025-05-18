@@ -5,12 +5,16 @@ require "pdfkit"
 
 module CvBuilder
   class CvGenerator
-    def initialize(cv_data)
+    attr_reader :pdf_location, :html_location, :cv_data, :template
+
+    def initialize(cv_data, pdf_location:, html_location: nil, template: nil)
       @cv_data = cv_data
-      @template = "basic"
+      @pdf_location = pdf_location
+      @html_location = html_location
+      @template = template || "sleek"
     end
 
-    def generate(pdf_location, html_location = nil)
+    def generate
       generated_html_file do |file_path|
         FileUtils.cp(file_path, html_location) if html_location
         html_file_to_pdf_file(file_path, pdf_location)
@@ -32,7 +36,7 @@ module CvBuilder
     end
 
     def generated_html_file
-      temp_html_file = Tempfile.new(%w[cv-builder-html .html])
+      temp_html_file = Tempfile.new(%w[cv-builder .html])
       temp_html_file.write(cv_html)
       temp_html_file.close
       begin
@@ -48,7 +52,7 @@ module CvBuilder
     end
 
     def template_html
-      path = File.join(File.dirname(__FILE__), "/../templates/basic/template.html.erb")
+      path = File.join(File.dirname(__FILE__), "/../templates/#{template}/template.html.erb")
       File.read(path)
     end
   end
