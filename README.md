@@ -1,4 +1,4 @@
-# CvBuilder
+# 📃 CvBuilder
 
 *Build a CV PDF from a yaml text file.*
 
