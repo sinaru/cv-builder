@@ -88,11 +88,7 @@ bin/console -c examples/john_doe.yml -o examples/plain/john_doe.pdf  -t plain
 ### Dependency Requirement
 - Ensure that [Google Chrome](https://www.google.com/chrome/) is installed.
 - Chrome must be accessible from the terminal as `google-chrome`.
-
-### PDF Generation Note
-- CvBuilder uses Chrome's [headless mode](https://developer.chrome.com/docs/chromium/headless/) to generate PDF files.
-
-🏗️ **[Following is WIP]**
+  - CvBuilder uses Chrome's [headless mode](https://developer.chrome.com/docs/chromium/headless/) to generate PDF files.
 
 Add this line to your application's Gemfile:
 
