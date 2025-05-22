@@ -2,6 +2,10 @@
 
 *Build a CV PDF from a yaml text file.*
 
+![CV Builder](cv-builder.png)
+
+See [examples](/examples) directory for sample generated PDF files based of [templates](/lib/templates).
+
 ## Installation 
 
 ### Dependency Requirement
