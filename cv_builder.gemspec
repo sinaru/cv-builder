@@ -8,11 +8,11 @@ Gem::Specification.new do |spec|
   spec.authors = ["Sinaru Gunawardena"]
   spec.email = ["sinaru@gmail.com"]
 
-  spec.summary = "Build a beautiful CV from a text file."
-  spec.description = "Build a beautiful CV from a text file."
+  spec.summary = "Build a CV PDF from a yaml text file."
+  spec.description = "Build a CV PDF from a yaml text file."
   spec.homepage = "https://sinaru.com"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 3.1.2"
+  spec.required_ruby_version = ">= 3.4.3"
 
   spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
 
@@ -27,8 +27,8 @@ Gem::Specification.new do |spec|
       (f == __FILE__) || f.match(%r{\A(?:(?:bin|test|spec|features)/|\.(?:git|travis|circleci)|appveyor)})
     end
   end
-  spec.bindir = "exe"
-  spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
+  spec.bindir = "bin"
+  spec.executables = spec.files.grep(%r{\Abin/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem
