@@ -6,32 +6,6 @@
 
 See [examples](/examples) directory for sample generated PDF files based of [templates](/lib/templates).
 
-## Installation 
-
-### Dependency Requirement
-- Ensure that [Google Chrome](https://www.google.com/chrome/) is installed.
-- Chrome must be accessible from the terminal as `google-chrome`.
-
-### PDF Generation Note
-- CvBuilder uses Chrome's [headless mode](https://developer.chrome.com/docs/chromium/headless/) to generate PDF files.
-
-🏗️ **[Following is WIP]**
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'cv_builder'
-```
-
-And then execute:
-```bash
-$ bundle install
-```
-Or install it yourself as:
-```bash
-$ gem install cv_builder
-```
-
 ## Usage
 
 First we need to have a `yaml` file with the CV data. The yaml file supports following sections.
@@ -108,6 +82,32 @@ bin/console -c examples/john_doe.yml -o examples/plain/john_doe.pdf  -t plain
 - `-c` the YAML file
 - `-o` output location for the PDF file including the name
 - `-t` template to use
+
+## Installation 
+
+### Dependency Requirement
+- Ensure that [Google Chrome](https://www.google.com/chrome/) is installed.
+- Chrome must be accessible from the terminal as `google-chrome`.
+
+### PDF Generation Note
+- CvBuilder uses Chrome's [headless mode](https://developer.chrome.com/docs/chromium/headless/) to generate PDF files.
+
+🏗️ **[Following is WIP]**
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'cv_builder'
+```
+
+And then execute:
+```bash
+$ bundle install
+```
+Or install it yourself as:
+```bash
+$ gem install cv_builder
+```
 
 ## Development
 
