@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/sinaru/kamisaku"
-  spec.metadata["changelog_uri"] = "https://github.com/sinaru/kamisaku/CHANGELOG.md"
+  spec.metadata["changelog_uri"] = "https://github.com/sinaru/kamisaku/blob/main/CHANGELOG.md"
   spec.metadata["bug_tracker_uri"] = "https://github.com/sinaru/kamisaku/issues?q=is%3Aissue%20state%3Aopen%20label%3Abug"
 
   # Specify which files should be added to the gem when it is released.
