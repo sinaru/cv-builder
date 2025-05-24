@@ -300,6 +300,9 @@
     <% if has? :contact, :github %>
       <a href="https://github.com/<%= dig :contact, :github %>">github.com/<%= dig :contact, :github %></a>
     <% end %>
+    <% if has? :contact, :linkedin %>
+      <a href="https://linkedin.com/in/<%= dig :contact, :linkedin %>">linkedin.com/in/<%= dig :contact, :linkedin %></a>
+    <% end %>
   </div>
 </div>
 
