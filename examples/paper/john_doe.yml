@@ -1,0 +1,154 @@
+version: 1
+
+profile:
+  name: John Doe
+  title: Senior Software Engineer
+  about: >
+    Seasoned software engineer with more than a decade of experience
+    in designing and developing scalable web applications. Passionate
+    about building clean, maintainable code and driving best practices
+    in software development. Experienced in leading teams, mentoring
+    developers, and collaborating with cross-functional teams to deliver
+    high-quality solutions.
+
+contact:
+  mobile: +44 7912345678
+  email: john.doe@example.com
+  location:
+    country: United Kingdom
+    city: London
+
+skills:
+  - area: Development
+    items:
+      - Python
+      - Django
+      - ReactJS
+      - TypeScript
+      - Node.js
+  - area: Database
+    items:
+      - PostgreSQL
+      - MySQL
+      - Redis
+  - area: Testing
+    items:
+      - PyTest
+      - Jest
+      - Cypress
+      - Selenium
+  - area: Version Control
+    items:
+      - Git
+      - GitHub
+      - GitLab
+  - area: Platforms/OS
+    items:
+      - AWS
+      - Google Cloud
+      - Linux
+
+interests:
+  - Yoga
+  - Travelling
+  - Photography
+  - Hiking
+  - Chess
+  - Reading
+  - Cooking
+  - Gardening
+  - Running
+  - Fitness
+  - Volunteering
+
+experiences:
+  - title: Senior Software Engineer
+    organisation: CloudCore Solutions
+    location:
+      city: London
+      country: United Kingdom
+    from:
+      month: 3
+      year: 2021
+    skills:
+      - Django
+      - React
+      - GraphQL
+      - AWS Lambda
+      - PostgreSQL
+      - Docker
+      - Terraform
+    achievements:
+      - >
+        Led the migration from a monolithic system to a microservices
+        architecture, significantly improving scalability and performance.
+      - >
+        Designed and implemented a serverless data processing pipeline
+        using AWS Lambda and S3, reducing operational costs by 30%.
+      - Established CI/CD workflows for automated deployments and testing.
+
+  - title: Lead Backend Engineer
+    organisation: FinEdge Technologies
+    location:
+      city: Manchester
+      country: United Kingdom
+    from:
+      month: 5
+      year: 2018
+    to:
+      month: 2
+      year: 2021
+    skills:
+      - Python
+      - FastAPI
+      - PostgreSQL
+      - Redis
+      - Kafka
+      - Kubernetes
+      - Jenkins
+    achievements:
+      - >
+        Spearheaded the development of a real-time financial analytics
+        platform, handling millions of transactions per second.
+      - >
+        Improved API response times by optimizing database queries and
+        implementing Redis caching.
+      - Led a team of backend engineers, conducting code reviews and
+        mentoring junior developers.
+
+  - title: Software Engineer
+    organisation: NextGen Media
+    location:
+      city: Birmingham
+      country: United Kingdom
+    from:
+      month: 7
+      year: 2015
+    to:
+      month: 4
+      year: 2018
+    skills:
+      - Node.js
+      - Express.js
+      - MongoDB
+      - WebSockets
+      - AWS
+    achievements:
+      - Developed a high-traffic video streaming platform, implementing
+        WebSockets for real-time interactions.
+      - Built a recommendation engine using machine learning models to
+        personalize user content.
+      - Automated deployment processes with AWS CodePipeline and Docker.
+
+education:
+  - institute: Brighton Institute of Technology
+    location:
+      city: Brighton
+      country: United Kingdom
+    qualification: Bachelor of Science in Computer Science
+    field: Software Engineering
+    to:
+      month: 5
+      year: 2013
+    achievements:
+      - Awarded a scholarship for outstanding academic performance.
