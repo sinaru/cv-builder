@@ -81,6 +81,8 @@ This is a Ruby gem. So you can either install as a gem or clone the repo and use
 - Ensure that [Google Chrome](https://www.google.com/chrome/) is installed.
 - Chrome must be accessible from the terminal as `google-chrome`.
   - Kamisaku uses Chrome's [headless mode](https://developer.chrome.com/docs/chromium/headless/) to generate PDF files.
+- Ensure `exiftool` is installed available in command line.
+  - exiftool is used to soft remove metadata added by chrome in the PDF file.
 
 Add this line to your application's Gemfile:
 

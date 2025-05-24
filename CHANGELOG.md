@@ -13,7 +13,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-## [0.1.2] - 2025-05-25
+## [0.2.0] - 2025-05-24
+
+### Added
+- Soft removing metadata in generated PDF using `exiftool`
+
+## [0.1.2] - 2025-05-24
 
 ### Changed
 
