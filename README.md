@@ -68,24 +68,12 @@ education:
 ```
 See [examples](/examples) directory for sample generated PDF files based of [templates](/lib/templates).
 
+## Installation
 
-## Generating PDF
-
-Once you have the `yml` file, feed it into the `bin/console` and specify the output location.
-
-```bash
-bin/console -c examples/john_doe.yml -o examples/plain/john_doe.pdf  -t plain
-```
-
-### Bash options
-
-- `-c` the YAML file
-- `-o` output location for the PDF file including the name
-- `-t` template to use
-
-## Installation 
+This is a Ruby gem. So you can either install as a gem or clone the repo and use `bin/console` file run from terminal.
 
 ### Dependency Requirement
+- Ruby 3.4.3
 - Ensure that [Google Chrome](https://www.google.com/chrome/) is installed.
 - Chrome must be accessible from the terminal as `google-chrome`.
   - CvBuilder uses Chrome's [headless mode](https://developer.chrome.com/docs/chromium/headless/) to generate PDF files.
@@ -104,6 +92,22 @@ Or install it yourself as:
 ```bash
 $ gem install cv_builder
 ```
+
+## Generating PDF
+
+### Using terminal
+
+Once you have the YAML text file, feed it into the `bin/console` and specify the output location.
+
+```bash
+bin/console -c examples/john_doe.yml -o examples/plain/john_doe.pdf  -t plain
+```
+
+#### Bash options
+
+- `-c` the YAML file
+- `-o` output location for the PDF file including the name
+- `-t` template to use
 
 ## Development
 
