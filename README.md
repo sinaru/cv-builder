@@ -1,8 +1,10 @@
-# 📃 CvBuilder
+# 📃 Kamisaku
 
 *Build a CV PDF from a yaml text file.*
 
-![CV Builder](cv-builder.png)
+[![Gem Version](https://badge.fury.io/rb/kamisaku.svg)](https://badge.fury.io/rb/kamisaku)
+
+![Kamisaku](kamisaku.png)
 
 See [examples](/examples) directory for sample generated PDF files based of [templates](/lib/templates).
 
@@ -76,12 +78,12 @@ This is a Ruby gem. So you can either install as a gem or clone the repo and use
 - Ruby 3.4.3
 - Ensure that [Google Chrome](https://www.google.com/chrome/) is installed.
 - Chrome must be accessible from the terminal as `google-chrome`.
-  - CvBuilder uses Chrome's [headless mode](https://developer.chrome.com/docs/chromium/headless/) to generate PDF files.
+  - Kamisaku uses Chrome's [headless mode](https://developer.chrome.com/docs/chromium/headless/) to generate PDF files.
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'cv_builder'
+gem 'kamisaku'
 ```
 
 And then execute:
@@ -90,7 +92,7 @@ $ bundle install
 ```
 Or install it yourself as:
 ```bash
-$ gem install cv_builder
+$ gem install kamisaku
 ```
 
 ## Generating PDF
@@ -117,7 +119,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/sinaru/cv_builder. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/cv_builder/blob/main/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/sinaru/kamisaku. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/kamisaku/blob/main/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -125,4 +127,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the CvBuilder project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/cv_builder/blob/main/CODE_OF_CONDUCT.md).
+Everyone interacting in the Kamisaku project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/kamisaku/blob/main/CODE_OF_CONDUCT.md).

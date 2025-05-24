@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module CvBuilder
+module Kamisaku
   class CvData
     DATA_SECTION_CLASSES = [
       CvDataSection::Skill,

@@ -3,7 +3,7 @@
 require "erb"
 require "pdfkit"
 
-module CvBuilder
+module Kamisaku
   class CvGenerator
     attr_reader :pdf_location, :html_location, :cv_data, :template
 
@@ -36,7 +36,7 @@ module CvBuilder
     end
 
     def generated_html_file
-      temp_html_file = Tempfile.new(%w[cv-builder .html])
+      temp_html_file = Tempfile.new(%w[kamisaku .html])
       temp_html_file.write(cv_html)
       temp_html_file.close
       begin
