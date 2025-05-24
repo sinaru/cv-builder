@@ -12,3 +12,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 ### Removed
+
+## [0.1.1] - 2025-05-24
+
+### Changed
+
+- Fix changelog URI in gemspec.
+
+## [0.1.0] - 2025-05-24
+
+### Added
+
+- Initial release.
+- Support for two themes.
