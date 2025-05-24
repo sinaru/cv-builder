@@ -12,8 +12,11 @@ profile:
     high-quality solutions.
 
 contact:
+  github: johndoe
   mobile: +44 7912345678
+  website: https://johndoe.dev
   email: john.doe@example.com
+  linkedin: john-doe
   location:
     country: United Kingdom
     city: London

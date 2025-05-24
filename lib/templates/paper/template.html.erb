@@ -167,6 +167,10 @@
               font-size: 16pt;
               font-weight: 400;
               font-family: "Garamond";
+
+              a:not(:last-child)::after {
+                  content: " |";
+              }
           }
       }
 
@@ -286,19 +290,22 @@
   <div class="name bottom-ruler"><%= dig :profile, :name %></div>
   <div class="contact">
     <% if has? :contact, :email %>
-      <a href="mailto:<%= dig :contact, :email %>"><%= dig :contact, :email %></a> |
+      <a href="mailto:<%= dig :contact, :email %>"><%= dig :contact, :email %></a>
     <% end %>
     <% if has? :contact, :mobile %>
-      <a href="tel:<%= dig :contact, :mobile %>"><%= dig :contact, :mobile %></a> |
+      <a href="tel:<%= dig :contact, :mobile %>"><%= dig :contact, :mobile %></a>
     <% end %>
     <% if has?(:contact, :location, :city) || has?(:contact, :location, :country) %>
-      <%= dig :contact, :location, :city %>, <%= dig :contact, :location, :country %> |
+      <%= dig :contact, :location, :city %>, <%= dig :contact, :location, :country %>
     <% end %>
     <% if has? :contact, :website %>
-      <a href="<%= dig :contact, :website %>"><%= dig :contact, :website %></a> |
+      <a href="<%= dig :contact, :website %>"><%= dig :contact, :website %></a>
     <% end %>
     <% if has? :contact, :github %>
       <a href="https://github.com/<%= dig :contact, :github %>">github.com/<%= dig :contact, :github %></a>
+    <% end %>
+    <% if has? :contact, :linkedin %>
+      <a href="https://linkedin.com/in/<%= dig :contact, :linkedin %>">linkedin.com/in/<%= dig :contact, :linkedin %></a>
     <% end %>
   </div>
 </div>
