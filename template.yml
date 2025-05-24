@@ -1,0 +1,59 @@
+# Template structure for CV. The content should be in YAML format.
+# If you are not familiar with YAML, refer: https://devhints.io/yaml
+# Some hints:
+# - comments start with "#"
+
+version: 1
+profile:
+  name: # Your name
+  title: # Your current job title
+  about: # Some sleek details about your experience
+
+contact:
+  github: # Github username
+  mobile: # Mobile number
+  email: # email address
+  linkedin: # Linkedin username
+  location:
+    country: # country name
+    city: # city name
+
+skills:
+  - area: # specific skill area you are specialized in
+    items:
+      - # sub item such as a technology you have the skill in under the specialized area
+
+experiences:
+  - title: # job title
+    organisation: # Name of the place you worked
+    location:
+      city: # city name
+      country: # country name
+    from:
+      month: # month integer number that you started
+      year: # year integer number that you started
+    # if following is not given, it is assumed you are still working
+    to:
+      month: # month integer number that you stopped
+      year: # year integer number that you stopped
+    skills:
+      - # a short name for a specialized skilled you gained
+    achievements:
+      - # Things you have achieved or did as a sentence. Consider reflecting the impact it made.
+
+education:
+  - institute: # name of the place you studied
+    location:
+      city: # city name
+      country: # country name
+    qualification: # name of the degree/diploma qualification
+    field: # name of the field such as Computer Science
+    from:
+      month: # month integer number that you started
+      year: # year integer number that you started
+    # if following is not given, it is assumed you are still studying
+    to:
+      month: # month integer number that you stopped
+      year: # year integer number that you stopped
+    achievements:
+      - # Things you have achieved or did
