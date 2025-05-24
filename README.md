@@ -68,7 +68,9 @@ education:
     achievements:
       - # Things you have achieved or did
 ```
-See [examples](/examples) directory for sample generated PDF files based of [templates](/lib/templates).
+
+## Template
+For a list of templates availble for CV generation, check the See [examples](/examples) directory where each directory name is a template name.
 
 ## Installation
 
