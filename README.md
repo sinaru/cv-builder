@@ -2,6 +2,8 @@
 
 *Build a CV PDF from a yaml text file.*
 
+[![Gem Version](https://badge.fury.io/rb/kamisaku.svg)](https://badge.fury.io/rb/kamisaku)
+
 ![Kamisaku](kamisaku.png)
 
 See [examples](/examples) directory for sample generated PDF files based of [templates](/lib/templates).
