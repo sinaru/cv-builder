@@ -2,7 +2,7 @@
 
 require "yaml"
 
-module CvBuilder
+module Kamisaku
   class MetaFileParser
     attr_reader :location
 

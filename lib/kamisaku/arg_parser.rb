@@ -2,7 +2,7 @@
 
 require "optparse"
 
-module CvBuilder
+module Kamisaku
   module ArgParser
     def self.parse!
       options = {}

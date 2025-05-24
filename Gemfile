@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby "3.4.3"
 
-# Specify your gem's dependencies in cv_builder.gemspec
+# Specify your gem's dependencies in kamisaku.gemspec
 gemspec
 
 gem "rake", "~> 13.0"
