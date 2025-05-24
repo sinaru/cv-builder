@@ -102,7 +102,7 @@ $ gem install kamisaku
 Once you have the YAML text file, feed it into the `bin/console` and specify the output location.
 
 ```bash
-bin/console -c examples/john_doe.yml -o examples/plain/john_doe.pdf  -t plain
+bin/console -c examples/paper/john_doe.yml -o examples/paper/john_doe.pdf  -t paper
 ```
 
 #### Bash options
