@@ -70,7 +70,7 @@ education:
 ```
 
 ## Template
-For a list of templates availble for CV generation, check the See [examples](/examples) directory where each directory name is a template name.
+For a list of templates availble for CV generation, check the [examples](/examples) directory where each directory name is a template name.
 
 ## Installation
 
