@@ -18,6 +18,7 @@ module Kamisaku
       generated_html_file do |file_path|
         FileUtils.cp(file_path, html_location) if html_location
         html_file_to_pdf_file(file_path, pdf_location)
+        soft_remove_metadata_from_pdf_file(pdf_location)
       end
     end
 
@@ -33,6 +34,13 @@ module Kamisaku
 
       system(pdf_conversion_command)
       raise "PDF generation failed" unless File.exist?(pdf_file_path)
+    end
+
+    def soft_remove_metadata_from_pdf_file(file_path)
+      command = <<~CMD
+        exiftool -all= #{file_path} -overwrite_original
+      CMD
+      system(command)
     end
 
     def generated_html_file
