@@ -15,5 +15,3 @@ gem "rubocop", "1.57.2", require: false
 gem "rubocop-rake", "~> 0.6.0"
 gem "rubocop-minitest", "~> 0.33.0"
 
-gem "prawn"
-gem "pdfkit"

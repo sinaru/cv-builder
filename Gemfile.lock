@@ -7,21 +7,13 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.3)
-    bigdecimal (3.1.9)
     json (2.12.0)
     language_server-protocol (3.17.0.5)
-    matrix (0.4.2)
     minitest (5.25.5)
     parallel (1.27.0)
     parser (3.3.8.0)
       ast (~> 2.4.1)
       racc
-    pdf-core (0.10.0)
-    pdfkit (0.8.7.3)
-    prawn (2.5.0)
-      matrix (~> 0.4)
-      pdf-core (~> 0.10.0)
-      ttfunk (~> 1.8)
     prism (1.4.0)
     racc (1.8.1)
     rainbow (3.1.1)
@@ -47,8 +39,6 @@ GEM
     rubocop-rake (0.6.0)
       rubocop (~> 1.0)
     ruby-progressbar (1.13.0)
-    ttfunk (1.8.0)
-      bigdecimal (~> 3.1)
     unicode-display_width (2.6.0)
 
 PLATFORMS
@@ -58,8 +48,6 @@ PLATFORMS
 DEPENDENCIES
   kamisaku!
   minitest (~> 5.0)
-  pdfkit
-  prawn
   rake (~> 13.0)
   rubocop (= 1.57.2)
   rubocop-minitest (~> 0.33.0)
