@@ -11,6 +11,7 @@ require_relative "kamisaku/cv_data"
 require_relative "kamisaku/meta_file_parser"
 require_relative "kamisaku/cv_generator"
 require_relative "kamisaku/arg_parser"
+require_relative "kamisaku/pdf"
 
 module Kamisaku
   class Error < StandardError; end
