@@ -12,9 +12,7 @@ module Kamisaku
       args << "--no-pdf-header-footer" unless pdf_header_footer
       args << "--print-to-pdf=#{pdf_path}"
       args << html_path
-      arg_str = args.join(" ")
-      system("google-chrome #{arg_str}")
-      Kamisaku::Error "PDF generation failed" unless File.exist?(pdf_path)
+      system("google-chrome", *args)
     end
   end
 end
