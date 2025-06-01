@@ -11,6 +11,7 @@ module Kamisaku
       validate_version
       validate_profile
       validate_contact
+      validate_skills
     end
 
     private
@@ -78,6 +79,34 @@ module Kamisaku
       allowed_fields.each do |field|
         raise Error, "Location missing required field '#{field}'" unless location_fields.include?(field)
         raise Error, "Location field '#{field}' must be a string" unless location[field].is_a?(String)
+      end
+    end
+
+    def validate_skills
+      return unless data[:skills]
+
+      raise Error, "Skills must be an array" unless data[:skills].is_a?(Array)
+
+      data[:skills].each do |skill|
+        raise Error, "Each skill must be a hash" unless skill.is_a?(Hash)
+
+        allowed_fields = %i[area items]
+        skill_fields = skill.keys
+
+        unless skill_fields.all? { |field| allowed_fields.include?(field) }
+          raise Error, "Skill contains invalid fields"
+        end
+
+        allowed_fields.each do |field|
+          raise Error, "Skill missing required field '#{field}'" unless skill_fields.include?(field)
+        end
+
+        raise Error, "Skill field 'area' must be a string" unless skill[:area].is_a?(String)
+        raise Error, "Skill field 'items' must be an array" unless skill[:items].is_a?(Array)
+
+        skill[:items].each do |item|
+          raise Error, "Each skill item must be a string" unless item.is_a?(String)
+        end
       end
     end
   end

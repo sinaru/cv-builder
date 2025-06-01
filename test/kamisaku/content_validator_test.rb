@@ -20,7 +20,21 @@ module Kamisaku
             country: "USA",
             city: "New York",
           }
-        }
+        },
+        skills: [
+          {
+            area: "Artificial Intelligence",
+            items: [
+              "Python",
+              "Machine Learning",
+              "Deep Learning",
+              "TensorFlow",
+              "PyTorch",
+              "Natural Language Processing",
+              "Computer Vision"
+            ]
+          }
+        ]
       }
     end
 
@@ -204,6 +218,78 @@ module Kamisaku
       error = assert_raises(Error) { validator.validate! }
 
       assert_equal "Location field 'city' must be a string", error.message
+    end
+
+    def test_validate_skills_success
+      validator = ContentValidator.new(content_hash: @valid_content)
+
+      assert_silent { validator.validate! }
+    end
+
+    def test_validate_skills_optional
+      content_without_skills = @valid_content.except(:skills)
+      validator = ContentValidator.new(content_hash: content_without_skills)
+
+      assert_silent { validator.validate! }
+    end
+
+    def test_validate_skills_not_array
+      invalid_content = @valid_content.merge(skills: "not_an_array")
+      validator = ContentValidator.new(content_hash: invalid_content)
+
+      error = assert_raises(Error) { validator.validate! }
+
+      assert_equal "Skills must be an array", error.message
+    end
+
+    def test_validate_skills_item_not_hash
+      invalid_skills = ["not_a_hash"]
+      invalid_content = @valid_content.merge(skills: invalid_skills)
+      validator = ContentValidator.new(content_hash: invalid_content)
+
+      error = assert_raises(Error) { validator.validate! }
+
+      assert_equal "Each skill must be a hash", error.message
+    end
+
+    def test_validate_skills_missing_field
+      invalid_skill = { area: "Artificial Intelligence" }
+      invalid_content = @valid_content.merge(skills: [invalid_skill])
+      validator = ContentValidator.new(content_hash: invalid_content)
+
+      error = assert_raises(Error) { validator.validate! }
+
+      assert_equal "Skill missing required field 'items'", error.message
+    end
+
+    def test_validate_skills_field_not_string
+      invalid_skill = { area: 123, items: ["Python"] }
+      invalid_content = @valid_content.merge(skills: [invalid_skill])
+      validator = ContentValidator.new(content_hash: invalid_content)
+
+      error = assert_raises(Error) { validator.validate! }
+
+      assert_equal "Skill field 'area' must be a string", error.message
+    end
+
+    def test_validate_skills_items_not_array
+      invalid_skill = { area: "Artificial Intelligence", items: "not_an_array" }
+      invalid_content = @valid_content.merge(skills: [invalid_skill])
+      validator = ContentValidator.new(content_hash: invalid_content)
+
+      error = assert_raises(Error) { validator.validate! }
+
+      assert_equal "Skill field 'items' must be an array", error.message
+    end
+
+    def test_validate_skills_item_not_string
+      invalid_skill = { area: "Artificial Intelligence", items: [123] }
+      invalid_content = @valid_content.merge(skills: [invalid_skill])
+      validator = ContentValidator.new(content_hash: invalid_content)
+
+      error = assert_raises(Error) { validator.validate! }
+
+      assert_equal "Each skill item must be a string", error.message
     end
   end
 end
