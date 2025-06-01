@@ -13,6 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.3.1] - 2025-06-01
+
+### Changed
+- Refactor code and update `Kamisaku::PDF` interface
+
 ## [0.3.0] - 2025-05-28
 
 ### Added

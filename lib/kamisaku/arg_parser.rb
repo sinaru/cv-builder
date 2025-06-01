@@ -12,21 +12,21 @@ module Kamisaku
           options[:html_output] = html_output
         end
 
-        parser.on("-c", "--cv-info INFO", "Require the INFO") do |cv_info|
-          options[:cv_info] = cv_info
+        parser.on("-c", "--yaml-file INFO", "Require the INFO") do |yaml_file|
+          options[:yaml_file] = yaml_file
         end
 
-        parser.on("-o", "--output-path OUTPUT", "Require the OUTPUT") do |output_path|
-          options[:output_path] = output_path
+        parser.on("-o", "--pdf-file OUTPUT", "Require the OUTPUT") do |pdf_file|
+          options[:pdf_file] = pdf_file
         end
 
-        parser.on("-t", "--template-path TEMPLATE", "Provide the TEMPLATE name") do |template|
+        parser.on("-t", "--template TEMPLATE", "Provide the TEMPLATE name") do |template|
           options[:template] = template
         end
       end.parse!
 
-      raise OptionParser::MissingArgument.new("Provide the location of CV yaml file") if options[:cv_info].nil?
-      raise OptionParser::MissingArgument.new("Provide a valid path to generate the CV pdf file") if options[:output_path].nil?
+      raise OptionParser::MissingArgument.new("-c") if options[:yaml_file].nil?
+      raise OptionParser::MissingArgument.new("-o") if options[:pdf_file].nil?
 
       options
     end

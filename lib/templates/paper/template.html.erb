@@ -286,58 +286,66 @@
   </style>
 </head>
 <body>
-<div class="bottom-ruler contact-section">
-  <div class="name bottom-ruler"><%= dig :profile, :name %></div>
-  <div class="contact">
-    <% if has? :contact, :email %>
-      <a href="mailto:<%= dig :contact, :email %>"><%= dig :contact, :email %></a>
-    <% end %>
-    <% if has? :contact, :mobile %>
-      <a href="tel:<%= dig :contact, :mobile %>"><%= dig :contact, :mobile %></a>
-    <% end %>
-    <% if has?(:contact, :location, :city) || has?(:contact, :location, :country) %>
-      <%= dig :contact, :location, :city %>, <%= dig :contact, :location, :country %>
-    <% end %>
-    <% if has? :contact, :website %>
-      <a href="<%= dig :contact, :website %>"><%= dig :contact, :website %></a>
-    <% end %>
-    <% if has? :contact, :github %>
-      <a href="https://github.com/<%= dig :contact, :github %>">github.com/<%= dig :contact, :github %></a>
-    <% end %>
-    <% if has? :contact, :linkedin %>
-      <a href="https://linkedin.com/in/<%= dig :contact, :linkedin %>">linkedin.com/in/<%= dig :contact, :linkedin %></a>
+<% if (profile = data[:profile]) %>
+  <div class="bottom-ruler contact-section">
+    <div class="name bottom-ruler"><%= profile.dig(:name) %></div>
+    <% if (contact = data[:contact]) %>
+      <div class="contact">
+        <% if (email = contact[:email]) %>
+          <a href="mailto:<%= email %>"><%= email %></a>
+        <% end %>
+
+        <% if (mobile = contact[:mobile]) %>
+          <a href="tel:<%= mobile %>"><%= mobile %></a>
+        <% end %>
+
+        <% if (city = contact.dig(:location, :city)) || (country = contact.dig(:location, :country)) %>
+          <%= "#{city}, #{country}".strip %>
+        <% end %>
+
+        <% if (website = contact[:website]) %>
+          <a href="<%= website %>"><%= website %></a>
+        <% end %>
+
+        <% if (github = contact[:github]) %>
+          <a href="https://github.com/<%= github %>">github.com/<%= github %></a>
+        <% end %>
+
+        <% if (linkedin = contact[:linkedin]) %>
+          <a href="https://linkedin.com/in/<%= linkedin %>">linkedin.com/in/<%= linkedin %></a>
+        <% end %>
+      </div>
     <% end %>
   </div>
-</div>
+  <div class="summary">
+    <div class="upcase bottom-ruler section-title">Summary</div>
+    <div class="about"><%= profile[:about] %></div>
+  </div>
+<% end %>
 
-<div class="summary">
-  <div class="upcase bottom-ruler section-title">Summary</div>
-  <div class="about"><%= dig :profile, :about %></div>
-</div>
-
-<% if has?(:experiences) %>
+<% if (experiences = data[:experiences]) %>
   <div class="work-experience">
     <div class="upcase bottom-ruler section-title">Work Experience</div>
-    <% dig :experiences do |experience| %>
+    <% experiences.each do |experience| %>
       <div class="experience">
         <div class="flex flex-grow sb">
-          <div class="organisation-name"><%= dig experience, :organisation %></div>
+          <div class="organisation-name"><%= experience[:organisation] %></div>
           <div class="time-period">
-            <%= "#{dig experience, :from, :month} #{dig experience, :from, :year}" %> -
-            <%= has?(experience, :to) ? "#{dig experience, :to, :month} #{dig experience, :to, :year}" : "Present" %>
+            <%= "#{month_name experience.dig(:from, :month)} #{experience.dig(:from, :year)}" %> -
+            <%= experience[:to] ? "#{month_name experience.dig(:to, :month)} #{experience.dig(:to, :year)}" : "Present" %>
           </div>
         </div>
 
         <div class="flex flex-grow sb">
-          <div class="job-title"><%= dig experience, :title %></div>
+          <div class="job-title"><%= experience[:title] %></div>
           <div class="job-location">
-            <%= "#{dig(experience, :location, :city)}, #{dig(experience, :location, :country)}" %>
+            <%= "#{experience.dig(:location, :city)}, #{experience.dig(:location, :country)}" %>
           </div>
         </div>
 
-        <% if has? experience, :achievements %>
+        <% if (achievements = experience[:achievements]) %>
           <ul class="achievements">
-            <% dig(experience, :achievements).each do |achievement| %>
+            <% achievements.each do |achievement| %>
               <li class="achievement-item"><%= achievement %></li>
             <% end %>
           </ul>
@@ -347,30 +355,31 @@
   </div>
 <% end %>
 
-<% if has?(:education) %>
+<% if (education_list = data[:education]) %>
   <div class="education">
     <div class="upcase bottom-ruler section-title">Education</div>
-    <% dig :education do |education| %>
+    <% education_list.each do |education| %>
       <div class="education-item">
         <div class="flex flex-grow sb">
           <div class="institute-name">
-            <%= dig education, :institute %>
+            <%= education[:institute] %>
           </div>
           <div class="time-period">
-            <%= has?(education, :from) ? "#{dig education, :from, :month} #{dig education, :from, :year} - " : "" %>
-            <%= has?(education, :to) ? "#{dig education, :to, :month} #{dig education, :to, :year}" : "Present" %>
+            <%= education.dig(:from) ? "#{month_name education.dig(:from, :month)} #{education.dig(:from, :year)} - " : "" %>
+            <%= education.dig(:to) ? "#{month_name education.dig(:to, :month)} #{education.dig(:to, :year)}" : "Present" %>
           </div>
         </div>
 
         <div class="flex flex-grow sb">
-          <div class="qualification"><%= dig education, :qualification %></div>
+          <div class="qualification"><%= education[:qualification] %></div>
           <div class="education-location">
-            <%= dig education, :location, :city %>, <%= dig education, :location, :country %>
+            <%= "#{education.dig(:location, :city)}, #{education.dig(:location, :country)}".strip %>
           </div>
         </div>
-        <% if has?(education, :achievements) %>
+
+        <% if (achievements = education[:achievements]) %>
           <ul class="achievements">
-            <% dig(education, :achievements).each do |achievement| %>
+            <% achievements.each do |achievement| %>
               <li class="achievement-item"><%= achievement %></li>
             <% end %>
           </ul>
@@ -380,37 +389,32 @@
   </div>
 <% end %>
 
-<% generic_sections = [has?(:skills) ? 'Skills' : nil, has?(:interests) ? 'Interests' : nil].compact %>
 
-<% unless generic_sections.empty? %>
-
+<% if (generic_sections = data.slice(:skills, :interests).compact) %>
+<% show_subtitle = generic_sections.keys.size > 1 %>
   <div class="generic-section">
-    <div class="upcase bottom-ruler section-title"><%= generic_sections.join(', ') %></div>
+    <div class="upcase bottom-ruler section-title"><%= generic_sections.keys.map(&:capitalize).join(', ') %></div>
     <ul>
-      <% if has?(:skills) %>
+      <% if (skills = generic_sections[:skills]) %>
         <li class="item">
-          <% if generic_sections.length > 1 %>
+          <% if show_subtitle %>
             <b>Skills: </b>
           <% end %>
-          <% skill_list = [] %>
-          <% dig :skills do |skill| %>
-            <% dig(skill, :items).each { |item| skill_list.push(item) } %>
-          <% end %>
-
-          <%= skill_list.join('; ') %>
+          <%= skills.flat_map { |skill| skill[:items] }.join('; ') %>
         </li>
       <% end %>
 
-      <% if has?(:interests) %>
+      <% if (interests = generic_sections[:interests]) %>
         <li class="item">
-          <% if generic_sections.length > 1 %>
+          <% if show_subtitle %>
             <b>Interests: </b>
           <% end %>
-          <%= dig(:interests).join('; ') %>
+          <%= interests.join('; ') %>
         </li>
       <% end %>
     </ul>
   </div>
 <% end %>
+
 </body>
 </html>
