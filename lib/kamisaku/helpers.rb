@@ -9,10 +9,7 @@ module Kamisaku
     end
 
     def self.remove_metadata_from_pdf_file(file_path)
-      command = <<~CMD
-        exiftool -all= #{file_path} -overwrite_original
-      CMD
-      system(command)
+      system("exiftool", "-all=", file_path, "-overwrite_original")
     end
   end
 end
