@@ -13,5 +13,4 @@ require "kamisaku"
 
 require "irb"
 
-builder = Kamisaku::Builder.new
-builder.run
+Kamisaku::CLIRunner.run

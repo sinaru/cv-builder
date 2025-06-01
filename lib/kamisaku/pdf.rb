@@ -1,47 +1,34 @@
 module Kamisaku
   class PDF
-    attr_reader :yaml_content, :pdf_location, :html_location, :cv_data, :template
+    attr_reader :content_hash, :template
 
-    def initialize(yaml_content:, pdf_location:, html_location: nil, template: nil)
-      @yaml_content = yaml_content
-      @cv_data = CvData.new(YAML.load(yaml_content))
-      @pdf_location = pdf_location
-      @html_location = html_location
+    def initialize(content_hash:, template: nil)
+      @content_hash = content_hash
       @template = template || "sleek"
+      ContentValidator.new(content_hash:).validate!
     end
 
-    def create
-      generated_html_file do |file_path|
-        FileUtils.cp(file_path, html_location) if html_location
+    def write_to(pdf_location)
+      html_file do |file_path|
         html_file_to_pdf_file(file_path, pdf_location)
-        soft_remove_metadata_from_pdf_file(pdf_location)
+        Helpers.remove_metadata_from_pdf_file(pdf_location)
       end
+    end
+
+    def generate_html(html_location)
+      html_file { |file_path| FileUtils.cp(file_path, html_location) }
     end
 
     private
 
     def html_file_to_pdf_file(html_file_path, pdf_file_path)
-      # Convert the HTML file to a PDF using Google Chrome in headless mode
-      pdf_conversion_command = <<~CMD
-        google-chrome --headless --disable-gpu --run-all-compositor-stages-before-draw \
-                      --print-to-pdf=#{pdf_file_path} --no-pdf-header-footer \
-                      #{html_file_path}
-      CMD
-
-      system(pdf_conversion_command)
-      raise "PDF generation failed" unless File.exist?(pdf_file_path)
+      runner = ChromeRunner.new
+      runner.html_to_pdf(html_file_path, pdf_file_path)
     end
 
-    def soft_remove_metadata_from_pdf_file(file_path)
-      command = <<~CMD
-        exiftool -all= #{file_path} -overwrite_original
-      CMD
-      system(command)
-    end
-
-    def generated_html_file
+    def html_file
       temp_html_file = Tempfile.new(%w[kamisaku .html])
-      temp_html_file.write(cv_html)
+      temp_html_file.write(html)
       temp_html_file.close
       begin
         yield temp_html_file.path
@@ -50,9 +37,11 @@ module Kamisaku
       end
     end
 
-    def cv_html
-      rhtml = ERB.new(template_html)
-      rhtml.result(@cv_data.get_bindings)
+    def html
+      return @html if defined? @html
+
+      builder = HtmlBuilder.new(content_hash, template)
+      @html = builder.html
     end
 
     def template_html
