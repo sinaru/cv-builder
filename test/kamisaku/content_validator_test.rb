@@ -18,7 +18,7 @@ module Kamisaku
           email: "someone@site.com",
           location: {
             country: "USA",
-            city: "New York",
+            city: "New York"
           }
         },
         skills: [
@@ -41,7 +41,7 @@ module Kamisaku
             organisation: "Company name",
             location: {
               country: "USA",
-              city: "New York",
+              city: "New York"
             },
             from: {
               month: 1,
@@ -115,7 +115,7 @@ module Kamisaku
     end
 
     def test_validate_profile_missing_fields
-      invalid_profile = { name: "Foo", title: "Some Job Title" }
+      invalid_profile = {name: "Foo", title: "Some Job Title"}
       invalid_content = @valid_content.merge(profile: invalid_profile)
       validator = ContentValidator.new(content_hash: invalid_content)
 
@@ -125,7 +125,7 @@ module Kamisaku
     end
 
     def test_validate_profile_non_string_values
-      invalid_profile = { name: "Foo", title: "Some Job Title", about: 123 }
+      invalid_profile = {name: "Foo", title: "Some Job Title", about: 123}
       invalid_content = @valid_content.merge(profile: invalid_profile)
       validator = ContentValidator.new(content_hash: invalid_content)
 
@@ -280,7 +280,7 @@ module Kamisaku
     end
 
     def test_validate_skills_missing_field
-      invalid_skill = { area: "Artificial Intelligence" }
+      invalid_skill = {area: "Artificial Intelligence"}
       invalid_content = @valid_content.merge(skills: [invalid_skill])
       validator = ContentValidator.new(content_hash: invalid_content)
 
@@ -290,7 +290,7 @@ module Kamisaku
     end
 
     def test_validate_skills_field_not_string
-      invalid_skill = { area: 123, items: ["Python"] }
+      invalid_skill = {area: 123, items: ["Python"]}
       invalid_content = @valid_content.merge(skills: [invalid_skill])
       validator = ContentValidator.new(content_hash: invalid_content)
 
@@ -300,7 +300,7 @@ module Kamisaku
     end
 
     def test_validate_skills_items_not_array
-      invalid_skill = { area: "Artificial Intelligence", items: "not_an_array" }
+      invalid_skill = {area: "Artificial Intelligence", items: "not_an_array"}
       invalid_content = @valid_content.merge(skills: [invalid_skill])
       validator = ContentValidator.new(content_hash: invalid_content)
 
@@ -310,7 +310,7 @@ module Kamisaku
     end
 
     def test_validate_skills_item_not_string
-      invalid_skill = { area: "Artificial Intelligence", items: [123] }
+      invalid_skill = {area: "Artificial Intelligence", items: [123]}
       invalid_content = @valid_content.merge(skills: [invalid_skill])
       validator = ContentValidator.new(content_hash: invalid_content)
 
@@ -392,7 +392,7 @@ module Kamisaku
     end
 
     def test_validate_experiences_invalid_date_format
-      invalid_experience = @valid_content[:experiences][0].merge(from: { month: "invalid_month", year: 2020 })
+      invalid_experience = @valid_content[:experiences][0].merge(from: {month: "invalid_month", year: 2020})
       invalid_content = @valid_content.merge(experiences: [invalid_experience])
       validator = ContentValidator.new(content_hash: invalid_content)
 
@@ -402,7 +402,7 @@ module Kamisaku
     end
 
     def test_validate_experiences_missing_date_field
-      invalid_experience = @valid_content[:experiences][0].merge(from: { year: 2020 })
+      invalid_experience = @valid_content[:experiences][0].merge(from: {year: 2020})
       invalid_content = @valid_content.merge(experiences: [invalid_experience])
       validator = ContentValidator.new(content_hash: invalid_content)
 

@@ -33,7 +33,7 @@ module Kamisaku
       end
 
       unless profile_fields.size == allowed_fields.size
-        raise Error, "Profile must contain exactly the fields: #{allowed_fields.join(', ')}"
+        raise Error, "Profile must contain exactly the fields: #{allowed_fields.join(", ")}"
       end
 
       data[:profile].each do |field, value|
