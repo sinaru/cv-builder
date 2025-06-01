@@ -13,6 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.3.0] - 2025-05-28
+
+### Added
+- Add `Kamisaku::PDF` interface that can be used externally to generate PDF
+
 ## [0.2.1] - 2025-05-28
 
 ### Changed
