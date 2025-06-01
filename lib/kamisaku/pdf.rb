@@ -5,6 +5,7 @@ module Kamisaku
     def initialize(content_hash:, template: nil)
       @content_hash = content_hash
       @template = template || "sleek"
+      ContentValidator.new(content_hash:).validate!
     end
 
     def write_to(pdf_location)
