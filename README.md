@@ -2,15 +2,47 @@
 
 *Build a CV PDF from a yaml text file.*
 
+🚀 See it in action at [https://kamisaku.sinaru.com/](https://kamisaku.sinaru.com/).
+
 [![Gem Version](https://badge.fury.io/rb/kamisaku.svg)](https://badge.fury.io/rb/kamisaku)
 
 ![Kamisaku](kamisaku.png)
 
 See [examples](/examples) directory for sample generated PDF files based of [templates](/lib/templates).
 
+## Templates
+For a list of templates availble for CV generation, check the [examples](/examples) directory where each directory name is a template name.
+
+## Installation
+
+This is a Ruby gem. So you can either install as a gem or clone the repo and use `bin/console` file run from terminal.
+
+### Dependency Requirement
+- Ruby 3.4.3
+- Ensure that [Google Chrome](https://www.google.com/chrome/) is installed.
+- Chrome must be accessible from the terminal as `google-chrome`.
+  - Kamisaku uses Chrome's [headless mode](https://developer.chrome.com/docs/chromium/headless/) to generate PDF files.
+- Ensure `exiftool` is installed available in command line.
+  - exiftool is used to soft remove metadata added by chrome in the PDF file.
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'kamisaku'
+```
+
+And then execute:
+```bash
+$ bundle install
+```
+Or install it yourself as:
+```bash
+$ gem install kamisaku
+```
+
 ## Usage
 
-First we need to have a `yaml` file with the CV data. The yaml file supports following sections.
+First we need to have a `yaml` file or a string with the CV data. The gem supports the following sections.
 
 ```yaml
 version: 1
@@ -69,36 +101,6 @@ education:
       - # Things you have achieved or did
 ```
 
-## Template
-For a list of templates availble for CV generation, check the [examples](/examples) directory where each directory name is a template name.
-
-## Installation
-
-This is a Ruby gem. So you can either install as a gem or clone the repo and use `bin/console` file run from terminal.
-
-### Dependency Requirement
-- Ruby 3.4.3
-- Ensure that [Google Chrome](https://www.google.com/chrome/) is installed.
-- Chrome must be accessible from the terminal as `google-chrome`.
-  - Kamisaku uses Chrome's [headless mode](https://developer.chrome.com/docs/chromium/headless/) to generate PDF files.
-- Ensure `exiftool` is installed available in command line.
-  - exiftool is used to soft remove metadata added by chrome in the PDF file.
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'kamisaku'
-```
-
-And then execute:
-```bash
-$ bundle install
-```
-Or install it yourself as:
-```bash
-$ gem install kamisaku
-```
-
 ## Generating PDF
 
 ### Using terminal
@@ -114,6 +116,21 @@ bin/console -c examples/paper/john_doe.yml -o examples/paper/john_doe.pdf  -t pa
 - `-c` the YAML file
 - `-o` output location for the PDF file including the name
 - `-t` template to use
+
+### Using `PDF` class
+
+```ruby
+# Have a YAML string
+yaml_str = "..."
+# Create a hash
+content_hash = Kamisaku::Helpers.yaml_str_to_content_hash(yaml_str)
+# Validate the hash is correct. If there is any issue, it will raise a ` Kamisaku::Error ` exception.
+Kamisaku::ContentValidator.new(content_hash:).validate!
+# create a pdf instance
+pdf = Kamisaku::PDF.new(content_hash:, template: "paper")
+# create the PDF at given path
+pdf.write_to('/path/to/generated_file.pdf')
+```
 
 ## Development
 
