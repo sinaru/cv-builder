@@ -2,7 +2,7 @@
 
 *Build a CV PDF from a yaml text file.*
 
-🚀 See it in action at [https://kamisaku.sinaru.com/](https://kamisaku.sinaru.com/).
+🚀 See it in action at [https://kamisaku.sinaru.com/](https://kamisaku.sinaru.com/?utm_source=github).
 
 [![Gem Version](https://badge.fury.io/rb/kamisaku.svg)](https://badge.fury.io/rb/kamisaku)
 
