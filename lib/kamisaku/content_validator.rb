@@ -54,10 +54,6 @@ module Kamisaku
         raise Error, "Contact contains invalid fields"
       end
 
-      allowed_fields.each do |field|
-        raise Error, "Contact missing required field '#{field}'" unless contact_fields.include?(field)
-      end
-
       data[:contact].each do |field, value|
         if field == :location
           validate_location(value, "Contact section")

@@ -168,14 +168,11 @@ module Kamisaku
       assert_equal "Contact contains invalid fields", error.message
     end
 
-    def test_validate_contact_missing_field
-      invalid_contact = @valid_content[:contact].except(:email)
-      invalid_content = @valid_content.merge(contact: invalid_contact)
+    def test_validate_contact_empty_hash
+      invalid_content = @valid_content.merge(contact: {})
       validator = ContentValidator.new(content_hash: invalid_content)
 
-      error = assert_raises(Error) { validator.validate! }
-
-      assert_equal "Contact missing required field 'email'", error.message
+      assert_silent { validator.validate! }
     end
 
     def test_validate_contact_field_non_string_value
@@ -199,9 +196,7 @@ module Kamisaku
       invalid_content = @valid_content.merge(contact: invalid_contact)
       validator = ContentValidator.new(content_hash: invalid_content)
 
-      error = assert_raises(Error) { validator.validate! }
-
-      assert_equal "Contact missing required field 'location'", error.message
+      assert_silent { validator.validate! }
     end
 
     def test_validate_contact_location_not_a_hash
