@@ -6,6 +6,8 @@ module Kamisaku
       @content_hash = content_hash
       @template = template || "sleek"
       ContentValidator.new(content_hash:).validate!
+      raise Error, "Invalid template name '#{template}'" unless template.is_a?(String)
+      raise Error, "Invalid template name '#{template}'" unless TemplateHelpers::TEMPLATES.include? @template
     end
 
     def write_to(pdf_location)
