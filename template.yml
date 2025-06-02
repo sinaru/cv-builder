@@ -1,7 +1,10 @@
 # Template structure for CV. The content should be in YAML format.
 # If you are not familiar with YAML, refer: https://devhints.io/yaml
-# Some hints:
-# - comments start with "#"
+#
+# Tip: If you already have a sample file like an exising Resume/CV PDF and you want to convert that to a YAML file based on the structure,
+#  You could provide this template file and the PDF to an LLM like Claude.AI prompt to generate a new YAML file.
+#  Example prompt: "Based on the given template_structure.yml file, create a resume.yml for data in Profile.pdf"
+#
 
 version: 1
 profile:
@@ -10,13 +13,13 @@ profile:
   about: # Some sleek details about your experience
 
 contact:
-  github: # Github username
-  mobile: # Mobile number
-  email: # email address
-  linkedin: # Linkedin username
+  github: # GitHub username if available, otherwise ignore
+  mobile: # Mobile number if available, otherwise ignore
+  email: # email address if available, otherwise ignore
+  linkedin: # LinkedIn username if available, otherwise ignore
   location:
-    country: # country name
-    city: # city name
+    country: # country name you are based at
+    city: # city name you are based at
 
 skills:
   - area: # specific skill area you are specialized in
@@ -37,8 +40,8 @@ experiences:
       month: # month integer number that you stopped
       year: # year integer number that you stopped
     skills:
-      - # a short name for a specialized skilled you gained
-    achievements:
+      - # a short name for a specialized skill you gained at the organization
+    achievements: # Optional section
       - # Things you have achieved or did as a sentence. Consider reflecting the impact it made.
 
 education:
@@ -51,9 +54,11 @@ education:
     from:
       month: # month integer number that you started
       year: # year integer number that you started
-    # if following is not given, it is assumed you are still studying
-    to:
+    to: # Optional. If you have finished studying at the institute, provide this section
       month: # month integer number that you stopped
       year: # year integer number that you stopped
-    achievements:
-      - # Things you have achieved or did
+    achievements: # Optional section
+      - # A list of things you have achieved or did at the institute.
+
+interests: # optional section
+  - # things that are interests to you
