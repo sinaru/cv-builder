@@ -11,6 +11,7 @@ profile:
   name: # Your name
   title: # Your current job title
   about: # Some sleek details about your experience
+  photo_url: # Optional: A public URL of your photo
 
 contact:
   github: # GitHub username if available, otherwise ignore

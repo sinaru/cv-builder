@@ -25,14 +25,15 @@ module Kamisaku
       raise Error, "Missing profile" unless data[:profile]
       raise Error, "Profile must be a hash" unless data[:profile].is_a?(Hash)
 
-      allowed_fields = %i[name title about]
+      allowed_fields = %i[name title about photo_url]
+      required_fields = %i[name title about]
       profile_fields = data[:profile].keys
 
       unless profile_fields.all? { |field| allowed_fields.include?(field) }
         raise Error, "Profile contains invalid fields"
       end
 
-      unless profile_fields.size == allowed_fields.size
+      unless required_fields.all? { |field| profile_fields.include?(field) }
         raise Error, "Profile must contain exactly the fields: #{allowed_fields.join(", ")}"
       end
 
@@ -40,6 +41,19 @@ module Kamisaku
         unless value.is_a?(String)
           raise Error, "Profile field '#{field}' must be a string"
         end
+      end
+
+      if data[:profile][:photo_url]
+        validate_photo_url(data[:profile][:photo_url])
+      end
+    end
+
+    def validate_photo_url(photo_url)
+      raise Error, "Profile field '#{field}' must be a string" unless photo_url.is_a?(String)
+
+      valid_url_regex = /\Ahttps?:\/\/.+\.(jpg|jpeg)\z/i
+      unless valid_url_regex.match?(photo_url)
+        raise Error, "Invalid photo_url. It must be an HTTP/HTTPS URL ending with .jpg or .jpeg"
       end
     end
 
