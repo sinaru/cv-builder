@@ -1,0 +1,364 @@
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <style>
+    @page {
+      margin: 0;
+      padding: 0;
+      size: 8.3in 11.7in;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+      font-size: 11pt;
+      line-height: 1.4;
+      background: white;
+    }
+
+    .resume-container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 300px;
+      background: #2c5aa0;
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 30px 40px;
+      background: white;
+    }
+
+    /* Sidebar Header */
+    .profile-section {
+      padding: 30px 20px 20px 20px;
+      text-align: center;
+    }
+
+    .profile-photo {
+      height: 150px;
+      background: #d3d3d3;
+      margin: 0 auto 20px auto;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .profile-name {
+      font-size: 28pt;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+
+    .profile-title {
+      font-size: 14pt;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 30px;
+    }
+
+    /* Sidebar Sections */
+    .sidebar-section {
+      margin-bottom: 0;
+    }
+
+    .section-header {
+      background: #1e3a5f;
+      padding: 15px 30px;
+      font-size: 14pt;
+      font-weight: bold;
+      color: white;
+    }
+
+    .section-content {
+      padding: 20px 30px;
+      color: #a8c5e6;
+      font-size: 10pt;
+    }
+
+    .section-content.contact-content {
+      color: #7db3e8;
+    }
+
+    .contact-item {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .contact-label {
+      font-weight: bold;
+      color: #7db3e8;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .skill-item {
+      margin-bottom: 8px;
+      color: #a8c5e6;
+    }
+
+    /* Main Content */
+    .summary-section {
+      margin-bottom: 40px;
+    }
+
+    .summary-text {
+      color: #666;
+      line-height: 1.6;
+      text-align: justify;
+      font-size: 11pt;
+    }
+
+    .main-section {
+      margin-bottom: 40px;
+    }
+
+    .main-section-title {
+      color: #2c5aa0;
+      font-size: 18pt;
+      font-weight: bold;
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .work-item {
+      margin-bottom: 25px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .time-column {
+      flex-shrink: 0;
+      width: 120px;
+      color: #666;
+      font-size: 10pt;
+      text-align: left;
+    }
+
+    .work-details {
+      flex: 1;
+    }
+
+    .job-title {
+      font-size: 14pt;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 4px;
+    }
+
+    .company-name {
+      font-style: italic;
+      color: #666;
+      margin-bottom: 8px;
+      font-size: 11pt;
+    }
+
+    .achievements {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .achievements li {
+      margin-bottom: 6px;
+      padding-left: 15px;
+      position: relative;
+      color: #666;
+      font-size: 10pt;
+      line-height: 1.4;
+    }
+
+    .achievements li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #2c5aa0;
+      font-weight: bold;
+    }
+
+    .education-item {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .education-time {
+      flex-shrink: 0;
+      width: 120px;
+      color: #666;
+      font-size: 10pt;
+    }
+
+    .education-details {
+      flex: 1;
+    }
+
+    .degree-title {
+      font-size: 14pt;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 4px;
+    }
+
+    .institution-info {
+      font-style: italic;
+      color: #666;
+      font-size: 11pt;
+    }
+
+    @media print {
+      .resume-container {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="resume-container">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Profile Section -->
+    <% if (profile = data[:profile]) %>
+      <div class="profile-section">
+        <% if profile[:photo_url] %>
+          <img src="<%= profile[:photo_url] %>" class="profile-photo"  alt="profile photo"/>
+        <% end %>
+        <div class="profile-name"><%= profile[:name] %></div>
+        <% if profile[:title] %>
+          <div class="profile-title"><%= profile[:title] %></div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <!-- Contact Section -->
+    <% if (contact = data[:contact]) %>
+      <div class="sidebar-section">
+        <div class="section-header">Contact</div>
+        <div class="section-content contact-content">
+          <% if contact[:email] || contact[:mobile] || contact.dig(:location, :city) || contact.dig(:location, :country) %>
+            <div class="contact-item">
+              <div class="contact-label">Address</div>
+              <%= [contact.dig(:location, :city), contact.dig(:location, :country)].compact.join(', ') %>
+              <% if contact[:email] %>
+                <br><%= contact[:email] %>
+              <% end %>
+              <% if contact[:mobile] %>
+                <br><%= contact[:mobile] %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Skills Section -->
+    <% if (skills = data[:skills]) && !skills.empty? %>
+      <div class="sidebar-section">
+        <div class="section-header">Skills</div>
+        <div class="section-content">
+          <% skills.each do |skill_category| %>
+            <% if skill_category[:items] && !skill_category[:items].empty? %>
+              <% skill_category[:items].each do |skill| %>
+                <div class="skill-item"><%= skill %></div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Summary Section -->
+    <% if (profile = data[:profile]) && profile[:about] %>
+      <div class="summary-section">
+        <div class="summary-text"><%= profile[:about] %></div>
+      </div>
+    <% end %>
+
+    <!-- Work History Section -->
+    <% if (experiences = data[:experiences]) && !experiences.empty? %>
+      <div class="main-section">
+        <div class="main-section-title">Work History</div>
+
+        <% experiences.each do |experience| %>
+          <div class="work-item">
+            <div class="time-column">
+              <% if experience[:from] %>
+                (<%= experience.dig(:from, :month) ? month_name(experience.dig(:from, :month)) : "" %>/<%= experience.dig(:from, :year) %> -
+                <%= experience[:to] ? "#{experience.dig(:to, :month) ? month_name(experience.dig(:to, :month)) : ""}/#{experience.dig(:to, :year)}" : "Present" %>)
+              <% end %>
+            </div>
+
+            <div class="work-details">
+              <% if experience[:title] %>
+                <div class="job-title"><%= experience[:title] %></div>
+              <% end %>
+              <% if experience[:organisation] %>
+                <div class="company-name"><%= experience[:organisation] %></div>
+              <% end %>
+
+              <% if experience[:achievements] && !experience[:achievements].empty? %>
+                <ul class="achievements">
+                  <% experience[:achievements].each do |achievement| %>
+                    <li><%= achievement %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <!-- Education Section -->
+    <% if (education_list = data[:education]) && !education_list.empty? %>
+      <div class="main-section">
+        <div class="main-section-title">Education</div>
+
+        <% education_list.each do |education| %>
+          <div class="education-item">
+            <div class="education-time">
+              <% if education[:from] %>
+                <%= education.dig(:from, :month) ? month_name(education.dig(:from, :month)) : "" %>/<%= education.dig(:from, :year) %> -
+                <%= education[:to] ? "#{education.dig(:to, :month) ? month_name(education.dig(:to, :month)) : ""}/#{education.dig(:to, :year)}" : "" %>
+              <% end %>
+            </div>
+
+            <div class="education-details">
+              <% if education[:qualification] && education[:field] %>
+                <div class="degree-title"><%= education[:qualification] %>: <%= education[:field] %></div>
+              <% elsif education[:qualification] %>
+                <div class="degree-title"><%= education[:qualification] %></div>
+              <% end %>
+
+              <% if education[:institute] || education.dig(:location, :city) || education.dig(:location, :country) %>
+                <div class="institution-info">
+                  <%= [education[:institute], education.dig(:location, :city)].compact.join(' - ') %>
+                  <% if education.dig(:location, :country) %>
+                    - (<%= education.dig(:location, :country) %>)
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+</body>
+</html>
