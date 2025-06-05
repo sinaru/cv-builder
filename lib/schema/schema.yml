@@ -1,0 +1,96 @@
+# Template schema structure for resume
+
+version: 1
+profile: # required
+  name: # required: the name
+  title: # optional: job title if applicable
+  about: # optional: A short summary of the experience and person
+
+contact: # optional
+  github: # optional: GitHub username
+  mobile: # optional: mobile or phone number
+  email: # optional: email address
+  linkedin: # optional: LinkedIn username
+  location: #
+    country: # optional: country name you are based at
+    city: # optional: city name you are based at
+
+skills: # optional
+  - area: # required: specific skill area you are specialized in
+    items: # optional
+      - # subitem such as a technology you have the skill in under the specialized area
+
+experiences: # optional
+  - title: # required: job title
+    organisation: # required: Name of the place you worked
+    location: # optional
+      city: # optional: city name
+      country: # optional: country name
+    from: # required
+      month: # required: month integer number that you started
+      year: # required: year integer number that you started
+    to: # optional: if the section not given, it is assumed you are still working
+      month: # required: month integer number that you stopped
+      year: # required: year integer number that you stopped
+    skills: # optional
+      - # a short name for a specialized skill you gained at the organization
+    achievements: # optional
+      - # A short sentence of things you have achieved. Consider reflecting the impact it made.
+
+education: # optional
+  - institute: # required: name of the place you studied
+    location: # optional
+      city: # optional: city name
+      country: # optional: country name
+    qualification: # required: name of the degree, diploma, or certificate qualification
+    field: # optional: name of the field such as Computer Science
+    from: # optional
+      month: # required: month integer number that you started
+      year: # required: year integer number that you started
+    to: # optional: if you have finished studying at the institute, provide this section. Otherwise, do not provide
+      month: # required: month integer number that you stopped
+      year: # required: year integer number that you stopped
+    achievements: # optional
+      - # A list of things you have achieved or did at the institute.
+
+projects: # optional: Showcase notable personal or professional projects
+  - name: # required: Project title
+    description: # optional: Short summary of the project
+    technologies: # optional: Tools or stack used
+    link: # optional: URL to the project or code
+
+certifications: # optional: Any licenses, exams, or certifications earned
+  - name: # required: Name of the certification
+    issuer: # optional: Organization that issued it
+    date: # optional: Date earned or issued
+    credential_url: # optional: Verification or badge link
+
+awards: # optional: Any recognition, awards, or honors received
+  - title: # required: Name of the award
+    issuer: # optional: Organization or context in which it was awarded
+    date: # optional: When it was awarded
+    description: # optional: Brief explanation or context
+
+languages: # optional: Languages you speak and your proficiency level
+  - name: # required: Language (e.g., English, Spanish)
+
+interests: # optional: Hobbies or areas of personal interest
+  - name: # required: Interest or activity name
+
+publications: # optional: For academic or research roles
+  - title: # required
+    publisher: # optional
+    date: # optional
+    link: # optional
+
+conferences: # optional: Attended or spoken at industry events
+  - name: # required
+    role: # optional: (e.g., Speaker, Attendee)
+    date: # optional
+    description: # optional
+
+volunteering: # optional: Especially useful for non-profit or early-career roles
+  - organization: # required
+    role: # optional
+    description: # optional
+    date: # optional
