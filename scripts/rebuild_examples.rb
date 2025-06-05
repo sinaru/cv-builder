@@ -11,6 +11,6 @@ Kamisaku::TemplateHelpers::TEMPLATES.each do |template|
   pdf_file_path = File.expand_path("../examples/#{template}/example.pdf", __dir__)
 
   content_hash = Kamisaku::Helpers.yaml_str_to_content_hash(yaml_str)
-  pdf = Kamisaku::PDF.new(content_hash:, template: "paper")
+  pdf = Kamisaku::PDF.new(content_hash:, template:)
   pdf.write_to(pdf_file_path)
 end
