@@ -1,3 +1,5 @@
+require 'tempfile'
+
 module Kamisaku
   class PDF
     attr_reader :content_hash, :template
