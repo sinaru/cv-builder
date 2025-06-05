@@ -52,17 +52,17 @@ skills:
       - Linux
 
 interests:
-  - Yoga
-  - Travelling
-  - Photography
-  - Hiking
-  - Chess
-  - Reading
-  - Cooking
-  - Gardening
-  - Running
-  - Fitness
-  - Volunteering
+  - name: Yoga
+  - name: Travelling
+  - name: Photography
+  - name: Hiking
+  - name: Chess
+  - name: Reading
+  - name: Cooking
+  - name: Gardening
+  - name: Running
+  - name: Fitness
+  - name: Volunteering
 
 experiences:
   - title: Senior Software Engineer

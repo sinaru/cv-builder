@@ -409,7 +409,7 @@
           <% if show_subtitle %>
             <b>Interests: </b>
           <% end %>
-          <%= interests.join('; ') %>
+          <%= interests.flat_map { |interest| interest[:name] }.join('; ') %>
         </li>
       <% end %>
     </ul>
