@@ -101,7 +101,7 @@ module Kamisaku
       data[:skills].each do |skill|
         raise Error, "Each skill must be a hash" unless skill.is_a?(Hash)
 
-        allowed_fields = %i[area items]
+        allowed_fields = %i[name items]
         skill_fields = skill.keys
 
         unless skill_fields.all? { |field| allowed_fields.include?(field) }
@@ -112,7 +112,7 @@ module Kamisaku
           raise Error, "Skills section: Skill missing required field '#{field}'" unless skill_fields.include?(field)
         end
 
-        raise Error, "Skills section: Skill field 'area' must be a string" unless skill[:area].is_a?(String)
+        raise Error, "Skills section: Skill field 'name' must be a string" unless skill[:name].is_a?(String)
         raise Error, "Skills section: Skill field 'items' must be an array" unless skill[:items].is_a?(Array)
 
         skill[:items].each do |item|

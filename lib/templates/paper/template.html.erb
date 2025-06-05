@@ -400,7 +400,7 @@
           <% if show_subtitle %>
             <b>Skills: </b>
           <% end %>
-          <%= skills.flat_map { |skill| skill[:items] }.join('; ') %>
+          <%= skills.flat_map { |skill| skill[:name] }.join('; ') %>
         </li>
       <% end %>
 

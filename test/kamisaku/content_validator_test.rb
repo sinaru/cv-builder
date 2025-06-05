@@ -24,7 +24,7 @@ module Kamisaku
         },
         skills: [
           {
-            area: "Artificial Intelligence",
+            name: "Artificial Intelligence",
             items: [
               "Python",
               "Machine Learning",
@@ -329,7 +329,7 @@ module Kamisaku
     end
 
     def test_validate_skills_missing_field
-      invalid_skill = {area: "Artificial Intelligence"}
+      invalid_skill = {name: "Artificial Intelligence"}
       invalid_content = @valid_content.merge(skills: [invalid_skill])
       validator = ContentValidator.new(content_hash: invalid_content)
 
@@ -339,17 +339,17 @@ module Kamisaku
     end
 
     def test_validate_skills_field_not_string
-      invalid_skill = {area: 123, items: ["Python"]}
+      invalid_skill = {name: 123, items: ["Python"]}
       invalid_content = @valid_content.merge(skills: [invalid_skill])
       validator = ContentValidator.new(content_hash: invalid_content)
 
       error = assert_raises(Error) { validator.validate! }
 
-      assert_equal "Skills section: Skill field 'area' must be a string", error.message
+      assert_equal "Skills section: Skill field 'name' must be a string", error.message
     end
 
     def test_validate_skills_items_not_array
-      invalid_skill = {area: "Artificial Intelligence", items: "not_an_array"}
+      invalid_skill = {name: "Artificial Intelligence", items: "not_an_array"}
       invalid_content = @valid_content.merge(skills: [invalid_skill])
       validator = ContentValidator.new(content_hash: invalid_content)
 
@@ -359,7 +359,7 @@ module Kamisaku
     end
 
     def test_validate_skills_item_not_string
-      invalid_skill = {area: "Artificial Intelligence", items: [123]}
+      invalid_skill = {name: "Artificial Intelligence", items: [123]}
       invalid_content = @valid_content.merge(skills: [invalid_skill])
       validator = ContentValidator.new(content_hash: invalid_content)
 
