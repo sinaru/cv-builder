@@ -22,30 +22,30 @@ contact:
     city: London
 
 skills:
-  - area: Development
+  - name: Development
     items:
       - Python
       - Django
       - ReactJS
       - TypeScript
       - Node.js
-  - area: Database
+  - name: Database
     items:
       - PostgreSQL
       - MySQL
       - Redis
-  - area: Testing
+  - name: Testing
     items:
       - PyTest
       - Jest
       - Cypress
       - Selenium
-  - area: Version Control
+  - name: Version Control
     items:
       - Git
       - GitHub
       - GitLab
-  - area: Platforms/OS
+  - name: Platforms/OS
     items:
       - AWS
       - Google Cloud

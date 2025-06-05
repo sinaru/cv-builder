@@ -7,25 +7,26 @@
 #
 
 version: 1
-profile:
-  name: # Your name
-  title: # Your current job title
-  about: # Some sleek details about your experience
-  photo_url: # Optional: A public URL of your photo
+profile: # required:
+  name: # required: the name name
+  title: # optional: job title if applicable
+  about: # optional: A short summary of the experience and person
+  photo_url: # optional: A public URL of your photo
 
 contact:
-  github: # GitHub username if available, otherwise ignore
-  mobile: # Mobile number if available, otherwise ignore
-  email: # email address if available, otherwise ignore
-  linkedin: # LinkedIn username if available, otherwise ignore
-  location:
-    country: # country name you are based at
-    city: # city name you are based at
+  github: # optional: GitHub username
+  mobile: # optional: mobile or phone number
+  email: # optional: email address
+  linkedin: # optional: LinkedIn username
+  location: #
+    country: # optional: country name you are based at
+    city: # optional: city name you are based at
 
-skills:
-  - area: # specific skill area you are specialized in
-    items:
-      - # sub item such as a technology you have the skill in under the specialized area
+
+skills: # optional
+  - area: # required: specific skill area you are specialized in
+    items: # optional
+      - # subitem such as a technology you have the skill in under the specialized area
 
 experiences:
   - title: # job title
