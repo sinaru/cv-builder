@@ -155,3 +155,113 @@ education:
       year: 2013
     achievements:
       - Awarded a scholarship for outstanding academic performance.
+
+projects:
+  - name: E-commerce Analytics Platform
+    description: Full-stack web application for real-time sales analytics and inventory management
+    technologies:
+      - React
+      - Python
+      - PostgreSQL
+      - Redis
+      - Docker
+    link: https://github.com/johndoe/ecommerce-analytics
+
+  - name: Open Source Task Scheduler
+    description: Distributed task scheduling library with Redis backend
+    technologies:
+      - Python
+      - Redis
+      - Celery
+      - Docker
+    link: https://github.com/johndoe/task-scheduler
+
+certifications:
+  - name: AWS Certified Solutions Architect
+    issuer: Amazon Web Services
+    date:
+      day: 15
+      month: 8
+      year: 2022
+    credential_url: https://aws.amazon.com/verification/ABCD1234EFGH5678
+
+  - name: Certified Kubernetes Administrator
+    issuer: Cloud Native Computing Foundation
+    date:
+      day: 20
+      month: 11
+      year: 2021
+    credential_url: https://training.linuxfoundation.org/certification/verify
+
+awards:
+  - title: Employee of the Year
+    issuer: CloudCore Solutions
+    date:
+      day: 1
+      month: 12
+      year: 2023
+    description: Recognized for outstanding contribution to team performance and technical innovation
+
+  - title: Best Final Year Project
+    issuer: Brighton Institute of Technology
+    date:
+      day: 15
+      month: 5
+      year: 2013
+    description: Awarded for developing an innovative machine learning algorithm for image recognition
+
+languages:
+  - name: English
+  - name: Spanish
+  - name: French
+
+publications:
+  - title: "Microservices Architecture Patterns for Scalable Web Applications"
+    publisher: Tech Journal Quarterly
+    date:
+      day: 15
+      month: 3
+      year: 2023
+    link: https://techjournal.com/articles/microservices-patterns
+
+  - title: "Optimizing Database Performance in High-Traffic Applications"
+    publisher: Software Engineering Today
+    date:
+      day: 10
+      month: 9
+      year: 2022
+    link: https://se-today.com/db-optimization
+
+conferences:
+  - name: AWS re:Invent 2023
+    role: Attendee
+    date:
+      day: 27
+      month: 11
+      year: 2023
+    description: Attended sessions on serverless architecture and machine learning
+
+  - name: PyCon UK 2022
+    role: Speaker
+    date:
+      day: 16
+      month: 9
+      year: 2022
+    description: Presented on "Building Scalable APIs with FastAPI and PostgreSQL"
+
+volunteering:
+  - organization: Code for Good
+    role: Technical Mentor
+    description: Mentoring young developers and contributing to open-source projects for non-profits
+    date:
+      day: 1
+      month: 6
+      year: 2020
+
+  - organization: Local Food Bank
+    role: Technology Volunteer
+    description: Developed a volunteer scheduling system to improve operational efficiency
+    date:
+      day: 15
+      month: 3
+      year: 2019

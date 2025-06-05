@@ -16,7 +16,7 @@ contact: # optional
     city: # optional: city name you are based at
 
 skills: # optional
-  - area: # required: specific skill area you are specialized in
+  - name: # required: specific skill name you are specialized in
     items: # optional
       - # subitem such as a technology you have the skill in under the specialized area
 
@@ -63,12 +63,18 @@ certifications: # optional: Any licenses, exams, or certifications earned
   - name: # required: Name of the certification
     issuer: # optional: Organization that issued it
     date: # optional: Date earned or issued
+      day: # required: day of month between 1 and 31
+      month: # required: month integer number
+      year: # required: year integer number
     credential_url: # optional: Verification or badge link
 
 awards: # optional: Any recognition, awards, or honors received
   - title: # required: Name of the award
     issuer: # optional: Organization or context in which it was awarded
     date: # optional: When it was awarded
+      day: # required: day of month between 1 and 31
+      month: # required: month integer number
+      year: # required: year integer number
     description: # optional: Brief explanation or context
 
 languages: # optional: Languages you speak and your proficiency level
@@ -80,17 +86,26 @@ interests: # optional: Hobbies or areas of personal interest
 publications: # optional: For academic or research roles
   - title: # required
     publisher: # optional
-    date: # optional
+    date: # optional:
+      day: # required: day of month between 1 and 31
+      month: # required: month integer number
+      year: # required: year integer number
     link: # optional
 
 conferences: # optional: Attended or spoken at industry events
   - name: # required
     role: # optional: (e.g., Speaker, Attendee)
-    date: # optional
+    date: # optional:
+      day: # required: day of month between 1 and 31
+      month: # required: month integer number
+      year: # required: year integer number
     description: # optional
 
 volunteering: # optional: Especially useful for non-profit or early-career roles
   - organization: # required
     role: # optional
     description: # optional
-    date: # optional
+    date: # optional:
+      day: # required: day of month between 1 and 31
+      month: # required: month integer number
+      year: # required: year integer number
