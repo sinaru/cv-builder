@@ -2,7 +2,15 @@ require "date"
 
 module Kamisaku
   module TemplateHelpers
-    TEMPLATES = %w[paper sleek].freeze
+    TEMPLATES = %w[
+      paper
+      sleek
+      zenith
+      meridian
+      prism
+      gradient
+      chromatic
+    ].freeze
 
     def month_name(month_int)
       return "" if month_int.nil?

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= data[:profile][:name] %> - Resume</title>
+  <style>
+    /* Base print and preview styles */
+    @page {
+      margin: 0 auto;
+      padding: 0.5in;
+      size: A4;
+    }
+    @media screen {
+      body {
+        background: #e0e0e0;
+      }
+      .paper {
+        padding: 0.5in;
+      }
+    }
+    @media screen, print {
+      .paper {
+        background: white;
+        margin: 0 auto;
+        width: 210mm;
+        height: 100%;
+      }
+    }
+
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      font-size: 11pt;
+      line-height: 1.4;
+      color: #333;
+    }
+
+    /* Main layout */
+    .resume-container {
+      display: flex;
+      gap: 20px;
+      height: 100%;
+    }
+
+    /* Left column - 35% width */
+    .left-column {
+      flex: 0 0 35%;
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+    /* Right column - 65% width */
+    .right-column {
+      flex: 1;
+      padding: 20px;
+    }
+
+    /* Header styles */
+    .profile-header {
+      margin-bottom: 30px;
+    }
+
+    .profile-name {
+      font-size: 28pt;
+      font-weight: bold;
+      color: #2c3e50;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .profile-title {
+      font-size: 14pt;
+      color: #7f8c8d;
+      font-weight: 300;
+      margin-bottom: 15px;
+    }
+
+    .profile-about {
+      font-size: 11pt;
+      line-height: 1.5;
+      text-align: justify;
+    }
+
+    /* Contact section */
+    .contact-section {
+      margin-bottom: 25px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 10pt;
+    }
+
+    .contact-emoji {
+      width: 20px;
+      margin-right: 10px;
+    }
+
+    .contact-link {
+      color: #2980b9;
+      text-decoration: none;
+    }
+
+    .contact-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Section headers */
+    .section-header {
+      font-size: 12pt;
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 12px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid #3498db;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .left-section-header {
+      font-size: 11pt;
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    /* Skills section */
+    .skills-section {
+      margin-bottom: 25px;
+    }
+
+    .skill-group {
+      margin-bottom: 15px;
+    }
+
+    .skill-name {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 5px;
+      font-size: 10pt;
+    }
+
+    .skill-items {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .skill-item {
+      background-color: #ecf0f1;
+      padding: 3px 8px;
+      margin: 2px 0;
+      border-radius: 3px;
+      font-size: 9pt;
+      color: #34495e;
+    }
+
+    /* Experience section */
+    .experience-item, .education-item, .project-item {
+      margin-bottom: 20px;
+      border-left: 3px solid #3498db;
+      padding-left: 15px;
+    }
+
+    .item-header {
+      margin-bottom: 8px;
+    }
+
+    .item-title {
+      font-weight: bold;
+      font-size: 12pt;
+      color: #2c3e50;
+    }
+
+    .item-organization {
+      font-size: 11pt;
+      color: #7f8c8d;
+      font-style: italic;
+    }
+
+    .item-location {
+      font-size: 9pt;
+      color: #95a5a6;
+    }
+
+    .item-date {
+      font-size: 9pt;
+      color: #7f8c8d;
+      font-weight: 500;
+      margin-top: 3px;
+    }
+
+    .item-skills {
+      margin: 8px 0;
+    }
+
+    .item-skill-tag {
+      display: inline-block;
+      background-color: #e8f4fd;
+      color: #2980b9;
+      padding: 2px 6px;
+      margin: 2px 3px 2px 0;
+      border-radius: 3px;
+      font-size: 8pt;
+      font-weight: 500;
+    }
+
+    .achievements-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 8px;
+    }
+
+    .achievement-item {
+      position: relative;
+      padding-left: 12px;
+      margin-bottom: 4px;
+      font-size: 10pt;
+    }
+
+    .achievement-item:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #3498db;
+      font-weight: bold;
+    }
+
+    /* Languages section */
+    .languages-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .language-item {
+      background-color: #ecf0f1;
+      padding: 5px 10px;
+      margin: 3px 0;
+      border-radius: 3px;
+      font-size: 9pt;
+      color: #34495e;
+    }
+
+    /* Interests section */
+    .interests-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .interest-item {
+      background-color: #e8f6f3;
+      color: #16a085;
+      padding: 3px 8px;
+      border-radius: 3px;
+      font-size: 9pt;
+    }
+
+    /* Certifications and Awards */
+    .cert-item, .award-item {
+      margin-bottom: 12px;
+      padding: 8px;
+      background-color: #f8f9fa;
+      border-radius: 3px;
+    }
+
+    .cert-name, .award-title {
+      font-weight: bold;
+      color: #2c3e50;
+      font-size: 10pt;
+    }
+
+    .cert-issuer, .award-issuer {
+      color: #7f8c8d;
+      font-size: 9pt;
+      font-style: italic;
+    }
+
+    .cert-date, .award-date {
+      color: #95a5a6;
+      font-size: 8pt;
+    }
+
+    /* Print optimization */
+    @media print {
+      .paper {
+        box-shadow: none;
+      }
+
+      .contact-link {
+        color: #333 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="paper">
+  <div class="resume-container">
+    <!-- Left Column -->
+    <div class="left-column">
+      <!-- Contact Information -->
+      <% if data[:contact] %>
+        <div class="contact-section">
+          <div class="left-section-header">Contact</div>
+
+          <% if data[:contact][:email] %>
+            <div class="contact-item">
+              <span class="contact-emoji">📧</span>
+              <a href="mailto:<%= data[:contact][:email] %>" class="contact-link"><%= data[:contact][:email] %></a>
+            </div>
+          <% end %>
+
+          <% if data[:contact][:mobile] %>
+            <div class="contact-item">
+              <span class="contact-emoji">📱</span>
+              <%= data[:contact][:mobile] %>
+            </div>
+          <% end %>
+
+          <% if data[:contact][:linkedin] %>
+            <div class="contact-item">
+              <span class="contact-emoji">💼</span>
+              <a href="https://linkedin.com/in/<%= data[:contact][:linkedin] %>" class="contact-link">linkedin.com/in/<%= data[:contact][:linkedin] %></a>
+            </div>
+          <% end %>
+
+          <% if data[:contact][:github] %>
+            <div class="contact-item">
+              <span class="contact-emoji">🐙</span>
+              <a href="https://github.com/<%= data[:contact][:github] %>" class="contact-link">github.com/<%= data[:contact][:github] %></a>
+            </div>
+          <% end %>
+
+          <% if data[:contact][:location] %>
+            <div class="contact-item">
+              <span class="contact-emoji">📍</span>
+              <%= [data[:contact][:location][:city], data[:contact][:location][:country]].compact.join(', ') %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <!-- Skills -->
+      <% if data[:skills] && data[:skills].any? %>
+        <div class="skills-section">
+          <div class="left-section-header">Skills</div>
+          <% data[:skills].each do |skill| %>
+            <div class="skill-group">
+              <div class="skill-name"><%= skill[:name] %></div>
+              <% if skill[:items] && skill[:items].any? %>
+                <ul class="skill-items">
+                  <% skill[:items].each do |item| %>
+                    <li class="skill-item"><%= item %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <!-- Languages -->
+      <% if data[:languages] && data[:languages].any? %>
+        <div class="languages-section">
+          <div class="left-section-header">Languages</div>
+          <ul class="languages-list">
+            <% data[:languages].each do |language| %>
+              <li class="language-item"><%= language[:name] %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <!-- Interests -->
+      <% if data[:interests] && data[:interests].any? %>
+        <div class="interests-section">
+          <div class="left-section-header">Interests</div>
+          <div class="interests-list">
+            <% data[:interests].each do |interest| %>
+              <span class="interest-item"><%= interest[:name] %></span>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Right Column -->
+    <div class="right-column">
+      <!-- Profile Header -->
+      <div class="profile-header">
+        <div class="profile-name"><%= data[:profile][:name] %></div>
+        <% if data[:profile][:title] %>
+          <div class="profile-title"><%= data[:profile][:title] %></div>
+        <% end %>
+        <% if data[:profile][:about] %>
+          <div class="profile-about"><%= data[:profile][:about] %></div>
+        <% end %>
+      </div>
+
+      <!-- Experience -->
+      <% if data[:experiences] && data[:experiences].any? %>
+        <div class="section-header">Experience</div>
+        <% data[:experiences].each do |exp| %>
+          <div class="experience-item">
+            <div class="item-header">
+              <div class="item-title"><%= exp[:title] %></div>
+              <div class="item-organization"><%= exp[:organisation] %></div>
+              <% if exp[:location] %>
+                <div class="item-location"><%= [exp[:location][:city], exp[:location][:country]].compact.join(', ') %></div>
+              <% end %>
+              <div class="item-date">
+                <%= "#{exp[:from][:month]}/#{exp[:from][:year]}" %>
+                -
+                <%= exp[:to] ? "#{exp[:to][:month]}/#{exp[:to][:year]}" : "Present" %>
+              </div>
+            </div>
+
+            <% if exp[:skills] && exp[:skills].any? %>
+              <div class="item-skills">
+                <% exp[:skills].each do |skill| %>
+                  <span class="item-skill-tag"><%= skill %></span>
+                <% end %>
+              </div>
+            <% end %>
+
+            <% if exp[:achievements] && exp[:achievements].any? %>
+              <ul class="achievements-list">
+                <% exp[:achievements].each do |achievement| %>
+                  <li class="achievement-item"><%= achievement %></li>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <!-- Education -->
+      <% if data[:education] && data[:education].any? %>
+        <div class="section-header">Education</div>
+        <% data[:education].each do |edu| %>
+          <div class="education-item">
+            <div class="item-header">
+              <div class="item-title"><%= edu[:qualification] %><%= edu[:field] ? " in #{edu[:field]}" : "" %></div>
+              <div class="item-organization"><%= edu[:institute] %></div>
+              <% if edu[:location] %>
+                <div class="item-location"><%= [edu[:location][:city], edu[:location][:country]].compact.join(', ') %></div>
+              <% end %>
+              <% if edu[:from] %>
+                <div class="item-date">
+                  <%= "#{edu[:from][:month]}/#{edu[:from][:year]}" %>
+                  <% if edu[:to] %>
+                    - <%= "#{edu[:to][:month]}/#{edu[:to][:year]}" %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+
+            <% if edu[:achievements] && edu[:achievements].any? %>
+              <ul class="achievements-list">
+                <% edu[:achievements].each do |achievement| %>
+                  <li class="achievement-item"><%= achievement %></li>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <!-- Projects -->
+      <% if data[:projects] && data[:projects].any? %>
+        <div class="section-header">Projects</div>
+        <% data[:projects].each do |project| %>
+          <div class="project-item">
+            <div class="item-header">
+              <div class="item-title">
+                <%= project[:name] %>
+                <% if project[:link] %>
+                  <a href="<%= project[:link] %>" class="contact-link" style="font-size: 9pt; margin-left: 5px;">[Link]</a>
+                <% end %>
+              </div>
+              <% if project[:description] %>
+                <div style="margin-top: 5px; font-size: 10pt;"><%= project[:description] %></div>
+              <% end %>
+            </div>
+
+            <% if project[:technologies] && project[:technologies].any? %>
+              <div class="item-skills">
+                <% project[:technologies].each do |tech| %>
+                  <span class="item-skill-tag"><%= tech %></span>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <!-- Certifications -->
+      <% if data[:certifications] && data[:certifications].any? %>
+        <div class="section-header">Certifications</div>
+        <% data[:certifications].each do |cert| %>
+          <div class="cert-item">
+            <div class="cert-name"><%= cert[:name] %></div>
+            <% if cert[:issuer] %>
+              <div class="cert-issuer"><%= cert[:issuer] %></div>
+            <% end %>
+            <% if cert[:date] %>
+              <div class="cert-date"><%= "#{cert[:date][:day]}/#{cert[:date][:month]}/#{cert[:date][:year]}" %></div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <!-- Awards -->
+      <% if data[:awards] && data[:awards].any? %>
+        <div class="section-header">Awards</div>
+        <% data[:awards].each do |award| %>
+          <div class="award-item">
+            <div class="award-title"><%= award[:title] %></div>
+            <% if award[:issuer] %>
+              <div class="award-issuer"><%= award[:issuer] %></div>
+            <% end %>
+            <% if award[:description] %>
+              <div style="margin-top: 5px; font-size: 10pt;"><%= award[:description] %></div>
+            <% end %>
+            <% if award[:date] %>
+              <div class="award-date"><%= "#{award[:date][:day]}/#{award[:date][:month]}/#{award[:date][:year]}" %></div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+</body>
+</html>

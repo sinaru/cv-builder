@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= data[:profile][:name] %> - Resume</title>
+  <style>
+    /* Base print and preview styles */
+    @page {
+      margin: 0 auto;
+      size: A4;
+    }
+
+    @media screen {
+      body {
+        background: #e0e0e0;
+      }
+    }
+
+    @media screen, print {
+      .paper {
+        background: white;
+        margin: 0 auto;
+        width: 210mm;
+        height: 100%;
+      }
+    }
+
+    /* Creative styling with vibrant colors */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .resume-container {
+      display: grid;
+      grid-template-columns: 35% 65%;
+      min-height: 100vh;
+    }
+
+    /* Left sidebar with vibrant gradient */
+    .sidebar {
+      background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 50%, #45b7d1 100%);
+      color: white;
+      padding: 2rem;
+    }
+
+    .profile-section {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .profile-name {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .profile-title {
+      font-size: 1.1rem;
+      opacity: 0.95;
+      margin-bottom: 1rem;
+      background: rgba(255,255,255,0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      display: inline-block;
+    }
+
+    .profile-about {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      opacity: 0.95;
+      background: rgba(255,255,255,0.1);
+      padding: 1rem;
+      border-radius: 15px;
+    }
+
+    .sidebar-section {
+      margin-bottom: 2rem;
+    }
+
+    .sidebar-heading {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.2);
+      padding: 0.7rem 1rem;
+      border-radius: 25px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 0.7rem;
+      font-size: 0.9rem;
+      background: rgba(255,255,255,0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateX(5px);
+    }
+
+    .skill-category {
+      margin-bottom: 1.5rem;
+      background: rgba(255,255,255,0.1);
+      padding: 1rem;
+      border-radius: 15px;
+    }
+
+    .skill-name {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-items {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    .skill-items li {
+      position: relative;
+      margin-bottom: 0.3rem;
+      font-size: 0.85rem;
+      padding: 0.2rem 0;
+    }
+
+    .skill-items li:before {
+      content: "🔸";
+      position: absolute;
+      left: -1rem;
+    }
+
+    .language-item, .interest-item {
+      background: linear-gradient(45deg, #ff9a9e, #fecfef);
+      color: #333;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      display: inline-block;
+      margin: 0.3rem 0.3rem 0.3rem 0;
+      font-size: 0.85rem;
+      font-weight: 500;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    /* Main content */
+    .main-content {
+      padding: 2rem;
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      min-height: 100vh;
+    }
+
+    .section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-heading {
+      color: #2c3e50;
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .experience-item, .education-item, .project-item, .certification-item,
+    .award-item, .publication-item, .conference-item, .volunteering-item {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      border-left: 6px solid #ff6b6b;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .experience-item:hover, .education-item:hover, .project-item:hover,
+    .certification-item:hover, .award-item:hover, .publication-item:hover,
+    .conference-item:hover, .volunteering-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+
+    .experience-item { border-left-color: #ff6b6b; }
+    .education-item { border-left-color: #4ecdc4; }
+    .project-item { border-left-color: #45b7d1; }
+    .certification-item { border-left-color: #96ceb4; }
+    .award-item { border-left-color: #feca57; }
+    .publication-item { border-left-color: #ff9ff3; }
+    .conference-item { border-left-color: #54a0ff; }
+    .volunteering-item { border-left-color: #5f27cd; }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .item-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .item-organization, .item-institute, .item-issuer {
+      color: #e74c3c;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .item-location {
+      color: #7f8c8d;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .item-date {
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      font-weight: 600;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .item-description {
+      margin-bottom: 1rem;
+      color: #555;
+      line-height: 1.6;
+      padding: 1rem;
+      background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+      border-radius: 10px;
+    }
+
+    .item-skills, .item-technologies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .skill-tag {
+      background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .tech-tag {
+      background: linear-gradient(45deg, #4ecdc4, #44a08d);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .item-achievements {
+      list-style: none;
+      padding: 0;
+    }
+
+    .item-achievements li {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 0.7rem;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .item-achievements li:before {
+      content: "🚀";
+      position: absolute;
+      left: 0;
+      font-size: 1rem;
+    }
+
+    .project-link {
+      color: #e74c3c;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: linear-gradient(45deg, #ffecd2, #fcb69f);
+      padding: 0.5rem 1rem;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .project-link:hover {
+      background: linear-gradient(45deg, #fcb69f, #ffecd2);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* ATS-friendly text elements */
+    .ats-text {
+      font-size: 0;
+      line-height: 0;
+      height: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+<div class="paper">
+  <div class="resume-container">
+    <!-- Left Sidebar -->
+    <div class="sidebar">
+      <!-- Profile Section -->
+      <div class="profile-section">
+        <h1 class="profile-name">👋 <%= data[:profile][:name] %></h1>
+        <div class="ats-text">Name: <%= data[:profile][:name] %></div>
+
+        <% if data[:profile][:title] %>
+          <div class="profile-title">💼 <%= data[:profile][:title] %></div>
+          <div class="ats-text">Title: <%= data[:profile][:title] %></div>
+        <% end %>
+
+        <% if data[:profile][:about] %>
+          <div class="profile-about">✨ <%= data[:profile][:about] %></div>
+        <% end %>
+      </div>
+
+      <!-- Contact Information -->
+      <% if data[:contact] %>
+        <div class="sidebar-section">
+          <h2 class="sidebar-heading">
+            📞 Contact
+          </h2>
+
+          <% if data[:contact][:email] %>
+            <div class="contact-item">
+              📧 <span><%= data[:contact][:email] %></span>
+            </div>
+            <div class="ats-text">Email: <%= data[:contact][:email] %></div>
+          <% end %>
+
+          <% if data[:contact][:mobile] %>
+            <div class="contact-item">
+              📱 <span><%= data[:contact][:mobile] %></span>
+            </div>
+            <div class="ats-text">Phone: <%= data[:contact][:mobile] %></div>
+          <% end %>
+
+          <% if data[:contact][:location] && (data[:contact][:location][:city] || data[:contact][:location][:country]) %>
+            <div class="contact-item">
+              📍 <span>
+              <%= [data[:contact][:location][:city], data[:contact][:location][:country]].compact.join(', ') %>
+            </span>
+            </div>
+          <% end %>
+
+          <% if data[:contact][:linkedin] %>
+            <div class="contact-item">
+              💼 <span>linkedin.com/in/<%= data[:contact][:linkedin] %></span>
+            </div>
+            <div class="ats-text">LinkedIn: <%= data[:contact][:linkedin] %></div>
+          <% end %>
+
+          <% if data[:contact][:github] %>
+            <div class="contact-item">
+              🐙 <span>github.com/<%= data[:contact][:github] %></span>
+            </div>
+            <div class="ats-text">GitHub: <%= data[:contact][:github] %></div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <!-- Skills -->
+      <% if data[:skills] && !data[:skills].empty? %>
+        <div class="sidebar-section">
+          <h2 class="sidebar-heading">
+            🛠️ Skills
+          </h2>
+
+          <% data[:skills].each do |skill| %>
+            <div class="skill-category">
+              <div class="skill-name">⚡ <%= skill[:name] %></div>
+              <div class="ats-text">Skill: <%= skill[:name] %></div>
+
+              <% if skill[:items] && !skill[:items].empty? %>
+                <ul class="skill-items">
+                  <% skill[:items].each do |item| %>
+                    <li><%= item %></li>
+                    <div class="ats-text">Skill Item: <%= item %></div>
+                  <% end %>
+                </ul>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <!-- Languages -->
+      <% if data[:languages] && !data[:languages].empty? %>
+        <div class="sidebar-section">
+          <h2 class="sidebar-heading">
+            🗣️ Languages
+          </h2>
+
+          <% data[:languages].each do |language| %>
+            <span class="language-item">🌐 <%= language[:name] %></span>
+            <div class="ats-text">Language: <%= language[:name] %></div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <!-- Interests -->
+      <% if data[:interests] && !data[:interests].empty? %>
+        <div class="sidebar-section">
+          <h2 class="sidebar-heading">
+            ❤️ Interests
+          </h2>
+
+          <% data[:interests].each do |interest| %>
+            <span class="interest-item">🎯 <%= interest[:name] %></span>
+            <div class="ats-text">Interest: <%= interest[:name] %></div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Experience -->
+      <% if data[:experiences] && !data[:experiences].empty? %>
+        <div class="section">
+          <h2 class="section-heading">
+            💼 Experience
+          </h2>
+
+          <% data[:experiences].each do |experience| %>
+            <div class="experience-item">
+              <div class="item-header">
+                <div>
+                  <div class="item-title">🎯 <%= experience[:title] %></div>
+                  <div class="ats-text">Job Title: <%= experience[:title] %></div>
+
+                  <div class="item-organization">🏢 <%= experience[:organisation] %></div>
+                  <div class="ats-text">Company: <%= experience[:organisation] %></div>
+
+                  <% if experience[:location] && (experience[:location][:city] || experience[:location][:country]) %>
+                    <div class="item-location">
+                      📍 <%= [experience[:location][:city], experience[:location][:country]].compact.join(', ') %>
+                    </div>
+                  <% end %>
+                </div>
+
+                <div class="item-date">
+                  📅 <%= Date.new(experience[:from][:year], experience[:from][:month]).strftime('%b %Y') %> -
+                  <%= experience[:to] ? Date.new(experience[:to][:year], experience[:to][:month]).strftime('%b %Y') : 'Present' %>
+                </div>
+              </div>
+
+              <% if experience[:skills] && !experience[:skills].empty? %>
+                <div class="item-skills">
+                  <% experience[:skills].each do |skill| %>
+                    <span class="skill-tag">⚡ <%= skill %></span>
+                    <div class="ats-text">Experience Skill: <%= skill %></div>
+                  <% end %>
+                </div>
+              <% end %>
+
+              <% if experience[:achievements] && !experience[:achievements].empty? %>
+                <ul class="item-achievements">
+                  <% experience[:achievements].each do |achievement| %>
+                    <li><%= achievement %></li>
+                    <div class="ats-text">Achievement: <%= achievement %></div>
+                  <% end %>
+                </ul>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <!-- Education -->
+      <% if data[:education] && !data[:education].empty? %>
+        <div class="section">
+          <h2 class="section-heading">
+            🎓 Education
+          </h2>
+
+          <% data[:education].each do |education| %>
+            <div class="education-item">
+              <div class="item-header">
+                <div>
+                  <div class="item-title">📜 <%= education[:qualification] %></div>
+                  <div class="ats-text">Degree: <%= education[:qualification] %></div>
+
+                  <% if education[:field] %>
+                    <div class="item-title">📚 <%= education[:field] %></div>
+                    <div class="ats-text">Field of Study: <%= education[:field] %></div>
+                  <% end %>
+
+                  <div class="item-institute">🏫 <%= education[:institute] %></div>
+                  <div class="ats-text">School: <%= education[:institute] %></div>
+
+                  <% if education[:location] && (education[:location][:city] || education[:location][:country]) %>
+                    <div class="item-location">
+                      📍 <%= [education[:location][:city], education[:location][:country]].compact.join(', ') %>
+                    </div>
+                  <% end %>
+                </div>
+
+                <% if education[:from] %>
+                  <div class="item-date">
+                    📅 <%= Date.new(education[:from][:year], education[:from][:month]).strftime('%b %Y') %> -
+                    <%= education[:to] ? Date.new(education[:to][:year], education[:to][:month]).strftime('%b %Y') : 'Present' %>
+                  </div>
+                <% end %>
+              </div>
+
+              <% if education[:achievements] && !education[:achievements].empty? %>
+                <ul class="item-achievements">
+                  <% education[:achievements].each do |achievement| %>
+                    <li><%= achievement %></li>
+                    <div class="ats-text">Education Achievement: <%= achievement %></div>
+                  <% end %>
+                </ul>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <!-- Projects -->
+      <% if data[:projects] && !data[:projects].empty? %>
+        <div class="section">
+          <h2 class="section-heading">
+            🚀 Projects
+          </h2>
+
+          <% data[:projects].each do |project| %>
+            <div class="project-item">
+              <div class="item-header">
+                <div>
+                  <div class="item-title">💡 <%= project[:name] %></div>
+                  <div class="ats-text">Project: <%= project[:name] %></div>
+
+                  <% if project[:link] %>
+                    <a href="<%= project[:link] %>" class="project-link" target="_blank">
+                      🔗 View Project
+                    </a>
+                  <% end %>
+                </div>
+              </div>
+
+              <% if project[:description] %>
+                <div class="item-description">📝 <%= project[:description] %></div>
+              <% end %>
+
+              <% if project[:technologies] && !project[:technologies].empty? %>
+                <div class="item-technologies">
+                  <% project[:technologies].each do |tech| %>
+                    <span class="tech-tag">🔧 <%= tech %></span>
+                    <div class="ats-text">Technology: <%= tech %></div>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <!-- Certifications -->
+      <% if data[:certifications] && !data[:certifications].empty? %>
+        <div class="section">
+          <h2 class="section-heading">
+            🏆 Certifications
+          </h2>
+
+          <% data[:certifications].each do |cert| %>
+            <div class="certification-item">
+              <div class="item-header">
+                <div>
+                  <div class="item-title">🏅 <%= cert[:name] %></div>
+                  <div class="ats-text">Certification: <%= cert[:name] %></div>
+
+                  <% if cert[:issuer] %>
+                    <div class="item-issuer">🏛️ <%= cert[:issuer] %></div>
+                    <div class="ats-text">Issuer: <%= cert[:issuer] %></div>
+                  <% end %>
+                </div>
+
+                <% if cert[:date] %>
+                  <div class="item-date">
+                    📅 <%= Date.new(cert[:date][:year], cert[:date][:month], cert[:date][:day]).strftime('%b %Y') %>
+                  </div>
+                <% end %>
+              </div>
+
+              <% if cert[:credential_url] %>
+                <a href="<%= cert[:credential_url] %>" class="project-link" target="_blank">
+                  🔗 View Credential
+                </a>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <!-- Awards -->
+      <% if data[:awards] && !data[:awards].empty? %>
+        <div class="section">
+          <h2 class="section-heading">
+            🥇 Awards
+          </h2>
+
+          <% data[:awards].each do |award| %>
+            <div class="award-item">
+              <div class="item-header">
+                <div>
+                  <div class="item-title">🏆 <%= award[:title] %></div>
+                  <div class="ats-text">Award: <%= award[:title] %></div>
+
+                  <% if award[:issuer] %>
+                    <div class="item-issuer">🏛️ <%= award[:issuer] %></div>
+                    <div class="ats-text">Award Issuer: <%= award[:issuer] %></div>
+                  <% end %>
+                </div>
+
+                <% if award[:date] %>
+                  <div class="item-date">
+                    📅 <%= Date.new(award[:date][:year], award[:date][:month], award[:date][:day]).strftime('%b %Y') %>
+                  </div>
+                <% end %>
+              </div>
+
+              <% if award[:description] %>
+                <div class="item-description">📝 <%= award[:description] %></div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <!-- Publications -->
+      <% if data[:publications] && !data[:publications].empty? %>
+        <div class="section">
+          <h2 class="section-heading">
+            📖 Publications
+          </h2>
+
+          <% data[:publications].each do |publication| %>
+            <div class="publication-item">
+              <div class="item-header">
+                <div>
+                  <div class="item-title">📄 <%= publication[:title] %></div>
+                  <div class="ats-text">Publication: <%= publication[:title] %></div>
+
+                  <% if publication[:publisher] %>
+                    <div class="item-organization">🏢 <%= publication[:publisher] %></div>
+                    <div class="ats-text">Publisher: <%= publication[:publisher] %></div>
+                  <% end %>
+                </div>
+
+                <% if publication[:date] %>
+                  <div class="item-date">
+                    📅 <%= Date.new(publication[:date][:year], publication[:date][:month], publication[:date][:day]).strftime('%b %Y') %>
+                  </div>
+                <% end %>
+              </div>
+
+              <% if publication[:link] %>
+                <a href="<%= publication[:link] %>" class="project-link" target="_blank">
+                  🔗 View Publication
+                </a>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <!-- Conferences -->
+      <% if data[:conferences] && !data[:conferences].empty? %>
+        <div class="section">
+          <h2 class="section-heading">
+            🎤 Conferences
+          </h2>
+
+          <% data[:conferences].each do |conference| %>
+            <div class="conference-item">
+              <div class="item-header">
+                <div>
+                  <div class="item-title">🎪 <%= conference[:name] %></div>
+                  <div class="ats-text">Conference: <%= conference[:name] %></div>
+
+                  <% if conference[:role] %>
+                    <div class="item-organization">🎭 <%= conference[:role] %></div>
+                    <div class="ats-text">Role: <%= conference[:role] %></div>
+                  <% end %>
+                </div>
+
+                <% if conference[:date] %>
+                  <div class="item-date">
+                    📅 <%= Date.new(conference[:date][:year], conference[:date][:month], conference[:date][:day]).strftime('%b %Y') %>
+                  </div>
+                <% end %>
+              </div>
+
+              <% if conference[:description] %>
+                <div class="item-description">📝 <%= conference[:description] %></div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <!-- Volunteering -->
+      <% if data[:volunteering] && !data[:volunteering].empty? %>
+        <div class="section">
+          <h2 class="section-heading">
+            🤝 Volunteering
+          </h2>
+
+          <% data[:volunteering].each do |volunteer| %>
+            <div class="volunteering-item">
+              <div class="item-header">
+                <div>
+                  <div class="item-title">❤️ <%= volunteer[:organization] %></div>
+                  <div class="ats-text">Volunteer Organization: <%= volunteer[:organization] %></div>
+
+                  <% if volunteer[:role] %>
+                    <div class="item-organization">🎭 <%= volunteer[:role] %></div>
+                    <div class="ats-text">Volunteer Role: <%= volunteer[:role] %></div>
+                  <% end %>
+                </div>
+
+                <% if volunteer[:date] %>
+                  <div class="item-date">
+                    📅 <%= Date.new(volunteer[:date][:year], volunteer[:date][:month], volunteer[:date][:day]).strftime('%b %Y') %>
+                  </div>
+                <% end %>
+              </div>
+
+              <% if volunteer[:description] %>
+                <div class="item-description">📝 <%= volunteer[:description] %></div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</body>
+</html>
