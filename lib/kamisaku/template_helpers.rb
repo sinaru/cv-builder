@@ -7,6 +7,7 @@ module Kamisaku
       sleek
       zenith
       meridian
+      prism
     ].freeze
 
     def month_name(month_int)
