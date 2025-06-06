@@ -57,6 +57,7 @@ projects: # optional: Showcase notable personal or professional projects
   - name: # required: Project title
     description: # optional: Short summary of the project
     technologies: # optional: Tools or stack used
+      - # required: technology/stack name
     link: # optional: URL to the project or code
 
 certifications: # optional: Any licenses, exams, or certifications earned

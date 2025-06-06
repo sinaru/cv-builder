@@ -13,7 +13,7 @@ OptionParser.new do |opts|
   end
 
   opts.on('-z', '--generate-html', 'Generate HTML files') do
-    options[:generate_html] = true
+    options[:write_to_html_file] = true
   end
 
   opts.on('-h', '--help', 'Show this help message') do
@@ -39,8 +39,8 @@ templates.each do |template|
   puts "Building template #{template}"
   pdf.write_to(pdf_file_path)
 
-  if options[:generate_html]
+  if options[:write_to_html_file]
     html_location = File.expand_path("../examples/#{template}/example.html", __dir__)
-    pdf.generate_html(html_location)
+    pdf.write_to_html_file(html_location)
   end
 end

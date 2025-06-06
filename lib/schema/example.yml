@@ -158,7 +158,10 @@ education:
 
 projects:
   - name: E-commerce Analytics Platform
-    description: Full-stack web application for real-time sales analytics and inventory management
+    description: >
+      Developed a comprehensive full-stack web application for real-time sales analytics and inventory management.
+      The platform features interactive dashboards, automated reporting, real-time inventory tracking, predictive
+      analytics for sales forecasting, and integration with multiple payment gateways.
     technologies:
       - React
       - Python
@@ -168,7 +171,11 @@ projects:
     link: https://github.com/johndoe/ecommerce-analytics
 
   - name: Open Source Task Scheduler
-    description: Distributed task scheduling library with Redis backend
+    description: >
+      Created a distributed task scheduling library with Redis backend that supports job queuing, task 
+      prioritization, retry mechanisms, and dead letter queues. Features include task dependencies, 
+      scheduling with cron expressions, real-time monitoring dashboard, horizontal scaling capabilities,
+      and fault tolerance with automatic task recovery.
     technologies:
       - Python
       - Redis

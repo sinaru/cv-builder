@@ -18,6 +18,10 @@
       size: A4;
     }
     @media screen {
+      body {
+        background: #e0e0e0;
+      }
+
       .paper {
         padding: 0.5in;
       }
@@ -29,6 +33,12 @@
         width: 210mm;
         height: 100%;
       }
+    }
+
+    body {
+      font-family: "Cambria", serif;
+      color: #000;
+      font-size: 12pt;
     }
 
     /* latin */
@@ -121,13 +131,6 @@
       unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
     }
 
-    body {
-      background: #e0e0e0;
-      font-family: "Cambria", serif;
-      color: #000;
-      font-size: 12pt;
-    }
-
     a {
       color: #000000;
     }
@@ -165,6 +168,10 @@
 
     .flex-grow {
       flex-grow: 1;
+    }
+
+    .flex-col {
+      flex-direction: column;
     }
 
     .sb {
@@ -291,6 +298,38 @@
             font-style: normal;
             text-align: justify;
           }
+        }
+      }
+    }
+
+    .projects {
+      margin-top: 12pt;
+      color: #000000;
+      font-weight: 400;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-size: 12pt;
+      font-family: "Garamond";
+
+      .section-title {
+        font-weight: bold;
+      }
+
+      .project {
+        margin-top: 12pt;
+
+        .project-name {
+          font-weight: 700;
+          font-family: "Garamond";
+        }
+
+        .project-description, .technologies {
+          font-style: normal;
+          padding-top: 2pt;
+        }
+
+        .link {
+          padding-top: 6pt;
         }
       }
     }
@@ -425,6 +464,32 @@
     </div>
   <% end %>
 
+  <% if (projects = (data[:projects])) %>
+    <div class="projects">
+      <div class="upcase bottom-ruler section-title">Projects</div>
+      <% projects.each do |project| %>
+        <div class="project">
+          <div class="project-name"><%= project[:name] %></div>
+
+          <% if project[:description] %>
+            <div class="project-description"><%= project[:description] %></div>
+          <% end %>
+
+            <div>
+              <% if (technologies = project[:technologies]) %>
+                <div class="technologies"><b>Technologies: </b><%= technologies.join(', ') %></div>
+              <% end %>
+
+              <% if (project_link = project[:link]) %>
+                <div class="link">
+                  <a src="<%= project_link %>"><%= project_link %></a>
+                </div>
+              <% end %>
+            </div>
+      <% end %>
+      </div>
+    </div>
+  <% end %>
 
   <% if (generic_sections = data.slice(:skills, :interests).compact) %>
     <% show_subtitle = generic_sections.keys.size > 1 %>
