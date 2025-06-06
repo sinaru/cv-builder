@@ -9,6 +9,7 @@ module Kamisaku
       meridian
       prism
       gradient
+      chromatic
     ].freeze
 
     def month_name(month_int)

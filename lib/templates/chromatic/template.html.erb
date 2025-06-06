@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creative Resume</title>
+  <style>
+    @page {
+      margin: 0 auto;
+      padding: 0.5in;
+      size: A4;
+    }
+    @media screen {
+      body {
+        background: #e0e0e0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .paper {
+        padding: 0.5in;
+      }
+    }
+    @media screen, print {
+      .paper {
+        background: white;
+        margin: 0 auto;
+        width: 210mm;
+        height: 100%;
+        color: #333;
+      }
+    }
+
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border-bottom: 3px solid #00bcd4;
+      padding-bottom: 1rem;
+    }
+    .header h1 {
+      font-size: 2.5em;
+      margin: 0;
+    }
+    .header h2 {
+      font-weight: 400;
+      color: #666;
+      margin-top: 0.2em;
+    }
+    .contact {
+      margin-top: 1rem;
+      font-size: 0.9em;
+      color: #555;
+    }
+    .section {
+      margin-top: 2rem;
+    }
+    .section h3 {
+      border-left: 5px solid #00bcd4;
+      padding-left: 0.5rem;
+      color: #00bcd4;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .skills ul,
+    .languages ul,
+    .interests ul {
+      list-style: none;
+      padding-left: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .skills li,
+    .languages li,
+    .interests li {
+      background: #e0f7fa;
+      color: #00796b;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.85em;
+    }
+    .experience, .education, .project, .certification, .award, .publication, .conference, .volunteering {
+      margin-bottom: 1.5rem;
+    }
+    .title-line {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+    }
+    .sub-info {
+      color: #777;
+      font-size: 0.9em;
+    }
+    .achievements {
+      margin-top: 0.5rem;
+      padding-left: 1rem;
+    }
+    .achievements li {
+      list-style: disc;
+    }
+    .experience .title-line div:first-child {
+      flex-grow: 1;
+      margin-right: 1rem;
+    }
+    .experience .title-line div:last-child {
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+<div class="paper">
+  <div class="header">
+    <h1><%= data.dig(:profile, :name) %></h1>
+    <h2><%= data.dig(:profile, :title) %></h2>
+    <div class="contact">
+      <div><%= data.dig(:contact, :email) %> | <%= data.dig(:contact, :mobile) %></div>
+      <div>
+        <%= data.dig(:contact, :github) %> |
+        <%= data.dig(:contact, :linkedin) %> |
+        <%= data.dig(:contact, :location, :city) %>, <%= data.dig(:contact, :location, :country) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="section about">
+    <h3>About</h3>
+    <p><%= data.dig(:profile, :about) %></p>
+  </div>
+
+  <div class="section skills">
+    <h3>Skills</h3>
+    <% (data.dig(:skills) || []).each do |skill| %>
+      <strong><%= skill.dig(:name) %>:</strong>
+      <ul>
+        <% (skill.dig(:items) || []).each do |item| %>
+          <li><%= item %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
+  <div class="section experiences">
+    <h3>Experience</h3>
+    <% (data.dig(:experiences) || []).each do |exp| %>
+      <div class="experience">
+        <div class="title-line">
+          <div><%= exp.dig(:title) %> at <%= exp.dig(:organisation) %></div>
+          <div><%= exp.dig(:from, :month) %> <%= exp.dig(:from, :year) %>
+            - <%= exp.dig(:to, :month) %> <%= exp.dig(:to, :year) %></div>
+        </div>
+        <div class="sub-info">
+          <%= exp.dig(:location, :city) %>, <%= exp.dig(:location, :country) %>
+        </div>
+        <ul class="achievements">
+          <% (exp.dig(:achievements) || []).each do |ach| %>
+            <li><%= ach %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="section education">
+    <h3>Education</h3>
+    <% (data.dig(:education) || []).each do |edu| %>
+      <div class="education">
+        <div class="title-line">
+          <div><%= edu.dig(:qualification) %> in <%= edu.dig(:field) %> - <%= edu.dig(:institute) %></div>
+          <div><%= edu.dig(:from, :year) %> - <%= edu.dig(:to, :year) %></div>
+        </div>
+        <div class="sub-info">
+          <%= edu.dig(:location, :city) %>, <%= edu.dig(:location, :country) %>
+        </div>
+        <% if edu.dig(:achievements) %>
+          <ul class="achievements">
+            <% (edu.dig(:achievements) || []).each do |ach| %>
+              <li><%= ach %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="section projects">
+    <h3>Projects</h3>
+    <% (data.dig(:projects) || []).each do |proj| %>
+      <div class="project">
+        <strong><%= proj.dig(:name) %></strong> - <%= proj.dig(:description) %>
+        <div class="sub-info">
+          <%= (proj.dig(:technologies) || []).compact.join(", ") %>
+        </div>
+        <div><%= proj.dig(:link) %></div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="section certifications">
+    <h3>Certifications</h3>
+    <% (data.dig(:certifications) || []).each do |cert| %>
+      <div class="certification">
+        <strong><%= cert.dig(:name) %></strong> - <%= cert.dig(:issuer) %> (<%= cert.dig(:date, :month) %> <%= cert.dig(:date, :year) %>
+        )
+        <% if cert.dig(:credential_url) %>
+          <div><a href="<%= cert.dig(:credential_url) %>"><%= cert.dig(:credential_url) %></a></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="section awards">
+    <h3>Awards</h3>
+    <% (data.dig(:awards) || []).each do |award| %>
+      <div class="award">
+        <strong><%= award.dig(:title) %></strong> - <%= award.dig(:issuer) %>
+        (<%= award.dig(:date, :month) %> <%= award.dig(:date, :year) %>)
+        <p><%= award.dig(:description) %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="section publications">
+    <h3>Publications</h3>
+    <% (data.dig(:publications) || []).each do |pub| %>
+      <div class="publication">
+        <strong><%= pub.dig(:title) %></strong> - <%= pub.dig(:publisher) %> (<%= pub.dig(:date, :month) %> <%= pub.dig(:date, :year) %>
+        )
+        <% if pub.dig(:link) %>
+          <div><a href="<%= pub.dig(:link) %>"><%= pub.dig(:link) %></a></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="section conferences">
+    <h3>Conferences</h3>
+    <% (data.dig(:conferences) || []).each do |conf| %>
+      <div class="conference">
+        <strong><%= conf.dig(:name) %></strong> - <%= conf.dig(:role) %> (<%= conf.dig(:date, :month) %> <%= conf.dig(:date, :year) %>)
+        <p><%= conf.dig(:description) %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="section volunteering">
+    <h3>Volunteering</h3>
+    <% (data.dig(:volunteering) || []).each do |vol| %>
+      <div class="volunteering">
+        <strong><%= vol.dig(:organization) %></strong> - <%= vol.dig(:role) %>
+        (<%= vol.dig(:date, :month) %> <%= vol.dig(:date, :year) %>)
+        <p><%= vol.dig(:description) %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="section languages">
+    <h3>Languages</h3>
+    <ul>
+      <% (data.dig(:languages) || []).each do |lang| %>
+        <li><%= lang.dig(:name) %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="section interests">
+    <h3>Interests</h3>
+    <ul>
+      <% (data.dig(:interests) || []).each do |interest| %>
+        <li><%= interest.dig(:name) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
