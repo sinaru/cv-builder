@@ -6,6 +6,7 @@ module Kamisaku
       @valid_content = {
         version: 1,
         profile: {
+          photo_url: "https://somesite.com/my_photo.jpg",
           name: "Foo",
           title: "Some Job Title",
           about: "Some Job about text"
@@ -23,7 +24,7 @@ module Kamisaku
         },
         skills: [
           {
-            area: "Artificial Intelligence",
+            name: "Artificial Intelligence",
             items: [
               "Python",
               "Machine Learning",
@@ -121,7 +122,7 @@ module Kamisaku
 
       error = assert_raises(Error) { validator.validate! }
 
-      assert_equal "Profile must contain exactly the fields: name, title, about", error.message
+      assert_equal "Profile must contain exactly the fields: name, title, about, photo_url", error.message
     end
 
     def test_validate_profile_non_string_values
@@ -132,6 +133,63 @@ module Kamisaku
       error = assert_raises(Error) { validator.validate! }
 
       assert_equal "Profile field 'about' must be a string", error.message
+    end
+
+    def test_validate_photo_url_missing
+      content_without_photo_url = @valid_content.merge(profile: @valid_content[:profile].except(:photo_url))
+      validator = ContentValidator.new(content_hash: content_without_photo_url)
+
+      assert_silent { validator.validate! }
+    end
+
+    def test_validate_photo_url_empty_string
+      content_with_empty_photo_url = @valid_content.merge(profile: @valid_content[:profile].merge(photo_url: ""))
+      validator = ContentValidator.new(content_hash: content_with_empty_photo_url)
+
+      error = assert_raises(Error) { validator.validate! }
+
+      assert_equal "Invalid photo_url. It must be an HTTP/HTTPS URL ending with .jpg or .jpeg", error.message
+    end
+
+    def test_validate_photo_url_invalid_format
+      invalid_photo_url_content = @valid_content.merge(profile: @valid_content[:profile].merge(photo_url: "invalid_url"))
+      validator = ContentValidator.new(content_hash: invalid_photo_url_content)
+
+      error = assert_raises(Error) { validator.validate! }
+
+      assert_equal "Invalid photo_url. It must be an HTTP/HTTPS URL ending with .jpg or .jpeg", error.message
+    end
+
+    def test_validate_photo_url_invalid_protocol
+      invalid_photo_url_content = @valid_content.merge(profile: @valid_content[:profile].merge(photo_url: "ftp://example.com/image.jpg"))
+      validator = ContentValidator.new(content_hash: invalid_photo_url_content)
+
+      error = assert_raises(Error) { validator.validate! }
+
+      assert_equal "Invalid photo_url. It must be an HTTP/HTTPS URL ending with .jpg or .jpeg", error.message
+    end
+
+    def test_validate_photo_url_invalid_file_extension
+      invalid_photo_url_content = @valid_content.merge(profile: @valid_content[:profile].merge(photo_url: "https://example.com/photo.png"))
+      validator = ContentValidator.new(content_hash: invalid_photo_url_content)
+
+      error = assert_raises(Error) { validator.validate! }
+
+      assert_equal "Invalid photo_url. It must be an HTTP/HTTPS URL ending with .jpg or .jpeg", error.message
+    end
+
+    def test_validate_photo_url_valid_https
+      valid_photo_url_content = @valid_content.merge(profile: @valid_content[:profile].merge(photo_url: "https://example.com/photo.jpg"))
+      validator = ContentValidator.new(content_hash: valid_photo_url_content)
+
+      assert_silent { validator.validate! }
+    end
+
+    def test_validate_photo_url_valid_http
+      valid_photo_url_content = @valid_content.merge(profile: @valid_content[:profile].merge(photo_url: "http://example.com/photo.jpeg"))
+      validator = ContentValidator.new(content_hash: valid_photo_url_content)
+
+      assert_silent { validator.validate! }
     end
 
     def test_validate_contact_success
@@ -275,7 +333,7 @@ module Kamisaku
     end
 
     def test_validate_skills_missing_field
-      invalid_skill = {area: "Artificial Intelligence"}
+      invalid_skill = {name: "Artificial Intelligence"}
       invalid_content = @valid_content.merge(skills: [invalid_skill])
       validator = ContentValidator.new(content_hash: invalid_content)
 
@@ -285,17 +343,17 @@ module Kamisaku
     end
 
     def test_validate_skills_field_not_string
-      invalid_skill = {area: 123, items: ["Python"]}
+      invalid_skill = {name: 123, items: ["Python"]}
       invalid_content = @valid_content.merge(skills: [invalid_skill])
       validator = ContentValidator.new(content_hash: invalid_content)
 
       error = assert_raises(Error) { validator.validate! }
 
-      assert_equal "Skills section: Skill field 'area' must be a string", error.message
+      assert_equal "Skills section: Skill field 'name' must be a string", error.message
     end
 
     def test_validate_skills_items_not_array
-      invalid_skill = {area: "Artificial Intelligence", items: "not_an_array"}
+      invalid_skill = {name: "Artificial Intelligence", items: "not_an_array"}
       invalid_content = @valid_content.merge(skills: [invalid_skill])
       validator = ContentValidator.new(content_hash: invalid_content)
 
@@ -305,7 +363,7 @@ module Kamisaku
     end
 
     def test_validate_skills_item_not_string
-      invalid_skill = {area: "Artificial Intelligence", items: [123]}
+      invalid_skill = {name: "Artificial Intelligence", items: [123]}
       invalid_content = @valid_content.merge(skills: [invalid_skill])
       validator = ContentValidator.new(content_hash: invalid_content)
 

@@ -8,7 +8,7 @@ module Kamisaku
       yaml_string = File.read(yaml_file)
       pdf = PDF.new(content_hash: Helpers.yaml_str_to_content_hash(yaml_string), template: options[:template])
       pdf.write_to(options[:pdf_file])
-      pdf.generate_html(options[:html_output]) if options[:html_output]
+      pdf.write_to_html_file(options[:html_output]) if options[:html_output]
     end
   end
 end

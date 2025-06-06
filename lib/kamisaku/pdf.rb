@@ -1,3 +1,5 @@
+require "tempfile"
+
 module Kamisaku
   class PDF
     attr_reader :content_hash, :template
@@ -17,7 +19,7 @@ module Kamisaku
       end
     end
 
-    def generate_html(html_location)
+    def write_to_html_file(html_location)
       html_file { |file_path| FileUtils.cp(file_path, html_location) }
     end
 

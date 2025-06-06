@@ -1,0 +1,274 @@
+version: 1
+
+profile:
+  name: John Doe
+  title: Senior Software Engineer
+  about: >
+    Seasoned software engineer with more than a decade of experience
+    in designing and developing scalable web applications. Passionate
+    about building clean, maintainable code and driving best practices
+    in software development. Experienced in leading teams, mentoring
+    developers, and collaborating with cross-functional teams to deliver
+    high-quality solutions.
+
+contact:
+  github: johndoe
+  mobile: +44 7912345678
+  website: https://johndoe.dev
+  email: john.doe@example.com
+  linkedin: john-doe
+  location:
+    country: United Kingdom
+    city: London
+
+skills:
+  - name: Development
+    items:
+      - Python
+      - Django
+      - ReactJS
+      - TypeScript
+      - Node.js
+  - name: Database
+    items:
+      - PostgreSQL
+      - MySQL
+      - Redis
+  - name: Testing
+    items:
+      - PyTest
+      - Jest
+      - Cypress
+      - Selenium
+  - name: Version Control
+    items:
+      - Git
+      - GitHub
+      - GitLab
+  - name: Platforms/OS
+    items:
+      - AWS
+      - Google Cloud
+      - Linux
+
+interests:
+  - name: Yoga
+  - name: Travelling
+  - name: Photography
+  - name: Hiking
+  - name: Chess
+  - name: Reading
+  - name: Cooking
+  - name: Gardening
+  - name: Running
+  - name: Fitness
+  - name: Volunteering
+
+experiences:
+  - title: Senior Software Engineer
+    organisation: CloudCore Solutions
+    location:
+      city: London
+      country: United Kingdom
+    from:
+      month: 3
+      year: 2021
+    skills:
+      - Django
+      - React
+      - GraphQL
+      - AWS Lambda
+      - PostgreSQL
+      - Docker
+      - Terraform
+    achievements:
+      - >
+        Led the migration from a monolithic system to a microservices
+        architecture, significantly improving scalability and performance.
+      - >
+        Designed and implemented a serverless data processing pipeline
+        using AWS Lambda and S3, reducing operational costs by 30%.
+      - Established CI/CD workflows for automated deployments and testing.
+
+  - title: Lead Backend Engineer
+    organisation: FinEdge Technologies
+    location:
+      city: Manchester
+      country: United Kingdom
+    from:
+      month: 5
+      year: 2018
+    to:
+      month: 2
+      year: 2021
+    skills:
+      - Python
+      - FastAPI
+      - PostgreSQL
+      - Redis
+      - Kafka
+      - Kubernetes
+      - Jenkins
+    achievements:
+      - >
+        Spearheaded the development of a real-time financial analytics
+        platform, handling millions of transactions per second.
+      - >
+        Improved API response times by optimizing database queries and
+        implementing Redis caching.
+      - Led a team of backend engineers, conducting code reviews and
+        mentoring junior developers.
+
+  - title: Software Engineer
+    organisation: NextGen Media
+    location:
+      city: Birmingham
+      country: United Kingdom
+    from:
+      month: 7
+      year: 2015
+    to:
+      month: 4
+      year: 2018
+    skills:
+      - Node.js
+      - Express.js
+      - MongoDB
+      - WebSockets
+      - AWS
+    achievements:
+      - Developed a high-traffic video streaming platform, implementing
+        WebSockets for real-time interactions.
+      - Built a recommendation engine using machine learning models to
+        personalize user content.
+      - Automated deployment processes with AWS CodePipeline and Docker.
+
+education:
+  - institute: Brighton Institute of Technology
+    location:
+      city: Brighton
+      country: United Kingdom
+    qualification: Bachelor of Science in Computer Science
+    field: Software Engineering
+    to:
+      month: 5
+      year: 2013
+    achievements:
+      - Awarded a scholarship for outstanding academic performance.
+
+projects:
+  - name: E-commerce Analytics Platform
+    description: >
+      Developed a comprehensive full-stack web application for real-time sales analytics and inventory management.
+      The platform features interactive dashboards, automated reporting, real-time inventory tracking, predictive
+      analytics for sales forecasting, and integration with multiple payment gateways.
+    technologies:
+      - React
+      - Python
+      - PostgreSQL
+      - Redis
+      - Docker
+    link: https://github.com/johndoe/ecommerce-analytics
+
+  - name: Open Source Task Scheduler
+    description: >
+      Created a distributed task scheduling library with Redis backend that supports job queuing, task 
+      prioritization, retry mechanisms, and dead letter queues. Features include task dependencies, 
+      scheduling with cron expressions, real-time monitoring dashboard, horizontal scaling capabilities,
+      and fault tolerance with automatic task recovery.
+    technologies:
+      - Python
+      - Redis
+      - Celery
+      - Docker
+    link: https://github.com/johndoe/task-scheduler
+
+certifications:
+  - name: AWS Certified Solutions Architect
+    issuer: Amazon Web Services
+    date:
+      day: 15
+      month: 8
+      year: 2022
+    credential_url: https://aws.amazon.com/verification/ABCD1234EFGH5678
+
+  - name: Certified Kubernetes Administrator
+    issuer: Cloud Native Computing Foundation
+    date:
+      day: 20
+      month: 11
+      year: 2021
+    credential_url: https://training.linuxfoundation.org/certification/verify
+
+awards:
+  - title: Employee of the Year
+    issuer: CloudCore Solutions
+    date:
+      day: 1
+      month: 12
+      year: 2023
+    description: Recognized for outstanding contribution to team performance and technical innovation
+
+  - title: Best Final Year Project
+    issuer: Brighton Institute of Technology
+    date:
+      day: 15
+      month: 5
+      year: 2013
+    description: Awarded for developing an innovative machine learning algorithm for image recognition
+
+languages:
+  - name: English
+  - name: Spanish
+  - name: French
+
+publications:
+  - title: "Microservices Architecture Patterns for Scalable Web Applications"
+    publisher: Tech Journal Quarterly
+    date:
+      day: 15
+      month: 3
+      year: 2023
+    link: https://techjournal.com/articles/microservices-patterns
+
+  - title: "Optimizing Database Performance in High-Traffic Applications"
+    publisher: Software Engineering Today
+    date:
+      day: 10
+      month: 9
+      year: 2022
+    link: https://se-today.com/db-optimization
+
+conferences:
+  - name: AWS re:Invent 2023
+    role: Attendee
+    date:
+      day: 27
+      month: 11
+      year: 2023
+    description: Attended sessions on serverless architecture and machine learning
+
+  - name: PyCon UK 2022
+    role: Speaker
+    date:
+      day: 16
+      month: 9
+      year: 2022
+    description: Presented on "Building Scalable APIs with FastAPI and PostgreSQL"
+
+volunteering:
+  - organization: Code for Good
+    role: Technical Mentor
+    description: Mentoring young developers and contributing to open-source projects for non-profits
+    date:
+      day: 1
+      month: 6
+      year: 2020
+
+  - organization: Local Food Bank
+    role: Technology Volunteer
+    description: Developed a volunteer scheduling system to improve operational efficiency
+    date:
+      day: 15
+      month: 3
+      year: 2019

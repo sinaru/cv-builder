@@ -181,7 +181,7 @@
   <div class="skills">
     <% data[:skills].each do |skill| %>
       <div>
-        <b><%= skill.dig :area %> </b>
+        <b><%= skill[:name] %> </b>
         <% skill.dig(:items).each do |item| %>
           • <%= item %>
         <% end %>
