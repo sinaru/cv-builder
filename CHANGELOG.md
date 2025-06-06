@@ -13,6 +13,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.3.4] - 2025.06.06
+
+### Added
+- Add new templates `chromatic`, `gradient`, `meridian`, `prism`, and `zenith`
+
+### Changed
+- Update paper template
+
+
 ## [0.3.3] - 2025.06.01
 
 ### Changed
