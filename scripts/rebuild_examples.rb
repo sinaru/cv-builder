@@ -1,28 +1,27 @@
-
-require_relative '../lib/kamisaku'
-require 'fileutils'
-require 'optparse'
+require_relative "../lib/kamisaku"
+require "fileutils"
+require "optparse"
 
 # Parse command line arguments
 options = {}
 OptionParser.new do |opts|
   opts.banner = "Usage: #{$0} [options]"
 
-  opts.on('-t', '--template TEMPLATE', 'Use specific template instead of all templates') do |template|
+  opts.on("-t", "--template TEMPLATE", "Use specific template instead of all templates") do |template|
     options[:template] = template
   end
 
-  opts.on('-z', '--generate-html', 'Generate HTML files') do
+  opts.on("-z", "--generate-html", "Generate HTML files") do
     options[:write_to_html_file] = true
   end
 
-  opts.on('-h', '--help', 'Show this help message') do
+  opts.on("-h", "--help", "Show this help message") do
     puts opts
     exit
   end
 end.parse!
 
-example_yaml_fie = File.expand_path('../lib/schema/example.yml', __dir__)
+example_yaml_fie = File.expand_path("../lib/schema/example.yml", __dir__)
 yaml_str = File.read(example_yaml_fie)
 
 # Use specified template or all templates

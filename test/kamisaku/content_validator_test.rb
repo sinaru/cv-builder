@@ -147,6 +147,7 @@ module Kamisaku
       validator = ContentValidator.new(content_hash: content_with_empty_photo_url)
 
       error = assert_raises(Error) { validator.validate! }
+
       assert_equal "Invalid photo_url. It must be an HTTP/HTTPS URL ending with .jpg or .jpeg", error.message
     end
 
@@ -155,6 +156,7 @@ module Kamisaku
       validator = ContentValidator.new(content_hash: invalid_photo_url_content)
 
       error = assert_raises(Error) { validator.validate! }
+
       assert_equal "Invalid photo_url. It must be an HTTP/HTTPS URL ending with .jpg or .jpeg", error.message
     end
 
@@ -163,14 +165,16 @@ module Kamisaku
       validator = ContentValidator.new(content_hash: invalid_photo_url_content)
 
       error = assert_raises(Error) { validator.validate! }
+
       assert_equal "Invalid photo_url. It must be an HTTP/HTTPS URL ending with .jpg or .jpeg", error.message
     end
-    
+
     def test_validate_photo_url_invalid_file_extension
       invalid_photo_url_content = @valid_content.merge(profile: @valid_content[:profile].merge(photo_url: "https://example.com/photo.png"))
       validator = ContentValidator.new(content_hash: invalid_photo_url_content)
 
       error = assert_raises(Error) { validator.validate! }
+
       assert_equal "Invalid photo_url. It must be an HTTP/HTTPS URL ending with .jpg or .jpeg", error.message
     end
 
