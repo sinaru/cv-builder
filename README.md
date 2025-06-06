@@ -136,7 +136,25 @@ pdf.write_to('/path/to/generated_file.pdf')
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To install this gem onto your local machine, run `bundle exec rake install`.
+
+### Create or Update a template
+
+To a new template, create a folder with template name at `lib/templates`. Additionally add the template name to `Kamisaku::TemplateHelpers::TEMPLATES` list.
+
+Inside this folder, create `template.html.erb`.
+
+The template will be exposed to a Ruby hash variable called `data`. This data represent the data in the YAML file as a hash. 
+So you can use the Ruby hash methods to access and render the values.
+
+In addition, the template helper methods defined at `lib/kamisaku/template_helpers.rb` will also be available to use directly. 
+
+To test and build the template, you can run `scripts/rebuild_examples.rb -t <name of new template>`. This will create the PDF using the `lib/schema/example.yml`
+and place it in `examples/` folder.
+
+### Releasing a new gem version
+
+To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
