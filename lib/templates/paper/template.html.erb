@@ -2,419 +2,449 @@
 <head>
   <meta content="text/html; charset=UTF-8" http-equiv="content-type">
   <style>
-      /* latin */
-      @font-face {
-          font-family: 'Cambria';
-          font-style: normal;
-          font-weight: 400;
-          src: url(https://fonts.gstatic.com/l/font?kit=GFDqWAB9jnWLT-HIK7ILrphaOAw&skey=d4699178559bc4b0&v=v18) format('woff2');
-          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+
+    /*
+    print and print-preview styles.
+    To use:
+    <body>
+      <div class="paper">
+        All the template content should go here...
+      </div>
+    </body>
+    */
+    @page {
+      margin: 0 auto;
+      padding: 0.5in;
+      size: A4;
+    }
+    @media screen {
+      .paper {
+        padding: 0.5in;
+      }
+    }
+    @media screen, print {
+      .paper {
+        background: white;
+        margin: 0 auto;
+        width: 210mm;
+        height: 100%;
+      }
+    }
+
+    /* latin */
+    @font-face {
+      font-family: 'Cambria';
+      font-style: normal;
+      font-weight: 400;
+      src: url(https://fonts.gstatic.com/l/font?kit=GFDqWAB9jnWLT-HIK7ILrphaOAw&skey=d4699178559bc4b0&v=v18) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    /* latin */
+    @font-face {
+      font-family: 'Cambria';
+      font-style: normal;
+      font-weight: 700;
+      src: url(https://fonts.gstatic.com/l/font?kit=GFDvWAB9jnWLT-HIIwkuu7V4NSY7WWA&skey=5202a3b6f5388b49&v=v18) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    /* cyrillic */
+    @font-face {
+      font-family: 'Garamond';
+      font-style: normal;
+      font-weight: 400;
+      src: url(https://fonts.gstatic.com/l/font?kit=XoHl2Y_-T6Oo88RDZSQOn9IDlDLo&skey=a3a4b3361b12223a&v=v18) format('woff2');
+      unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+    }
+
+    /* greek */
+    @font-face {
+      font-family: 'Garamond';
+      font-style: normal;
+      font-weight: 400;
+      src: url(https://fonts.gstatic.com/l/font?kit=XoHl2Y_-T6Oo88RDZSQJn9IDlDLo&skey=a3a4b3361b12223a&v=v18) format('woff2');
+      unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+    }
+
+    /* latin-ext */
+    @font-face {
+      font-family: 'Garamond';
+      font-style: normal;
+      font-weight: 400;
+      src: url(https://fonts.gstatic.com/l/font?kit=XoHl2Y_-T6Oo88RDZSQEn9IDlDLo&skey=a3a4b3361b12223a&v=v18) format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+
+    /* latin */
+    @font-face {
+      font-family: 'Garamond';
+      font-style: normal;
+      font-weight: 400;
+      src: url(https://fonts.gstatic.com/l/font?kit=XoHl2Y_-T6Oo88RDZSQKn9IDlDLo&skey=a3a4b3361b12223a&v=v18) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    /* cyrillic */
+    @font-face {
+      font-family: 'Garamond';
+      font-style: normal;
+      font-weight: 700;
+      src: url(https://fonts.gstatic.com/l/font?kit=XoHi2Y_-T6Oo88RDZSyxuscqtj_C8ibe&skey=66cb3cbedfd2039d&v=v18) format('woff2');
+      unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+    }
+
+    /* greek */
+    @font-face {
+      font-family: 'Garamond';
+      font-style: normal;
+      font-weight: 700;
+      src: url(https://fonts.gstatic.com/l/font?kit=XoHi2Y_-T6Oo88RDZSyxuscttj_C8ibe&skey=66cb3cbedfd2039d&v=v18) format('woff2');
+      unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+    }
+
+    /* latin-ext */
+    @font-face {
+      font-family: 'Garamond';
+      font-style: normal;
+      font-weight: 700;
+      src: url(https://fonts.gstatic.com/l/font?kit=XoHi2Y_-T6Oo88RDZSyxuscgtj_C8ibe&skey=66cb3cbedfd2039d&v=v18) format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+
+    /* latin */
+    @font-face {
+      font-family: 'Garamond';
+      font-style: normal;
+      font-weight: 700;
+      src: url(https://fonts.gstatic.com/l/font?kit=XoHi2Y_-T6Oo88RDZSyxuscutj_C8ibe&skey=66cb3cbedfd2039d&v=v18) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    body {
+      background: #e0e0e0;
+      font-family: "Cambria", serif;
+      color: #000;
+      font-size: 12pt;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 2pt;
+    }
+
+    li {
+
+    }
+
+    a {
+      color: #000000;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    a:visited {
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    a:active {
+      text-decoration: none;
+    }
+
+    .bottom-ruler {
+      border-bottom-color: #000000;
+      border-bottom-width: 0.8pt;
+      padding-bottom: 2pt;
+      border-bottom-style: solid;
+    }
+
+    .upcase {
+      text-transform: uppercase;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .flex-grow {
+      flex-grow: 1;
+    }
+
+    .sb {
+      justify-content: space-between;
+    }
+
+    .contact-section {
+      .name {
+        font-size: 24pt;
+        font-weight: 700;
+        font-family: "Garamond";
       }
 
-      /* latin */
-      @font-face {
-          font-family: 'Cambria';
-          font-style: normal;
+      .contact {
+        font-size: 16pt;
+        font-weight: 400;
+        font-family: "Garamond";
+
+        a:not(:last-child)::after {
+          content: " |";
+        }
+      }
+    }
+
+    .summary {
+      margin-top: 12pt;
+
+      .section-title {
+        font-weight: bold;
+      }
+
+      .about {
+        color: #000000;
+        font-weight: 400;
+        text-decoration: none;
+        vertical-align: baseline;
+        font-size: 12pt;
+        font-family: "Garamond";
+        font-style: normal;
+        text-align: justify;
+      }
+
+    }
+
+    .work-experience {
+      margin-top: 12pt;
+
+      .section-title {
+        font-weight: bold;
+      }
+
+      .experience {
+        margin-top: 12pt;
+
+        .organisation-name, .time-period {
           font-weight: 700;
-          src: url(https://fonts.gstatic.com/l/font?kit=GFDvWAB9jnWLT-HIIwkuu7V4NSY7WWA&skey=5202a3b6f5388b49&v=v18) format('woff2');
-          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
+          font-family: "Garamond";
+        }
 
-      /* cyrillic */
-      @font-face {
-          font-family: 'Garamond';
-          font-style: normal;
+        .achievements {
+          .achievement-item {
+            color: #000000;
+            font-weight: 400;
+            text-decoration: none;
+            vertical-align: baseline;
+            font-size: 12pt;
+            font-family: "Garamond";
+            font-style: normal;
+            text-align: justify;
+          }
+        }
+
+        .job-title {
+          font-style: italic;
+        }
+
+        .job-title, .job-location {
           font-weight: 400;
-          src: url(https://fonts.gstatic.com/l/font?kit=XoHl2Y_-T6Oo88RDZSQOn9IDlDLo&skey=a3a4b3361b12223a&v=v18) format('woff2');
-          unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+          font-family: "Garamond";
+        }
+      }
+    }
+
+    .education {
+      margin-top: 12pt;
+
+      .section-title {
+        font-weight: bold;
       }
 
-      /* greek */
-      @font-face {
-          font-family: 'Garamond';
-          font-style: normal;
+      .education-item {
+        margin-top: 12pt;
+
+        .institute-name, .time-period {
+          font-weight: 700;
+          font-family: "Garamond";
+        }
+
+        .qualification {
+          font-style: italic;
+        }
+
+        .qualification, .education-location {
           font-weight: 400;
-          src: url(https://fonts.gstatic.com/l/font?kit=XoHl2Y_-T6Oo88RDZSQJn9IDlDLo&skey=a3a4b3361b12223a&v=v18) format('woff2');
-          unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
-      }
+          font-family: "Garamond";
+        }
 
-      /* latin-ext */
-      @font-face {
-          font-family: 'Garamond';
-          font-style: normal;
-          font-weight: 400;
-          src: url(https://fonts.gstatic.com/l/font?kit=XoHl2Y_-T6Oo88RDZSQEn9IDlDLo&skey=a3a4b3361b12223a&v=v18) format('woff2');
-          unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-      }
-
-      /* latin */
-      @font-face {
-          font-family: 'Garamond';
-          font-style: normal;
-          font-weight: 400;
-          src: url(https://fonts.gstatic.com/l/font?kit=XoHl2Y_-T6Oo88RDZSQKn9IDlDLo&skey=a3a4b3361b12223a&v=v18) format('woff2');
-          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
-
-      /* cyrillic */
-      @font-face {
-          font-family: 'Garamond';
-          font-style: normal;
-          font-weight: 700;
-          src: url(https://fonts.gstatic.com/l/font?kit=XoHi2Y_-T6Oo88RDZSyxuscqtj_C8ibe&skey=66cb3cbedfd2039d&v=v18) format('woff2');
-          unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-      }
-
-      /* greek */
-      @font-face {
-          font-family: 'Garamond';
-          font-style: normal;
-          font-weight: 700;
-          src: url(https://fonts.gstatic.com/l/font?kit=XoHi2Y_-T6Oo88RDZSyxuscttj_C8ibe&skey=66cb3cbedfd2039d&v=v18) format('woff2');
-          unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
-      }
-
-      /* latin-ext */
-      @font-face {
-          font-family: 'Garamond';
-          font-style: normal;
-          font-weight: 700;
-          src: url(https://fonts.gstatic.com/l/font?kit=XoHi2Y_-T6Oo88RDZSyxuscgtj_C8ibe&skey=66cb3cbedfd2039d&v=v18) format('woff2');
-          unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-      }
-
-      /* latin */
-      @font-face {
-          font-family: 'Garamond';
-          font-style: normal;
-          font-weight: 700;
-          src: url(https://fonts.gstatic.com/l/font?kit=XoHi2Y_-T6Oo88RDZSyxuscutj_C8ibe&skey=66cb3cbedfd2039d&v=v18) format('woff2');
-          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
-
-      @page {
-          margin: 0;
-          padding: 0.5in;
-          size: 8.3in 11.7in;
-      }
-
-      body {
-          font-family: "Cambria", serif;
-          color: #000;
-          font-size: 12pt;
-      }
-
-      ul {
-          padding-left: 20px;
-          margin-top: 2pt;
-      }
-
-      li {
-
-      }
-
-      a {
-          color: #000000;
-      }
-
-      a:link {
-          text-decoration: none;
-      }
-
-      a:visited {
-          text-decoration: none;
-      }
-
-      a:hover {
-          text-decoration: none;
-      }
-
-      a:active {
-          text-decoration: none;
-      }
-
-      .bottom-ruler {
-          border-bottom-color: #000000;
-          border-bottom-width: 0.8pt;
-          padding-bottom: 2pt;
-          border-bottom-style: solid;
-      }
-
-      .upcase {
-          text-transform: uppercase;
-      }
-
-      .flex {
-          display: flex;
-      }
-
-      .flex-grow {
-          flex-grow: 1;
-      }
-
-      .sb {
-          justify-content: space-between;
-      }
-
-      .contact-section {
-          .name {
-              font-size: 24pt;
-              font-weight: 700;
-              font-family: "Garamond";
+        .achievements {
+          .achievement-item {
+            color: #000000;
+            font-weight: 400;
+            text-decoration: none;
+            vertical-align: baseline;
+            font-size: 12pt;
+            font-family: "Garamond";
+            font-style: normal;
+            text-align: justify;
           }
+        }
+      }
+    }
 
-          .contact {
-              font-size: 16pt;
-              font-weight: 400;
-              font-family: "Garamond";
+    .generic-section {
+      margin-top: 12pt;
 
-              a:not(:last-child)::after {
-                  content: " |";
-              }
-          }
+      .section-title {
+        font-weight: bold;
+        margin-bottom: 12pt;
       }
 
-      .summary {
-          margin-top: 12pt;
-
-          .section-title {
-              font-weight: bold;
-          }
-
-          .about {
-              color: #000000;
-              font-weight: 400;
-              text-decoration: none;
-              vertical-align: baseline;
-              font-size: 12pt;
-              font-family: "Garamond";
-              font-style: normal;
-              text-align: justify;
-          }
-
+      .item {
+        color: #000000;
+        font-weight: 400;
+        text-decoration: none;
+        vertical-align: baseline;
+        font-size: 12pt;
+        font-family: "Garamond";
       }
-
-      .work-experience {
-          margin-top: 12pt;
-
-          .section-title {
-              font-weight: bold;
-          }
-
-          .experience {
-              margin-top: 12pt;
-
-              .organisation-name, .time-period {
-                  font-weight: 700;
-                  font-family: "Garamond";
-              }
-
-              .achievements {
-                  .achievement-item {
-                      color: #000000;
-                      font-weight: 400;
-                      text-decoration: none;
-                      vertical-align: baseline;
-                      font-size: 12pt;
-                      font-family: "Garamond";
-                      font-style: normal;
-                      text-align: justify;
-                  }
-              }
-
-              .job-title, .job-location {
-                  font-style: italic;
-                  font-weight: 400;
-                  font-family: "Garamond";
-              }
-          }
-      }
-
-      .education {
-          margin-top: 12pt;
-
-          .section-title {
-              font-weight: bold;
-          }
-
-          .education-item {
-              margin-top: 12pt;
-
-              .institute-name, .time-period {
-                  font-weight: 700;
-                  font-family: "Garamond";
-              }
-
-              .qualification, .education-location {
-                  font-style: italic;
-                  font-weight: 400;
-                  font-family: "Garamond";
-              }
-
-              .achievements {
-                  .achievement-item {
-                      color: #000000;
-                      font-weight: 400;
-                      text-decoration: none;
-                      vertical-align: baseline;
-                      font-size: 12pt;
-                      font-family: "Garamond";
-                      font-style: normal;
-                      text-align: justify;
-                  }
-              }
-          }
-      }
-
-      .generic-section {
-          margin-top: 12pt;
-
-          .section-title {
-              font-weight: bold;
-              margin-bottom: 12pt;
-          }
-
-          .item {
-              color: #000000;
-              font-weight: 400;
-              text-decoration: none;
-              vertical-align: baseline;
-              font-size: 12pt;
-              font-family: "Garamond";
-          }
-      }
+    }
   </style>
 </head>
-<body>
-<% if (profile = data[:profile]) %>
-  <div class="bottom-ruler contact-section">
-    <div class="name bottom-ruler"><%= profile.dig(:name) %></div>
-    <% if (contact = data[:contact]) %>
-      <div class="contact">
-        <% if (email = contact[:email]) %>
-          <a href="mailto:<%= email %>"><%= email %></a>
-        <% end %>
-
-        <% if (mobile = contact[:mobile]) %>
-          <a href="tel:<%= mobile %>"><%= mobile %></a>
-        <% end %>
-
-        <% if (city = contact.dig(:location, :city)) || (country = contact.dig(:location, :country)) %>
-          <%= "#{city}, #{country}".strip %>
-        <% end %>
-
-        <% if (website = contact[:website]) %>
-          <a href="<%= website %>"><%= website %></a>
-        <% end %>
-
-        <% if (github = contact[:github]) %>
-          <a href="https://github.com/<%= github %>">github.com/<%= github %></a>
-        <% end %>
-
-        <% if (linkedin = contact[:linkedin]) %>
-          <a href="https://linkedin.com/in/<%= linkedin %>">linkedin.com/in/<%= linkedin %></a>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-  <div class="summary">
-    <div class="upcase bottom-ruler section-title">Summary</div>
-    <div class="about"><%= profile[:about] %></div>
-  </div>
-<% end %>
-
-<% if (experiences = data[:experiences]) %>
-  <div class="work-experience">
-    <div class="upcase bottom-ruler section-title">Work Experience</div>
-    <% experiences.each do |experience| %>
-      <div class="experience">
-        <div class="flex flex-grow sb">
-          <div class="organisation-name"><%= experience[:organisation] %></div>
-          <div class="time-period">
-            <%= "#{month_name experience.dig(:from, :month)} #{experience.dig(:from, :year)}" %> -
-            <%= experience[:to] ? "#{month_name experience.dig(:to, :month)} #{experience.dig(:to, :year)}" : "Present" %>
-          </div>
-        </div>
-
-        <div class="flex flex-grow sb">
-          <div class="job-title"><%= experience[:title] %></div>
-          <div class="job-location">
-            <%= "#{experience.dig(:location, :city)}, #{experience.dig(:location, :country)}" %>
-          </div>
-        </div>
-
-        <% if (achievements = experience[:achievements]) %>
-          <ul class="achievements">
-            <% achievements.each do |achievement| %>
-              <li class="achievement-item"><%= achievement %></li>
-            <% end %>
-          </ul>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
-
-<% if (education_list = data[:education]) %>
-  <div class="education">
-    <div class="upcase bottom-ruler section-title">Education</div>
-    <% education_list.each do |education| %>
-      <div class="education-item">
-        <div class="flex flex-grow sb">
-          <div class="institute-name">
-            <%= education[:institute] %>
-          </div>
-          <div class="time-period">
-            <%= education.dig(:from) ? "#{month_name education.dig(:from, :month)} #{education.dig(:from, :year)} - " : "" %>
-            <%= education.dig(:to) ? "#{month_name education.dig(:to, :month)} #{education.dig(:to, :year)}" : "Present" %>
-          </div>
-        </div>
-
-        <div class="flex flex-grow sb">
-          <div class="qualification"><%= education[:qualification] %></div>
-          <div class="education-location">
-            <%= "#{education.dig(:location, :city)}, #{education.dig(:location, :country)}".strip %>
-          </div>
-        </div>
-
-        <% if (achievements = education[:achievements]) %>
-          <ul class="achievements">
-            <% achievements.each do |achievement| %>
-              <li class="achievement-item"><%= achievement %></li>
-            <% end %>
-          </ul>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
-
-
-<% if (generic_sections = data.slice(:skills, :interests).compact) %>
-<% show_subtitle = generic_sections.keys.size > 1 %>
-  <div class="generic-section">
-    <div class="upcase bottom-ruler section-title"><%= generic_sections.keys.map(&:capitalize).join(', ') %></div>
-    <ul>
-      <% if (skills = generic_sections[:skills]) %>
-        <li class="item">
-          <% if show_subtitle %>
-            <b>Skills: </b>
+<div class="paper">
+  <% if (profile = data[:profile]) %>
+    <div class="bottom-ruler contact-section">
+      <div class="name bottom-ruler"><%= profile.dig(:name) %></div>
+      <% if (contact = data[:contact]) %>
+        <div class="contact">
+          <% if (email = contact[:email]) %>
+            <a href="mailto:<%= email %>"><%= email %></a>
           <% end %>
-          <%= skills.flat_map { |skill| skill[:name] }.join('; ') %>
-        </li>
-      <% end %>
 
-      <% if (interests = generic_sections[:interests]) %>
-        <li class="item">
-          <% if show_subtitle %>
-            <b>Interests: </b>
+          <% if (mobile = contact[:mobile]) %>
+            <a href="tel:<%= mobile %>"><%= mobile %></a>
           <% end %>
-          <%= interests.flat_map { |interest| interest[:name] }.join('; ') %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
 
+          <% if (city = contact.dig(:location, :city)) || (country = contact.dig(:location, :country)) %>
+            <%= "#{city}, #{country}".strip %>
+          <% end %>
+
+          <% if (website = contact[:website]) %>
+            <a href="<%= website %>"><%= website %></a>
+          <% end %>
+
+          <% if (github = contact[:github]) %>
+            <a href="https://github.com/<%= github %>">github.com/<%= github %></a>
+          <% end %>
+
+          <% if (linkedin = contact[:linkedin]) %>
+            <a href="https://linkedin.com/in/<%= linkedin %>">linkedin.com/in/<%= linkedin %></a>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="summary">
+      <div class="upcase bottom-ruler section-title">Summary</div>
+      <div class="about"><%= profile[:about] %></div>
+    </div>
+  <% end %>
+
+  <% if (experiences = data[:experiences]) %>
+    <div class="work-experience">
+      <div class="upcase bottom-ruler section-title">Work Experience</div>
+      <% experiences.each do |experience| %>
+        <div class="experience">
+          <div class="flex flex-grow sb">
+            <div class="organisation-name"><%= experience[:organisation] %></div>
+            <div class="time-period">
+              <%= "#{month_name experience.dig(:from, :month)} #{experience.dig(:from, :year)}" %> -
+              <%= experience[:to] ? "#{month_name experience.dig(:to, :month)} #{experience.dig(:to, :year)}" : "Present" %>
+            </div>
+          </div>
+
+          <div class="flex flex-grow sb">
+            <div class="job-title"><%= experience[:title] %></div>
+            <div class="job-location">
+              <%= "#{experience.dig(:location, :city)}, #{experience.dig(:location, :country)}" %>
+            </div>
+          </div>
+
+          <% if (achievements = experience[:achievements]) %>
+            <ul class="achievements">
+              <% achievements.each do |achievement| %>
+                <li class="achievement-item"><%= achievement %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if (education_list = data[:education]) %>
+    <div class="education">
+      <div class="upcase bottom-ruler section-title">Education</div>
+      <% education_list.each do |education| %>
+        <div class="education-item">
+          <div class="flex flex-grow sb">
+            <div class="institute-name">
+              <%= education[:institute] %>
+            </div>
+            <div class="time-period">
+              <%= education.dig(:from) ? "#{month_name education.dig(:from, :month)} #{education.dig(:from, :year)} - " : "" %>
+              <%= education.dig(:to) ? "#{month_name education.dig(:to, :month)} #{education.dig(:to, :year)}" : "Present" %>
+            </div>
+          </div>
+
+          <div class="flex flex-grow sb">
+            <div class="qualification"><%= education[:qualification] %></div>
+            <div class="education-location">
+              <%= "#{education.dig(:location, :city)}, #{education.dig(:location, :country)}".strip %>
+            </div>
+          </div>
+
+          <% if (achievements = education[:achievements]) %>
+            <ul class="achievements">
+              <% achievements.each do |achievement| %>
+                <li class="achievement-item"><%= achievement %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+
+  <% if (generic_sections = data.slice(:skills, :interests).compact) %>
+    <% show_subtitle = generic_sections.keys.size > 1 %>
+    <div class="generic-section">
+      <div class="upcase bottom-ruler section-title"><%= generic_sections.keys.map(&:capitalize).join(', ') %></div>
+      <ul>
+        <% if (skills = generic_sections[:skills]) %>
+          <li class="item">
+            <% if show_subtitle %>
+              <b>Skills: </b>
+            <% end %>
+            <%= skills.flat_map { |skill| skill[:name] }.join('; ') %>
+          </li>
+        <% end %>
+
+        <% if (interests = generic_sections[:interests]) %>
+          <li class="item">
+            <% if show_subtitle %>
+              <b>Interests: </b>
+            <% end %>
+            <%= interests.flat_map { |interest| interest[:name] }.join('; ') %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
 </body>
 </html>
