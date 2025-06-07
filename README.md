@@ -125,7 +125,7 @@ yaml_str = "..."
 # Create a hash
 content_hash = Kamisaku::Helpers.yaml_str_to_content_hash(yaml_str)
 # Validate the hash is correct. If there is any issue, it will raise a ` Kamisaku::Error ` exception.
-Kamisaku::ContentValidator.new(content_hash:).validate!
+Kamisaku::BaseContentValidator.new(content_hash:).validate!
 # create a pdf instance
 pdf = Kamisaku::PDF.new(content_hash:, template: "paper")
 # create the PDF at given path

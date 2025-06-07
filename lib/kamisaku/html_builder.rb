@@ -2,13 +2,14 @@ require "erb"
 
 module Kamisaku
   class HtmlBuilder
-    attr_reader :content_hash, :template
+    attr_reader :content_hash, :category, :template
     alias_method :data, :content_hash
 
     include TemplateHelpers
 
-    def initialize(content_hash, template)
+    def initialize(content_hash, category, template)
       @content_hash = content_hash
+      @category = category
       @template = template
     end
 
@@ -20,7 +21,7 @@ module Kamisaku
     private
 
     def template_html
-      path = File.join(File.dirname(__FILE__), "/../templates/#{template}/template.html.erb")
+      path = File.join(File.dirname(__FILE__), "/../templates/#{category}/#{template}/template.html.erb")
       File.read(path)
     end
   end
