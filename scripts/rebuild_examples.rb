@@ -15,31 +15,41 @@ OptionParser.new do |opts|
     options[:write_to_html_file] = true
   end
 
+  opts.on("-k", "--category") do |category|
+    options[:category] = category
+  end
+
   opts.on("-h", "--help", "Show this help message") do
     puts opts
     exit
   end
 end.parse!
 
-example_yaml_fie = File.expand_path("../lib/schema/example.yml", __dir__)
-yaml_str = File.read(example_yaml_fie)
+categories = options[:category] ? [options[:category]] : Kamisaku::PDF::CONTENT_VALIDATOR_MAP.keys
 
-# Use specified template or all templates
-templates = options[:template] ? [options[:template]] : Kamisaku::TemplateHelpers::TEMPLATES
+Kamisaku::PDF::CONTENT_VALIDATOR_MAP.select {|key, value| categories.include? key }.each do | category, klass |
+  templates = klass::TEMPLATES
 
-templates.each do |template|
-  template_dir = File.expand_path("../examples/#{template}", __dir__)
-  FileUtils.mkdir_p(template_dir)
+  # Use specified template or all templates
+  templates = options[:template] ? templates.select {|t| t == options[:template] } : templates
 
-  pdf_file_path = File.expand_path("../examples/#{template}/example.pdf", __dir__)
+  templates.each do |template|
+    template_dir = File.expand_path("../examples/#{category}/#{template}", __dir__)
+    FileUtils.mkdir_p(template_dir)
 
-  content_hash = Kamisaku::Helpers.yaml_str_to_content_hash(yaml_str)
-  pdf = Kamisaku::PDF.new(content_hash:, template:)
-  puts "Building template #{template}"
-  pdf.write_to(pdf_file_path)
+    pdf_file_path = File.expand_path("../examples/#{category}/#{template}/example.pdf", __dir__)
 
-  if options[:write_to_html_file]
-    html_location = File.expand_path("../examples/#{template}/example.html", __dir__)
-    pdf.write_to_html_file(html_location)
+    example_yaml_fie = File.expand_path("../lib/schema/#{category}/example.yml", __dir__)
+    yaml_str = File.read(example_yaml_fie)
+
+    content_hash = Kamisaku::Helpers.yaml_str_to_content_hash(yaml_str)
+    pdf = Kamisaku::PDF.new(content_hash:, category:, template:)
+    puts "Building template #{template}"
+    pdf.write_to(pdf_file_path)
+
+    if options[:write_to_html_file]
+      html_location = File.expand_path("../examples/#{category}/#{template}/example.html", __dir__)
+      pdf.write_to_html_file(html_location)
+    end
   end
 end
