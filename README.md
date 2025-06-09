@@ -1,6 +1,6 @@
 # 📃 Kamisaku
 
-*Build a CV PDF from a yaml text file.*
+*Build resume PDF from a yaml text file.*
 
 🚀 See it in action at [https://kamisaku.sinaru.com/](https://kamisaku.sinaru.com/?utm_source=github).
 
@@ -11,7 +11,7 @@
 See [examples](/examples) directory for sample generated PDF files based of [templates](/lib/templates).
 
 ## Templates
-For a list of templates availble for CV generation, check the [examples](/examples) directory where each directory name is a template name.
+For a list of templates availble for PDF generation, check the [examples](/examples) directory where each directory name is a template name.
 
 ## Installation
 
@@ -42,64 +42,9 @@ $ gem install kamisaku
 
 ## Usage
 
-First we need to have a `yaml` file or a string with the CV data. The gem supports the following sections.
+First we need to have a `yaml` file or a string with the correct schema data structure for the type of the PDF you are generating.
 
-```yaml
-version: 1
-profile:
-  name: # Your name
-  title: # Your current job title
-  about: # Some sleek details about your experience
-
-contact:
-  github: # Github username
-  mobile: # Mobile number
-  email: # email address
-  linkedin: # Linkedin username
-  location:
-    country: # country name
-    city: # city name
-
-skills:
-  - area: # specific skill area you are specialized in
-    items:
-      - # sub item such as a technology you have the skill in under the specialized area
-
-experiences:
-  - title: # job title
-    organisation: # Name of the place you worked
-    location:
-      city: # city name
-      country: # country name
-    from:
-      month: # month number that you started
-      year: # year number that you started
-  # if following is not given, it is assumed you are still working
-    to:
-      month: # month number that you stopped
-      year: # year number that you stopped
-    skills:
-      - # a short name for a specialized skilled you gained
-    achievements:
-      - # Things you have achieved or did
-
-education:
-  - institute: # name of the place you studied
-    location:
-      city: # city name
-      country: # country name
-    qualification: # name of the degree/diploma qualification
-    field: # name of the field such as Computer Science
-    from:
-      month: # month number that you started
-      year: # year number that you started
-    # if following is not given, it is assumed you are still studying
-    to:
-      month: # month number that you stopped
-      year: # year number that you stopped
-    achievements:
-      - # Things you have achieved or did
-```
+For the list of schemas, check `lib/schema` folder. E.g. For resume it is `lib/schema/resume/schema.yml`.
 
 ## Generating PDF
 
@@ -108,13 +53,14 @@ education:
 Once you have the YAML text file, feed it into the `bin/console` and specify the output location.
 
 ```bash
-bin/console -c examples/john_doe.yml -o examples/paper/john_doe.pdf  -t paper
+bin/console -c examples/john_doe.yml -o examples/paper/john_doe.pdf -k resume -t paper
 ```
 
 #### Bash options
 
 - `-c` the YAML file
 - `-o` output location for the PDF file including the name
+- `-k` the type of document you want to generate
 - `-t` template to use
 
 ### Using `PDF` class
@@ -127,7 +73,7 @@ content_hash = Kamisaku::Helpers.yaml_str_to_content_hash(yaml_str)
 # Validate the hash is correct. If there is any issue, it will raise a ` Kamisaku::Error ` exception.
 Kamisaku::BaseContentValidator.new(content_hash:).validate!
 # create a pdf instance
-pdf = Kamisaku::PDF.new(content_hash:, template: "paper")
+pdf = Kamisaku::PDF.new(content_hash:, category: "resume", template: "paper")
 # create the PDF at given path
 pdf.write_to('/path/to/generated_file.pdf')
 ```
