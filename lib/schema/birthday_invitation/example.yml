@@ -1,0 +1,45 @@
+version: 1
+party_details:
+  person_name: "Emma"
+  age: 6
+  date:
+    day: 15
+    month: 8
+    year: 2025
+  start_time: "2:00 PM"
+  end_time: "5:00 PM"
+  theme: "Dinosaur Adventure"
+
+venue:
+  name: "Dino Discovery Park"
+  address: "123 Prehistoric Lane, Jurassic Heights, CA 90210"
+  additional_instructions: "Enter through the main gate and follow the dinosaur footprints to the party pavilion"
+
+contact_info:
+  host_name: "Sarah Johnson"
+  phone: "(555) 123-4567"
+  email: "sarah.johnson@email.com"
+
+rsvp:
+  deadline:
+    day: 8
+    month: 8
+    year: 2025
+  method: "phone or text"
+  contact: "Sarah Johnson"
+
+special_instructions:
+  what_to_bring: "Comfortable shoes for outdoor activities and a water bottle"
+  dress_code: "Dinosaur costumes encouraged! Or wear green and brown colors"
+  food_allergies_note: "Please let us know about any food allergies when you RSVP"
+  gift_preferences: "Books about dinosaurs or outdoor toys would be wonderful!"
+  parking_info: "Free parking available in the north lot"
+  weather_backup: "Indoor pavilion available in case of rain"
+
+activities:
+  main_activities:
+    - "Dinosaur fossil dig"
+    - "Pin the tail on the T-Rex"
+    - "Dinosaur egg hunt"
+    - "Prehistoric crafts station"
+  entertainment: "Dr. Dino the Paleontologist with live dinosaur show"
