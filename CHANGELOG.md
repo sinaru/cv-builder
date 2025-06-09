@@ -13,6 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.4.0] - 2025.06.09
+
+### Added
+- Added new `birthday_invitation` schema type for Birthday Invitation PDF generations
+
+### Changed
+- Updated the CLI tool to accept `category` to generate specific PDF
+
 ## [0.3.4] - 2025.06.06
 
 ### Added
