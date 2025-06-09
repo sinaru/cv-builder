@@ -170,7 +170,7 @@ module Kamisaku
     end
 
     def test_validate_venue_optional_fields_success
-      minimal_venue = { address: "123 Main Street, New York, NY 10001" }
+      minimal_venue = {address: "123 Main Street, New York, NY 10001"}
       content_with_minimal_venue = @valid_content.merge(venue: minimal_venue)
       validator = BirthdayInvitationContentValidator.new(content_hash: content_with_minimal_venue)
 
