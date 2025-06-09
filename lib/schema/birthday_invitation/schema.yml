@@ -1,0 +1,40 @@
+party_details: # required: Core information about the birthday party
+  person_name: # required: Name of the birthday person
+  age: # required: Age the birthday person is turning
+  date: # required: Date of the party
+    day: # required: Day between 1-31
+    month: # required: Month between 1-12
+    year: # required: year
+  start_time: # required: Party start time
+  end_time: # optional: Party end time
+  theme: # optional: Party theme (e.g., "Princess", "Superhero", "Dinosaurs")
+
+venue: # required: Where the party will be held
+  name: # optional: Name of the venue (e.g., "Chuck E. Cheese", "Community Center")
+  address: # required: Full address of the party location
+  additional_instructions: # optional: Parking info, entrance details, etc.
+
+contact_info: # required: How to reach the host
+  host_name: # required: Name of parent/guardian hosting
+  phone: # required: Contact phone number
+  email: # optional: Contact email address
+
+rsvp: # required: Response information
+  deadline: # required: RSVP deadline date
+    day: # required: Day between 1-31
+    month: # required: Month between 1-12
+    year: # required: year
+  method: # required: How to RSVP (phone, email, text)
+  contact: # required: Who to contact for RSVP
+
+special_instructions: # optional: Additional party details
+  what_to_bring: # optional: Items guests should bring
+  dress_code: # optional: Costume requirements or dress suggestions
+  food_allergies_note: # optional: Note about food allergies
+  gift_preferences: # optional: Gift suggestions or "no gifts please"
+  parking_info: # optional: Parking instructions
+  weather_backup: # optional: Indoor backup plan for outdoor parties
+
+activities: # optional: Planned party activities
+  main_activities: # optional: List of planned activities
+  entertainment: # optional: Hired entertainment (clown, magician, etc.)

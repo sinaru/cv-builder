@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Party Invitation</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Nunito:wght@400;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Base print and preview styles */
+    @page {
+      margin: 0;
+      width: 5in;
+      height: 7in;
+    }
+
+    @media screen {
+      body {
+        background: #f8fafc;
+      }
+      .paper {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    @media screen, print {
+      .paper {
+        background: white;
+        margin: 0 auto;
+        width: 5in;
+        height: 7in;
+      }
+    }
+
+    .paper {
+      background: linear-gradient(135deg, #C8E6C9 0%, #A5D6A7 50%, #81C784 100%);
+      font-family: 'Nunito', sans-serif;
+      color: #2E7D32;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .invitation-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      border: 4px solid #4CAF50;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      padding: 0.3in;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .decoration-top-right {
+      position: absolute;
+      top: 0.1in;
+      right: -0.4in;
+      width: 200px;
+      height: 200px;
+      transform: scalex(-1);
+      z-index: 10;
+    }
+
+    /* Decorative dinosaurs */
+    .dino-top-left {
+      position: absolute;
+      top: -0.1in;
+      left: -0.4in;
+      width: 200px;
+      height: auto;
+      transform: rotate(-10deg) scalex(-1);
+      z-index: 10;
+    }
+
+    .dino-bottom-right {
+      position: absolute;
+      bottom: -0.8in;
+      right: 1.1in;
+      width: 55px;
+      height: auto;
+      transform: rotate(-15deg);
+      z-index: 10;
+    }
+
+    /* Balloons */
+    .balloon {
+      position: absolute;
+      font-size: 1.5em;
+      animation: float 3s ease-in-out infinite;
+      z-index: 5;
+    }
+
+    .balloon-1 { top: 1.2in; left: 0.8in; animation-delay: 0s; color: #E91E63; }
+    .balloon-2 { top: 1.8in; right: 0.6in; animation-delay: 1s; color: #2196F3; }
+    .balloon-3 { bottom: 2.5in; left: 0.5in; animation-delay: 2s; color: #FF9800; }
+    .balloon-4 { top: 2.8in; right: 1in; animation-delay: 1.5s; color: #9C27B0; }
+
+    /* Tropical leaves */
+    .leaf {
+      position: absolute;
+      font-size: 1.8em;
+      color: #2E7D32;
+      z-index: 1;
+      opacity: 0.7;
+    }
+
+    .leaf-1 { top: 0.5in; left: 1.5in; transform: rotate(-20deg); }
+    .leaf-2 { top: 1.5in; right: 1.2in; transform: rotate(45deg); }
+    .leaf-3 { bottom: 1in; left: 1in; transform: rotate(-45deg); }
+    .leaf-4 { bottom: 2.5in; right: 0.3in; transform: rotate(30deg); }
+
+    /* Stars decoration */
+    .star {
+      position: absolute;
+      color: #FFD700;
+      font-size: 0.8em;
+      animation: twinkle 2s infinite;
+      z-index: 5;
+    }
+
+    .star-1 { top: 1.2in; left: 2.2in; animation-delay: 0s; }
+    .star-2 { top: 3in; left: 3.8in; animation-delay: 0.7s; }
+    .star-3 { top: 4.5in; left: 1.8in; animation-delay: 1.4s; }
+    .star-4 { top: 5.8in; left: 3.5in; animation-delay: 2.1s; }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+
+    /* Typography */
+    .header {
+      text-align: center;
+      margin-bottom: 0.15in;
+      z-index: 20;
+      position: relative;
+    }
+
+    .title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 22px;
+      color: #FF6B35;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 5px;
+      line-height: 1.1;
+    }
+
+    .child-name {
+      font-family: 'Fredoka One', cursive;
+      font-size: 26px;
+      color: #FF5722;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 3px;
+    }
+
+    .age {
+      font-size: 18px;
+      color: #E65100;
+      font-weight: 700;
+    }
+
+    /* Content sections */
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 20;
+      position: relative;
+      margin: 0.1in 0;
+    }
+
+    .info-section {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      padding: 10px;
+      margin: 6px 0;
+      border: 2px solid #4CAF50;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .info-label {
+      font-weight: 700;
+      color: #2E7D32;
+      font-size: 13px;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .info-value {
+      color: #1B5E20;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .theme-highlight {
+      background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+      border: 2px solid #FF8F00;
+      text-align: center;
+      font-weight: 700;
+      color: #E65100;
+    }
+
+    .rsvp-section {
+      background: linear-gradient(135deg, #FCE4EC 0%, #F8BBD9 50%);
+      border: 2px solid #E91E63;
+      text-align: center;
+      margin-top: 0.1in;
+      z-index: 20;
+    }
+
+    .footer-deco {
+      text-align: center;
+      font-size: 1.2em;
+      margin-top: 8px;
+      z-index: 20;
+      position: relative;
+      color: #4CAF50;
+    }
+
+    /* Print optimizations */
+    @media print {
+      body {
+        margin: 0;
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="paper">
+  <div class="invitation-container">
+    <!-- Decorative dinosaur images -->
+    <div class="dino-top-left">
+      <?xml version="1.0" encoding="iso-8859-1"?>
+      <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+           viewBox="0 0 382.325 382.325" xml:space="preserve">
+        <g id="XMLID_800_">
+          <path id="XMLID_801_" style="fill:#DD916F;" d="M182.966,228.544v36h-4c-6.6,0-12,5.4-12,12c0,6.6,5.4,12,12,12h4h24v-24v-36
+		H182.966z"/>
+          <g id="XMLID_802_">
+
+            <rect id="XMLID_52_" x="221.674" y="222.703" transform="matrix(0.8321 -0.5547 0.5547 0.8321 -100.9291 172.0605)" style="fill:#DD916F;" width="24" height="60"/>
+            <path id="XMLID_51_" style="fill:#DD916F;" d="M246.987,251.039l-23.297,15.532c-5.492,3.661-6.989,11.149-3.328,16.641
+			c3.661,5.492,11.149,6.989,16.641,3.328l23.297-15.532L246.987,251.039z"/>
+          </g>
+          <polygon id="XMLID_803_" style="fill:#D87D60;" points="191.163,228.544 191.163,288.544 206.966,288.544 206.966,264.544
+		206.966,228.544 	"/>
+          <path id="XMLID_804_" style="fill:#D87D60;" d="M203.078,124.128c-9.166,0-16.59,2.153-22.696,5.62
+		c-1.335-5.063-1.692-9.868-1.692-12.65c0-9.402,17.057-23.317,23.007-23.317c5.949,0,23.006,13.915,23.006,23.317
+		c0,2.789-0.359,7.609-1.701,12.684C217.433,126.322,211.146,124.128,203.078,124.128z"/>
+          <path id="XMLID_805_" style="fill:#D46C5B;" d="M201.697,93.781c-2.354,0-6.447,2.183-10.535,5.398v26.329
+		c3.613-0.882,7.562-1.381,11.916-1.381c8.068,0,14.355,2.194,19.924,5.654c1.343-5.075,1.701-9.896,1.701-12.685
+		C224.704,107.696,207.647,93.781,201.697,93.781z"/>
+          <path id="XMLID_46_" style="fill:#D46C5B;" d="M238.713,136.213c-6.482-6.482-13.253-10.208-20.022-12.075
+		c2.636-4.524,5.781-8.174,7.749-10.141c6.648-6.648,28.549-4.426,32.756-0.219c4.207,4.207,6.429,26.107-0.219,32.755
+		c-1.972,1.972-5.634,5.127-10.172,7.766C247.311,147.914,244.417,141.917,238.713,136.213z"/>
+          <path id="XMLID_45_" style="fill:#D46C5B;" d="M264.213,166.213c-6.482-6.482-13.253-10.208-20.022-12.075
+		c2.636-4.524,5.781-8.174,7.749-10.141c6.648-6.648,28.549-4.426,32.756-0.219c4.207,4.207,6.429,26.107-0.219,32.755
+		c-1.972,1.972-5.634,5.127-10.172,7.766C272.812,177.914,269.918,171.917,264.213,166.213z"/>
+          <path id="XMLID_44_" style="fill:#D46C5B;" d="M290.847,185.83c-3.935-3.936-8.047-6.198-12.157-7.331
+		c1.6-2.747,3.51-4.963,4.705-6.158c4.036-4.036,17.334-2.687,19.889-0.133c2.554,2.554,3.903,15.852-0.133,19.888
+		c-1.197,1.197-3.421,3.113-6.176,4.715C296.068,192.935,294.311,189.294,290.847,185.83z"/>
+          <path id="XMLID_43_" style="fill:#D87D60;" d="M165.12,134.259c-6.482,6.482-10.208,13.253-12.075,20.023
+		c-4.524-2.636-8.174-5.781-10.141-7.749c-6.648-6.648-4.426-28.549-0.219-32.756c4.207-4.207,26.107-6.429,32.755,0.219
+		c1.972,1.972,5.127,5.634,7.766,10.172C176.822,125.66,170.825,128.554,165.12,134.259z"/>
+          <path id="XMLID_42_" style="fill:#D87D60;" d="M134.156,153.693c-5.209,5.209-8.203,10.65-9.703,16.09
+		c-3.635-2.118-6.569-4.646-8.15-6.227c-5.342-5.342-3.557-22.941-0.176-26.322c3.381-3.381,20.98-5.166,26.322,0.176
+		c1.585,1.585,4.12,4.527,6.241,8.174C143.559,146.783,138.74,149.108,134.156,153.693z"/>
+          <g id="XMLID_806_">
+            <path id="XMLID_41_" style="fill:#DD916F;" d="M128.159,212.031c-0.909,1.035-8.937,10.623-11.007,28.292
+			c-1.939,16.551,1.542,23.371,4.805,26.177c3.538,3.043,8.87,2.642,11.913-0.895c2.664-3.097,0.445-6.75,0.278-10.679
+			c-1.15-27.024,15.928-25.551,16.153-25.82l-9.444-5.929L128.159,212.031z"/>
+          </g>
+          <path id="XMLID_39_" style="fill:#DD916F;" d="M55.199,115.9c1.58,16.485,11.641,2.603,34.471,20s31.966,16.843,39.02,13.882
+		c37.37-15.686,43.5-38,88.632-30c44.701,7.924,46.089,37.5,57.017,50c24.166,27.642,84.576,5.667,104.252,40.149
+		c12.588,22.061-10.818,62.436-9.223,49.851c5.068-40-4.947-53.314-38.012-50s-57.6,21.657-85.526,33.125
+		c-42.784,17.569-93.466-2.431-110.214-16.569c-28.501-24.059-65.46-62.39-80.417-60.733c-14.958,1.657-28.713,5.4-37.438,4.177
+		c-7.803-1.094-26.441-8.319-13.058-20.745S53.238,95.449,55.199,115.9z"/>
+          <g id="XMLID_807_">
+            <path id="XMLID_38_" style="fill:#DD916F;" d="M111.653,189.782c-1.174,0.773-11.663,8.04-18.474,24.867
+			c-6.379,15.763-4.795,23.415-2.343,27.057c2.66,3.95,8.015,4.995,11.964,2.337c3.458-2.328,2.262-6.522,3.158-10.434
+			c6.168-26.904,22.576-20.841,22.87-21.045l-7.692-8.386L111.653,189.782z"/>
+          </g>
+          <circle id="XMLID_36_" style="fill:#FFE477;" cx="193.104" cy="162.159" r="10"/>
+          <path id="XMLID_808_" style="fill:#D87D60;" d="M378.591,209.931c-19.676-34.482-80.086-12.507-104.252-40.149
+		c-10.928-12.5-12.316-42.076-57.017-50c-10.553-1.871-18.973-2.083-26.159-1.111v129.743c17.572,2.602,36.805,1.828,54.668-5.507
+		c27.926-11.468,52.462-29.811,85.526-33.125c33.064-3.314,43.08,10,38.012,50C367.773,272.368,391.179,231.992,378.591,209.931z"/>
+          <circle id="XMLID_34_" style="fill:#F6E277;" cx="225.999" cy="149.199" r="15"/>
+          <circle id="XMLID_33_" style="fill:#F6E277;" cx="248.688" cy="179.78" r="10"/>
+          <path id="XMLID_809_" d="M44.69,137.782c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6S47.999,137.782,44.69,137.782z"/>
+          <path id="XMLID_810_" style="fill:#F6E277;" d="M202.833,159.846c-1.248-5.249-6.423-8.527-11.671-7.484v19.6
+		c1.367,0.272,2.81,0.27,4.255-0.073C200.791,170.611,204.111,165.219,202.833,159.846z"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="dino-bottom-right">
+      <?xml version="1.0" encoding="iso-8859-1"?>
+      <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+      <svg height="200px" width="200px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+           viewBox="0 0 353.123 353.123" xml:space="preserve">
+        <g id="XMLID_463_">
+          <path id="XMLID_464_" style="fill:#D570A7;" d="M104.581,57.7c4.223,21.21,10.669,46.599,20.944,69.996
+		c5.562-2.582,13.012-11.275,10.552-16.799c-1.799-4.038-8.399-5.271-14.023-4.704c5.212-3.253,10.759-9.974,8.939-14.812
+		c-1.724-4.585-9.539-6.081-15.514-5.385c5.299-3.049,10.975-9.372,9.418-14.222c-1.451-4.517-8.75-6.42-14.661-6.171
+		c5.242-3.091,10.762-9.319,9.223-14.109c-1.451-4.516-8.749-6.42-14.66-6.171c5.242-3.091,10.761-9.318,9.222-14.109
+		c-1.768-5.503-12.216-7.126-18.258-5.701C99.738,35.493,102.327,46.38,104.581,57.7z"/>
+          <path id="XMLID_42_" style="fill:#DA88B4;" d="M133.291,303.471l-2.898-0.826c-5.201-1.482-8.216-6.9-6.734-12.101l11.585-51.057
+		l21.733,6.193l-11.585,51.057C143.91,301.938,138.492,304.953,133.291,303.471z"/>
+          <path id="XMLID_41_" style="fill:#DA88B4;" d="M163.564,303.709h-3.013c-5.408,0-9.792-4.384-9.792-9.792l3.205-52.228h22.598
+		l-3.205,52.228C173.357,299.324,168.972,303.709,163.564,303.709z"/>
+          <path id="XMLID_40_" style="fill:#D570A7;" d="M249.704,303.471l2.898-0.826c5.201-1.482,8.216-6.9,6.734-12.101l-11.585-51.057
+		l-21.733,6.193l11.585,51.057C239.085,301.938,244.503,304.953,249.704,303.471z"/>
+          <path id="XMLID_39_" style="fill:#D570A7;" d="M219.43,303.709h3.013c5.408,0,9.792-4.384,9.792-9.792l-3.205-52.228h-22.598
+		l3.205,52.228C209.638,299.324,214.022,303.709,219.43,303.709z"/>
+          <path id="XMLID_466_" style="fill:#DA88B4;" d="M286.793,238.75c-27.199-27.357-30.171-49.76-88.887-79.118
+		c-36.069-18.034-64.83-21.45-72.108-41.205c-14.422-39.144-19.687-64.375-23.605-77.485c-1.183-4.131-4.209-33.439-38.202-31.894
+		c-17.067,0-30.903,9.224-30.903,20.602s13.836,20.602,30.903,20.602c6.501,0,19.229,5.337,20.602,16.668
+		c4.859,40.089,5.666,45.325,19.152,97.392c9.798,37.826,2.137,52.661,30.947,81.517c44.36,44.429,115.945,24.135,122.519,24.135
+		c0.98-0.125,43.589,19.794,30.495,49.064c-11.181,24.994-115.189,9.073-134.451,6.551c-53.211-6.967,48.365,39.132,139.027,24.742
+		C336.693,343.274,322.526,274.69,286.793,238.75z"/>
+          <path id="XMLID_467_" style="fill:#D570A7;" d="M286.793,238.75c-27.199-27.357-30.171-49.76-88.887-79.118
+		c-7.473-3.736-14.625-6.84-21.344-9.596v119.823c37.636,10.585,75.926,0.107,80.65,0.107c0.98-0.125,43.589,19.794,30.495,49.064
+		c-8.708,19.465-73.712,14.115-111.146,9.604v14.248c30.189,7.904,74.1,14.048,115.721,7.442
+		C336.693,343.274,322.526,274.69,286.793,238.75z"/>
+          <path id="XMLID_36_" style="fill:#DA88B4;" d="M51.455,25.024l0.147-19.846c0.03-4.009,4.388-6.483,7.845-4.453l17.114,10.05
+		L51.455,25.024z"/>
+          <path id="XMLID_468_" d="M60.561,15.024c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6S63.87,15.024,60.561,15.024z"/>
+          <circle id="XMLID_469_" style="fill:#98C79C;" cx="214.578" cy="217.007" r="8.017"/>
+          <circle id="XMLID_470_" style="fill:#98C79C;" cx="223.646" cy="192.108" r="7.085"/>
+          <circle id="XMLID_472_" style="fill:#98C79C;" cx="236.393" cy="215.214" r="9.695"/>
+          <circle id="XMLID_473_" style="fill:#98C79C;" cx="196.866" cy="194.72" r="9.695"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="decoration-top-right">
+      <?xml version="1.0" encoding="utf-8"?>
+      <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+      <svg viewBox="0 -3.57 537.296 537.296" xmlns="http://www.w3.org/2000/svg">
+        <g id="Group_10" data-name="Group 10" transform="translate(-1056.208 1535.36)">
+          <path id="path232" d="M1067.7-1116.731a8.07,8.07,0,0,1-10.751-3.987,8.194,8.194,0,0,1,3.965-10.84q142.406-66.26,234.63-165.839,92.092-99.44,134.341-232.293a8.075,8.075,0,0,1,10.173-5.28,8.191,8.191,0,0,1,5.24,10.267q-43.36,136.36-137.89,238.439Q1213-1184.324,1067.7-1116.731" fill="#465da9" fill-rule="evenodd"/>
+          <path id="path234" d="M1367.5-1168.97l2.027-36.693a12.961,12.961,0,0,1,11.093-12.227l36.066-5.32a12.766,12.766,0,0,0,10.547-9.12,12.925,12.925,0,0,0-3.654-13.507l-93.665-86.32a12.95,12.95,0,0,0-18.357.827l-60.276,66.467a13.2,13.2,0,0,0,.823,18.507l93.662,86.32a12.669,12.669,0,0,0,13.667,2.467,12.84,12.84,0,0,0,8.067-11.4" fill="#f0393c" fill-rule="evenodd"/>
+          <path id="path236" d="M1486.2-1324.437l-5.307-36.346a13,13,0,0,1,8.44-14.227l34.267-12.507a12.815,12.815,0,0,0,8.52-11.053,12.884,12.884,0,0,0-6.267-12.506l-108.933-65.64a12.965,12.965,0,0,0-17.813,4.52l-45.84,77.293a13.179,13.179,0,0,0,4.493,17.96l108.92,65.653a12.672,12.672,0,0,0,13.88-.347,12.882,12.882,0,0,0,5.64-12.8" fill="#f9b317" fill-rule="evenodd"/>
+          <path id="path238" d="M1214.952-1049.931,1225-1085.237a12.893,12.893,0,0,1,13.507-9.453l36.336,2.88a12.72,12.72,0,0,0,12.284-6.533,12.919,12.919,0,0,0-.592-13.987l-72.341-105.12a12.964,12.964,0,0,0-18.083-3.293l-73.394,51.333a13.193,13.193,0,0,0-3.269,18.227l72.343,105.12a12.7,12.7,0,0,0,12.792,5.453,12.766,12.766,0,0,0,10.372-9.32" fill="#43bb4e" fill-rule="evenodd"/>
+          <path id="path240" d="M1132.248-1005.211a17.976,17.976,0,0,0,17.867-18.013,17.976,17.976,0,0,0-17.867-18.013,17.977,17.977,0,0,0-17.868,18.013,17.977,17.977,0,0,0,17.868,18.013" fill="#f9b317" fill-rule="evenodd"/>
+          <path id="path242" d="M1346.637-1465.236a11.506,11.506,0,0,0,11.44-11.52,11.518,11.518,0,0,0-11.44-11.533,11.506,11.506,0,0,0-11.427,11.533,11.5,11.5,0,0,0,11.427,11.52" fill="#43bb4e" fill-rule="evenodd"/>
+          <path id="path244" d="M1368.8-1100.571a4.47,4.47,0,0,1,3.6-5.16,4.419,4.419,0,0,1,5.12,3.627l3.333,19.333a4.45,4.45,0,0,1-3.6,5.16,4.439,4.439,0,0,1-5.12-3.64l-3.333-19.32" fill="#5b7fc9" fill-rule="evenodd"/>
+          <path id="path246" d="M1375.17-1063.651a4.456,4.456,0,0,1,3.6-5.173,4.453,4.453,0,0,1,5.12,3.64l3.333,19.32a4.463,4.463,0,0,1-3.6,5.16,4.419,4.419,0,0,1-5.12-3.627l-3.333-19.32" fill="#5b7fc9" fill-rule="evenodd"/>
+          <path id="path248" d="M1350.877-1063.931a4.42,4.42,0,0,1-5.12-3.627,4.443,4.443,0,0,1,3.6-5.16l19.173-3.36a4.433,4.433,0,0,1,5.12,3.627,4.469,4.469,0,0,1-3.613,5.16l-19.16,3.36" fill="#5b7fc9" fill-rule="evenodd"/>
+          <path id="path250" d="M1387.49-1070.344a4.438,4.438,0,0,1-5.12-3.64,4.47,4.47,0,0,1,3.6-5.16l19.173-3.36a4.426,4.426,0,0,1,5.12,3.627,4.476,4.476,0,0,1-3.6,5.173l-19.173,3.36" fill="#5b7fc9" fill-rule="evenodd"/>
+          <path id="path252" d="M1228.576-1375.517a50.6,50.6,0,0,1,27.487-29.36,3.669,3.669,0,0,0,2.247-3.533,3.649,3.649,0,0,0-2.447-3.4,50.559,50.559,0,0,1-29.125-27.707,3.609,3.609,0,0,0-3.511-2.267,3.626,3.626,0,0,0-3.373,2.467,50.6,50.6,0,0,1-27.488,29.36,3.665,3.665,0,0,0-2.244,3.533,3.671,3.671,0,0,0,2.445,3.4,50.5,50.5,0,0,1,29.125,27.706,3.646,3.646,0,0,0,3.511,2.267,3.626,3.626,0,0,0,3.373-2.467" fill="#5b7fc9" fill-rule="evenodd"/>
+          <path id="path254" d="M1238.449-1422.623q-1.824,25.84-28.471,30.413a50.582,50.582,0,0,1,11.713,16.893,3.646,3.646,0,0,0,3.511,2.267,3.626,3.626,0,0,0,3.373-2.467,50.6,50.6,0,0,1,27.487-29.36,3.669,3.669,0,0,0,2.247-3.533,3.649,3.649,0,0,0-2.447-3.4,50.248,50.248,0,0,1-17.413-10.813" fill="#4267ba" fill-rule="evenodd"/>
+          <path id="path256" d="M1563.769-1449.77a50.566,50.566,0,0,1,27.48-29.36,3.681,3.681,0,0,0,2.253-3.533,3.685,3.685,0,0,0-2.453-3.413,50.468,50.468,0,0,1-29.12-27.707,3.674,3.674,0,0,0-3.52-2.267,3.674,3.674,0,0,0-3.373,2.467,50.549,50.549,0,0,1-27.48,29.373,3.681,3.681,0,0,0-2.253,3.533,3.682,3.682,0,0,0,2.453,3.4,50.51,50.51,0,0,1,29.12,27.706,3.636,3.636,0,0,0,3.52,2.267,3.637,3.637,0,0,0,3.373-2.467" fill="#6759b2" fill-rule="evenodd"/>
+          <path id="path258" d="M1573.636-1496.876q-1.82,25.84-28.467,30.413a50.392,50.392,0,0,1,11.707,16.893,3.636,3.636,0,0,0,3.52,2.267,3.637,3.637,0,0,0,3.373-2.467,50.566,50.566,0,0,1,27.48-29.36,3.681,3.681,0,0,0,2.253-3.533,3.685,3.685,0,0,0-2.453-3.413,50.141,50.141,0,0,1-17.413-10.8" fill="#5748a7" fill-rule="evenodd"/>
+          <path id="path260" d="M1126.5-1278.943l-4.051,29.8a4.987,4.987,0,0,1-5.6,4.28l-29.56-4.08a5.023,5.023,0,0,1-4.249-5.653l4.049-29.787a5,5,0,0,1,5.6-4.293l29.56,4.093a5.011,5.011,0,0,1,4.249,5.64" fill="#f0393c" fill-rule="evenodd"/>
+          <path id="path262" d="M1124.473-1264.05q-19.546,10.44-39.4-5.44l-2.028,14.893a5.022,5.022,0,0,0,4.249,5.653l29.559,4.08a4.984,4.984,0,0,0,5.6-4.28l2.025-14.907" fill="#cb3325" fill-rule="evenodd"/>
+          <path id="path264" d="M1534.183-1257.1l21.093,21.267a5.046,5.046,0,0,1,0,7.08l-21.093,21.266a4.957,4.957,0,0,1-7.027,0l-21.107-21.266a5.046,5.046,0,0,1,0-7.08l21.107-21.267a4.934,4.934,0,0,1,7.027,0" fill="#43bb4e" fill-rule="evenodd"/>
+          <path id="path266" d="M1544.73-1246.477q-3.58,22-28.12,28.36l10.547,10.627a4.957,4.957,0,0,0,7.027,0l21.093-21.267a5.046,5.046,0,0,0,0-7.08l-10.547-10.64" fill="#32a940" fill-rule="evenodd"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Balloons -->
+    <div class="balloon balloon-1">🎈</div>
+    <div class="balloon balloon-2">🎈</div>
+    <div class="balloon balloon-3">🎈</div>
+    <div class="balloon balloon-4">🎈</div>
+
+    <!-- Tropical leaves -->
+    <div class="leaf leaf-1">🌿</div>
+    <div class="leaf leaf-2">🍃</div>
+    <div class="leaf leaf-3">🌿</div>
+    <div class="leaf leaf-4">🍃</div>
+
+    <!-- Stars -->
+    <div class="star star-1">⭐</div>
+    <div class="star star-2">✨</div>
+    <div class="star star-3">⭐</div>
+    <div class="star star-4">✨</div>
+
+    <!-- Header -->
+    <div class="header">
+      <div class="title">🎉 JOIN US FOR A BIRTHDAY PARTY 🎉</div>
+      <div class="child-name"><%= data[:party_details][:person_name] %> is turning <%= data[:party_details][:age] %>!</div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <% if data[:party_details][:theme] %>
+        <div class="info-section theme-highlight">
+          <span class="info-label">🎭 PARTY THEME</span>
+          <div class="info-value"><%= data[:party_details][:theme] %></div>
+        </div>
+      <% end %>
+
+      <div style="display: flex">
+        <div class="info-section">
+          <span class="info-label">📅 WHEN</span>
+          <div class="info-value">
+            <%= Date.new(data[:party_details][:date][:year], data[:party_details][:date][:month], data[:party_details][:date][:day]).strftime("%A, %B %d, %Y") %>
+            <br>
+            <%= data[:party_details][:start_time] %><% if data[:party_details][:end_time] %> - <%= data[:party_details][:end_time] %><% end %>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <span class="info-label">📍 WHERE</span>
+          <div class="info-value">
+            <% if data[:venue][:name] %>
+              <strong><%= data[:venue][:name] %></strong><br>
+            <% end %>
+            <%= data[:venue][:address] %>
+            <% if data[:venue][:additional_instructions] %>
+              <br><em><%= data[:venue][:additional_instructions] %></em>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <% if data[:activities] && (data[:activities][:main_activities] || data[:activities][:entertainment]) %>
+        <div class="info-section">
+          <span class="info-label">🎮 FUN ACTIVITIES</span>
+          <div class="info-value">
+            <% if data[:activities][:main_activities] %>
+              <%= [data[:activities][:main_activities]].flatten.join(" • ") %>
+            <% end %>
+            <% if data[:activities][:entertainment] %>
+              <% if data[:activities][:main_activities] %><br><% end %>
+              <strong>Special Guest:</strong> <%= data[:activities][:entertainment] %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <div style="display: flex">
+        <% if data[:special_instructions] %>
+          <% if data[:special_instructions][:dress_code] %>
+            <div class="info-section">
+              <span class="info-label">👕 DRESS CODE</span>
+              <div class="info-value"><%= data[:special_instructions][:dress_code] %></div>
+            </div>
+          <% end %>
+
+          <% if data[:special_instructions][:what_to_bring] %>
+            <div class="info-section">
+              <span class="info-label">🎒 PLEASE BRING</span>
+              <div class="info-value"><%= data[:special_instructions][:what_to_bring] %></div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- RSVP Section -->
+    <div class="info-section rsvp-section">
+      <span class="info-label">💌 RSVP BY <%= Date.new(data[:rsvp][:deadline][:year], data[:rsvp][:deadline][:month], data[:rsvp][:deadline][:day]).strftime("%B %d").upcase %></span>
+      <div class="info-value">
+        <strong><%= data[:contact_info][:host_name] %></strong><br>
+        <% if data[:rsvp][:method].downcase.include?('phone') || data[:rsvp][:method].downcase.include?('text') %>
+          📞 <%= data[:contact_info][:phone] %>
+        <% end %>
+        <% if data[:rsvp][:method].downcase.include?('email') && data[:contact_info][:email] %>
+          <% if data[:rsvp][:method].downcase.include?('phone') || data[:rsvp][:method].downcase.include?('text') %><br><% end %>
+          📧 <%= data[:contact_info][:email] %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="footer-deco">🌟 Let's have a ROARING good time! 🌟</div>
+  </div>
+</div>
+</body>
+</html>

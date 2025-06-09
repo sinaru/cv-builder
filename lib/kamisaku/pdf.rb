@@ -2,14 +2,22 @@ require "tempfile"
 
 module Kamisaku
   class PDF
-    attr_reader :content_hash, :template
+    attr_reader :content_hash, :category, :template
 
-    def initialize(content_hash:, template: nil)
+    CONTENT_VALIDATOR_MAP = {
+      resume: ResumeContentValidator,
+      birthday_invitation: BirthdayInvitationContentValidator
+    }
+
+    def initialize(content_hash:, category:, template:)
       @content_hash = content_hash
-      @template = template || "sleek"
-      ContentValidator.new(content_hash:).validate!
+      @category = category
+      @template = template
       raise Error, "Invalid template name '#{template}'" unless template.is_a?(String)
-      raise Error, "Invalid template name '#{template}'" unless TemplateHelpers::TEMPLATES.include? @template
+      validator_klass = CONTENT_VALIDATOR_MAP[category.to_sym]
+      raise Error, "Invalid template name '#{category}'" unless validator_klass
+      validator_klass.new(content_hash:).validate!
+      raise Error, "Invalid template name '#{template}'" unless validator_klass::TEMPLATES.include?(template)
     end
 
     def write_to(pdf_location)
@@ -44,13 +52,8 @@ module Kamisaku
     def html
       return @html if defined? @html
 
-      builder = HtmlBuilder.new(content_hash, template)
+      builder = HtmlBuilder.new(content_hash, category, template)
       @html = builder.html
-    end
-
-    def template_html
-      path = File.join(File.dirname(__FILE__), "/../templates/#{template}/template.html.erb")
-      File.read(path)
     end
   end
 end

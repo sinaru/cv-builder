@@ -1,11 +1,14 @@
 module Kamisaku
-  class ContentValidator
-    attr_reader :content_hash
-    alias_method :data, :content_hash
-
-    def initialize(content_hash:)
-      @content_hash = content_hash
-    end
+  class ResumeContentValidator < Kamisaku::BaseContentValidator
+    TEMPLATES = %w[
+      paper
+      sleek
+      zenith
+      meridian
+      prism
+      gradient
+      chromatic
+    ].freeze
 
     def validate!
       validate_version

@@ -20,6 +20,10 @@ module Kamisaku
           options[:pdf_file] = pdf_file
         end
 
+        parser.on("-k", "--category CATEGORY", "Provide the TEMPLATE name") do |category|
+          options[:category] = category
+        end
+
         parser.on("-t", "--template TEMPLATE", "Provide the TEMPLATE name") do |template|
           options[:template] = template
         end
